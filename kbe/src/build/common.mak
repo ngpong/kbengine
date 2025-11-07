@@ -146,6 +146,8 @@ LDLIBS += `$(MYSQL_CONFIG_PATH) --libs_r`
 CPPFLAGS += -DUSE_KBE_MYSQL
 
 endif # USE_MYSQL
+KBE_INCLUDES += -I$(KBE_ROOT)/kbe/src/lib/dependencies/mysql
+KBE_INCLUDES += -I$(KBE_ROOT)/kbe/src/lib/dependencies/mysql/mysql
 
 ifdef USE_REDIS
 LDLIBS += -lhiredis
@@ -175,6 +177,7 @@ ifneq ("$(wildcard /usr/lib/x86_64-linux-gnu/libssl.a)", "")
 USE_SELF_OPENSSL=0
 OPENSSL_DIR=/usr
 OPENSSL_DEP_TMP = /usr/lib/x86_64-linux-gnu/libssl.a /usr/lib/x86_64-linux-gnu/libcrypto.a
+CPPFLAGS += -DOPENSSL_API_COMPAT=10000
 $(info, "use system openssl.")
 else
 USE_SELF_OPENSSL=1
@@ -281,6 +284,7 @@ CXXFLAGS += -Wno-uninitialized -Wno-char-subscripts
 CXXFLAGS += -fno-strict-aliasing -Wno-non-virtual-dtor
 CXXFLAGS += -Wno-invalid-offsetof
 CXXFLAGS += -Werror
+CXXFLAGS += -Wno-error=format-truncation
 CXXFLAGS += -std=c++11
 
 CPPFLAGS += -DKBE_SERVER -MMD -DKBE_CONFIG=\"${KBE_CONFIG}\"
