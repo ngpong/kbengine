@@ -54,8 +54,8 @@ PyObject* ClientsRemoteEntityMethod::tp_call(PyObject* self, PyObject* args,
 //-------------------------------------------------------------------------------------
 PyObject* ClientsRemoteEntityMethod::callmethod(PyObject* args, PyObject* kwds)
 {
-	// »ñÈ¡entityView·¶Î§ÄÚÆäËûentity
-	// ÏòÕâĞ©entityµÄclientÍÆËÍÕâ¸ö·½·¨µÄµ÷ÓÃ
+	// è·å–entityViewèŒƒå›´å†…å…¶ä»–entity
+	// å‘è¿™äº›entityçš„clientæ¨é€è¿™ä¸ªæ–¹æ³•çš„è°ƒç”¨
 	MethodDescription* methodDescription = getDescription();
 
 	Entity* pEntity = Cellapp::getSingleton().findEntity(id_);
@@ -76,12 +76,12 @@ PyObject* ClientsRemoteEntityMethod::callmethod(PyObject* args, PyObject* kwds)
 			S_Return;
 	}
 	
-	// ÏÈ·¢¸ø×Ô¼º
+	// å…ˆå‘ç»™è‡ªå·±
 	if(methodDescription->checkArgs(args))
 	{
 		MemoryStream* mstream = MemoryStream::createPoolObject(OBJECTPOOL_POINT);
 
-		// Èç¹ûÊÇ¹ã²¥¸ø×é¼şµÄÏûÏ¢
+		// å¦‚æœæ˜¯å¹¿æ’­ç»™ç»„ä»¶çš„æ¶ˆæ¯
 		if (pComponentPropertyDescription_)
 		{
 			if (pScriptModule_->usePropertyDescrAlias())
@@ -150,7 +150,7 @@ PyObject* ClientsRemoteEntityMethod::callmethod(PyObject* args, PyObject* kwds)
 					DebugHelper::getSingleton().changeLogger(COMPONENT_NAME_EX(g_componentType));
 			}
 
-			// ¼ÇÂ¼Õâ¸öÊÂ¼ş²úÉúµÄÊı¾İÁ¿´óĞ¡
+			// è®°å½•è¿™ä¸ªäº‹ä»¶äº§ç”Ÿçš„æ•°æ®é‡å¤§å°
 			g_publicClientEventHistoryStats.trackEvent(pEntity->scriptName(),
 				methodDescription->getName(),
 				pSendBundle->currMsgLength(),
@@ -160,7 +160,7 @@ PyObject* ClientsRemoteEntityMethod::callmethod(PyObject* args, PyObject* kwds)
 			pEntity->pWitness()->sendToClient(ClientInterface::onRemoteMethodCall, pSendBundle);
 		}
 
-		// ¹ã²¥¸øÆäËûÈË
+		// å¹¿æ’­ç»™å…¶ä»–äºº
 		std::list<ENTITY_ID>::const_iterator iter = entities.begin();
 		for(; iter != entities.end(); ++iter)
 		{
@@ -176,8 +176,8 @@ PyObject* ClientsRemoteEntityMethod::callmethod(PyObject* args, PyObject* kwds)
 			if(pChannel == NULL)
 				continue;
 
-			// Õâ¸ö¿ÉÄÜĞÔÊÇ´æÔÚµÄ£¬ÀıÈçÊı¾İÀ´Ô´ÓÚcreateWitnessFromStream()
-			// ÓÖÈç×Ô¼ºµÄentity»¹Î´ÔÚÄ¿±ê¿Í»§¶ËÉÏ´´½¨
+			// è¿™ä¸ªå¯èƒ½æ€§æ˜¯å­˜åœ¨çš„ï¼Œä¾‹å¦‚æ•°æ®æ¥æºäºcreateWitnessFromStream()
+			// åˆå¦‚è‡ªå·±çš„entityè¿˜æœªåœ¨ç›®æ ‡å®¢æˆ·ç«¯ä¸Šåˆ›å»º
 			if (!pViewEntity->pWitness()->entityInView(pEntity->id()))
 				continue;
 			
@@ -232,7 +232,7 @@ PyObject* ClientsRemoteEntityMethod::callmethod(PyObject* args, PyObject* kwds)
 
 			ENTITY_MESSAGE_FORWARD_CLIENT_END(pSendBundle, msgHandler, viewEntityMessage);
 
-			// ¼ÇÂ¼Õâ¸öÊÂ¼ş²úÉúµÄÊı¾İÁ¿´óĞ¡
+			// è®°å½•è¿™ä¸ªäº‹ä»¶äº§ç”Ÿçš„æ•°æ®é‡å¤§å°
 			g_publicClientEventHistoryStats.trackEvent(pViewEntity->scriptName(), 
 				methodDescription->getName(), 
 				pSendBundle->currMsgLength(), 

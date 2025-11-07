@@ -81,7 +81,7 @@ public:
 				{
 					KBE_ASSERT(pRedisReply->element[0]->type == REDIS_REPLY_STRING);
 					
-					// ÏÂÒ»´ÎÓÉÕâ¸öindex¿ªÊ¼
+					// ä¸‹ä¸€æ¬¡ç”±è¿™ä¸ªindexå¼€å§‹
 					StringConv::str2value(index, pRedisReply->element[0]->str);
 					
 					redisReply* r0 = pRedisReply->element[1];
@@ -127,7 +127,7 @@ public:
 				{
 					KBE_ASSERT(pRedisReply->element[0]->type == REDIS_REPLY_STRING);
 					
-					// ÏÂÒ»´ÎÓÉÕâ¸öindex¿ªÊ¼
+					// ä¸‹ä¸€æ¬¡ç”±è¿™ä¸ªindexå¼€å§‹
 					StringConv::str2value(index, pRedisReply->element[0]->str);
 					
 					redisReply* r0 = pRedisReply->element[1];

@@ -107,7 +107,7 @@ public:
 			int selgot = select(epListen+1, &fds, NULL, NULL, &tv);
 			if(selgot == 0)
 			{
-				// ³¬Ê±, ¿ÉÄÜ¶Ô·½·±Ã¦
+				// è¶…æ—¶, å¯èƒ½å¯¹æ–¹ç¹å¿™
 				return false;	
 			}
 			else if(selgot == -1)
@@ -249,10 +249,10 @@ BOOL StatusWindow::OnInitDialog()
 	CDialog::OnInitDialog();
 	
 	DWORD dwStyle = m_statusList.GetExtendedStyle();
-	dwStyle |= LVS_EX_FULLROWSELECT;					//Ñ¡ÖĞÄ³ĞĞÊ¹ÕûĞĞ¸ßÁÁ£¨Ö»ÊÊÓÃÓëreport·ç¸ñµÄlistctrl£©
-	dwStyle |= LVS_EX_GRIDLINES;						//Íø¸ñÏß£¨Ö»ÊÊÓÃÓëreport·ç¸ñµÄlistctrl£©
+	dwStyle |= LVS_EX_FULLROWSELECT;					//é€‰ä¸­æŸè¡Œä½¿æ•´è¡Œé«˜äº®ï¼ˆåªé€‚ç”¨ä¸reporté£æ ¼çš„listctrlï¼‰
+	dwStyle |= LVS_EX_GRIDLINES;						//ç½‘æ ¼çº¿ï¼ˆåªé€‚ç”¨ä¸reporté£æ ¼çš„listctrlï¼‰
 	//dwStyle |= LVS_EX_ONECLICKACTIVATE;
-	m_statusList.SetExtendedStyle(dwStyle);				//ÉèÖÃÀ©Õ¹·ç¸ñ
+	m_statusList.SetExtendedStyle(dwStyle);				//è®¾ç½®æ‰©å±•é£æ ¼
 
 	int idx = 0;
 	m_statusList.InsertColumn(idx++, _T("uid"),					LVCFMT_CENTER,	40);

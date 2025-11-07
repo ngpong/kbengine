@@ -2,11 +2,11 @@
 
 
 /*
-	ÓÃ·¨:
+	ç”¨æ³•:
 		class A:public Singleton<A>
 		{
 		};
-		ÔÚcppÎÄ¼şÖĞ:
+		åœ¨cppæ–‡ä»¶ä¸­:
 		template<> A* Singleton<A>::singleton_ = 0;
 */
 #ifndef KBE_SINGLETON_H

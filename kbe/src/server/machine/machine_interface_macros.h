@@ -20,7 +20,7 @@
 namespace KBEngine{
 
 /**
-	Machine��Ϣ�꣬  ����Ϊ���� ��Ҫ�Լ��⿪
+	Machine消息宏，  参数为流， 需要自己解开
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_STREAM
@@ -61,7 +61,7 @@ namespace KBEngine{
 																				\
 
 /**
-	Machine��Ϣ�꣬  ֻ�������������Ϣ
+	Machine消息宏，  只有零个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS0
@@ -103,7 +103,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ��һ����������Ϣ
+	Machine消息宏，  只有一个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS1
@@ -146,7 +146,7 @@ namespace KBEngine{
 																				\
 
 /**
-	Machine��Ϣ�꣬  ֻ�ж�����������Ϣ
+	Machine消息宏，  只有二个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS2
@@ -198,7 +198,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ��������������Ϣ
+	Machine消息宏，  只有三个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS3
@@ -259,7 +259,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ���ĸ���������Ϣ
+	Machine消息宏，  只有四个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS4
@@ -327,7 +327,7 @@ namespace KBEngine{
 											ARG_TYPE4, ARG_NAME4)				\
 
 /**
-	Machine��Ϣ�꣬  ֻ�������������Ϣ
+	Machine消息宏，  只有五个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS5
@@ -404,7 +404,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ��������������Ϣ
+	Machine消息宏，  只有六个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS6
@@ -489,7 +489,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ���߸���������Ϣ
+	Machine消息宏，  只有七个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS7
@@ -584,7 +584,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ�а˸���������Ϣ
+	Machine消息宏，  只有八个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS8
@@ -686,7 +686,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ�оŸ���������Ϣ
+	Machine消息宏，  只有九个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS9
@@ -796,7 +796,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ��ʮ����������Ϣ
+	Machine消息宏，  只有十个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS10
@@ -915,7 +915,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ��ʮһ����������Ϣ
+	Machine消息宏，  只有十一个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS11
@@ -1042,7 +1042,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ��ʮ�����������Ϣ
+	Machine消息宏，  只有十五个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS15
@@ -1202,7 +1202,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ��ʮ������������Ϣ
+	Machine消息宏，  只有十六个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS16
@@ -1371,7 +1371,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ��ʮ�˸���������Ϣ
+	Machine消息宏，  只有十八个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS18
@@ -1556,7 +1556,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ�ж�ʮ����������Ϣ
+	Machine消息宏，  只有二十个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS20
@@ -1758,7 +1758,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ�ж�ʮһ����������Ϣ
+	Machine消息宏，  只有二十一个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS21
@@ -1969,7 +1969,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ�ж�ʮ������������Ϣ
+	Machine消息宏，  只有二十二个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS22
@@ -2189,7 +2189,7 @@ namespace KBEngine{
 
 
 /**
-	Machine��Ϣ�꣬  ֻ�ж�ʮ�ĸ���������Ϣ
+	Machine消息宏，  只有二十四个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef MACHINE_MESSAGE_HANDLER_ARGS24
@@ -2425,7 +2425,7 @@ namespace KBEngine{
 
 
 /**
-Machine��Ϣ�꣬  ֻ�ж�ʮ�����������Ϣ
+Machine消息宏，  只有二十五个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 #undef MACHINE_MESSAGE_HANDLER_ARGS25

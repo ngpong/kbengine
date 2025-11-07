@@ -208,11 +208,11 @@ int kbeMainT(int argc, char * argv[], COMPONENT_TYPE componentType,
 		Components::getSingleton().finalise();
 		app.finalise();
 
-		// 如果还有日志未同步完成， 这里会继续同步完成才结束
+		// 濡傛灉杩樻湁鏃ュ織鏈悓姝ュ畬鎴愶紝 杩欓噷浼氱户缁悓姝ュ畬鎴愭墠缁撴潫
 		DebugHelper::getSingleton().finalise();
 
 #if KBE_PLATFORM == PLATFORM_WIN32
-		// 等待几秒，让用户能够在窗口上看到信息
+		// 绛夊緟鍑犵锛岃鐢ㄦ埛鑳藉鍦ㄧ獥鍙ｄ笂鐪嬪埌淇℃伅
 		Beep(587, 500);
 		KBEngine::sleep(5000);
 #endif
@@ -230,7 +230,7 @@ int kbeMainT(int argc, char * argv[], COMPONENT_TYPE componentType,
 	app.finalise();
 	INFO_MSG(fmt::format("{}({}) has shut down.\n", COMPONENT_NAME_EX(componentType), g_componentID));
 
-	// 如果还有日志未同步完成， 这里会继续同步完成才结束
+	// 濡傛灉杩樻湁鏃ュ織鏈悓姝ュ畬鎴愶紝 杩欓噷浼氱户缁悓姝ュ畬鎴愭墠缁撴潫
 	DebugHelper::getSingleton().finalise();
 	return ret;
 }

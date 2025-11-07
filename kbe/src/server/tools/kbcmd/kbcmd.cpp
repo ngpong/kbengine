@@ -115,7 +115,7 @@ bool KBCMD::initializeBegin()
 bool KBCMD::inInitialize()
 {
 	PythonApp::inInitialize();
-	// ¹ã²¥×Ô¼ºµÄµØÖ·¸øÍøÉÏÉÏµÄËùÓĞkbemachine
+	// å¹¿æ’­è‡ªå·±çš„åœ°å€ç»™ç½‘ä¸Šä¸Šçš„æ‰€æœ‰kbemachine
 	Components::getSingleton().pHandler(this);
 	return true;
 }
@@ -172,7 +172,7 @@ int KBCMD::creatDir(const char *pDir)
 	pszDir = strdup(pDir);
 	iLen = strlen(pszDir);
 
-	// ´´½¨ÖĞ¼äÄ¿Â¼  
+	// åˆ›å»ºä¸­é—´ç›®å½•  
 	for (i = 0; i < iLen; i++)
 	{
 		if (pszDir[i] == '\\' || pszDir[i] == '/')
@@ -182,7 +182,7 @@ int KBCMD::creatDir(const char *pDir)
 
 			pszDir[i] = '\0';
 
-			//Èç¹û²»´æÔÚ,´´½¨  
+			//å¦‚æœä¸å­˜åœ¨,åˆ›å»º  
 			iRet = KBE_ACCESS(pszDir, 0);
 			if (iRet != 0)
 			{
@@ -197,7 +197,7 @@ int KBCMD::creatDir(const char *pDir)
 				}
 			}
 
-			//Ö§³Ölinux,½«ËùÓĞ\»»³É/  
+			//æ”¯æŒlinux,å°†æ‰€æœ‰\æ¢æˆ/  
 			pszDir[i] = '/';
 		}
 	}

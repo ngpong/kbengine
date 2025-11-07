@@ -30,10 +30,10 @@ void Archiver::tick()
 		this->createArchiveTable();
 	}
 
-	// Ëã·¨ÈçÏÂ:
-	// baseEntityµÄÊıÁ¿ * idx / tickÖÜÆÚ = Ã¿´ÎÔÚvectorÖĞÒÆ¶¯µÄÒ»¸öÇø¶Î
-	// Õâ¸öÇø¶ÎÔÚÃ¿¸ögametick½øĞĞ´¦Àí, ¸ÕºÃÆ½»¬µÄÔÚperiodInTicksÖĞ´¦ÀíÍêÈÎÎñ
-	// Èç¹ûarchiveIndex_ >= periodInTicksÔòÖØĞÂ²úÉúÒ»´ÎËæ»úĞòÁĞ
+	// ç®—æ³•å¦‚ä¸‹:
+	// baseEntityçš„æ•°é‡ * idx / tickå‘¨æœŸ = æ¯æ¬¡åœ¨vectorä¸­ç§»åŠ¨çš„ä¸€ä¸ªåŒºæ®µ
+	// è¿™ä¸ªåŒºæ®µåœ¨æ¯ä¸ªgametickè¿›è¡Œå¤„ç†, åˆšå¥½å¹³æ»‘çš„åœ¨periodInTicksä¸­å¤„ç†å®Œä»»åŠ¡
+	// å¦‚æœarchiveIndex_ >= periodInTicksåˆ™é‡æ–°äº§ç”Ÿä¸€æ¬¡éšæœºåºåˆ—
 	int size = (int)arEntityIDs_.size();
 	int startIndex = size * archiveIndex_ / periodInTicks;
 
@@ -79,7 +79,7 @@ void Archiver::createArchiveTable()
 		}
 	}
 
-	// Ëæ»úÒ»ÏÂĞòÁĞ
+	// éšæœºä¸€ä¸‹åºåˆ—
 	std::random_shuffle(arEntityIDs_.begin(), arEntityIDs_.end());
 }
 

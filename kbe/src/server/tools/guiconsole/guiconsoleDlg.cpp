@@ -196,7 +196,7 @@ public:
 			if(!bhandler.broadcast())
 			{
 				ERROR_MSG("CguiconsoleDlg::OnTimer: broadcast error!\n");
-				::AfxMessageBox(L"³õÊ¼»¯´íÎó£º²»ÄÜ·¢ËÍ·şÎñÆ÷Ì½²â°ü¡£");
+				::AfxMessageBox(L"åˆå§‹åŒ–é”™è¯¯ï¼šä¸èƒ½å‘é€æœåŠ¡å™¨æ¢æµ‹åŒ…ã€‚");
 				return false;
 			}
 
@@ -244,7 +244,7 @@ RESTART_RECV:
 					isContinue = true;
 				}while(bhandler.pCurrPacket()->length() > 0);
 
-				// ·ÀÖ¹½ÓÊÕµ½µÄÊı¾İ²»ÊÇÏëÒªµÄÊı¾İ
+				// é˜²æ­¢æ¥æ”¶åˆ°çš„æ•°æ®ä¸æ˜¯æƒ³è¦çš„æ•°æ®
 				if(findComponentType == args.componentType)
 				{
 					//ifind++;
@@ -569,7 +569,7 @@ void CguiconsoleDlg::commitPythonCommand(CString strCommand)
 	CString strCommand1 = strCommand;
 
 	/*
-	// ¶ÔÆÕÍ¨µÄÊäÈë¼ÓÈëprint ÈÃ·şÎñÆ÷»ØÏÔĞÅÏ¢
+	// å¯¹æ™®é€šçš„è¾“å…¥åŠ å…¥print è®©æœåŠ¡å™¨å›æ˜¾ä¿¡æ¯
     if((strCommand.Find(L"=")) == -1 &&
 		(strCommand.Find(L"print(")) == -1 &&
 		(strCommand.Find(L"import ")) == -1 &&
@@ -619,7 +619,7 @@ void CguiconsoleDlg::commitPythonCommand(CString strCommand)
 
 void CguiconsoleDlg::saveHistory()
 {
-    //´´½¨Ò»¸öXMLµÄÎÄµµ¶ÔÏó¡£
+    //åˆ›å»ºä¸€ä¸ªXMLçš„æ–‡æ¡£å¯¹è±¡ã€‚
     TiXmlDocument *pDocument = new TiXmlDocument();
 
 	int i = 0;
@@ -1188,7 +1188,7 @@ void CguiconsoleDlg::OnNMRClickTree1(NMHDR *pNMHDR, LRESULT *pResult)
     CMenu* pPopup = menu.GetSubMenu(0);
 	
 	CPoint point;
-	GetCursorPos(&point); //Êó±êÎ»ÖÃ
+	GetCursorPos(&point); //é¼ æ ‡ä½ç½®
     pPopup->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
 }
 
@@ -1572,7 +1572,7 @@ void CguiconsoleDlg::OnNMClickTree1(NMHDR *pNMHDR, LRESULT *pResult)
 
 	bool changeToChecked = false;
 
-	// ¸´Ñ¡¿ò±»Ñ¡ÖĞ¾ÍÁ¬½Ó·ñÔò¶Ï¿ªÁ¬½Ó
+	// å¤é€‰æ¡†è¢«é€‰ä¸­å°±è¿æ¥å¦åˆ™æ–­å¼€è¿æ¥
 	if(TVHT_ONITEMSTATEICON & hittestInfo.flags)
 	{
 		m_tree.SelectItem(hItem);
@@ -1601,7 +1601,7 @@ void CguiconsoleDlg::OnNMClickTree1(NMHDR *pNMHDR, LRESULT *pResult)
 		m_debugWnd.displaybufferWnd()->GetWindowTextW(s);
 		
 		if(s.GetLength() <= 0)
-			s += L">>>ÇëÔÚÏÂÃæµÄ´°¿ÚĞ´python´úÂëÀ´µ÷ÊÔ·şÎñ¶Ë¡£\r\n>>>ctrl+enter ·¢ËÍ\r\n>>>¡ü¡ıÊ¹ÓÃÀúÊ·ÃüÁî\r\n\r\n";
+			s += L">>>è¯·åœ¨ä¸‹é¢çš„çª—å£å†™pythonä»£ç æ¥è°ƒè¯•æœåŠ¡ç«¯ã€‚\r\n>>>ctrl+enter å‘é€\r\n>>>â†‘â†“ä½¿ç”¨å†å²å‘½ä»¤\r\n\r\n";
 		else
 			s += L">>>";
 
@@ -1688,14 +1688,14 @@ void CguiconsoleDlg::OnToolBar_StartServer()
 		if(!bhandler.broadcast())
 		{
 			ERROR_MSG("CguiconsoleDlg::OnToolBar_StartServer: broadcast error!\n");
-			//::AfxMessageBox(L"²»ÄÜ·¢ËÍ·şÎñÆ÷Æô¶¯°ü¡£");
+			//::AfxMessageBox(L"ä¸èƒ½å‘é€æœåŠ¡å™¨å¯åŠ¨åŒ…ã€‚");
 			break;
 		}
 
 		if(!bhandler.receive(NULL, 0, 1000000))
 		{
 			ERROR_MSG("CguiconsoleDlg::OnToolBar_StartServer: recv error!\n");
-			//::AfxMessageBox(L"½ÓÊÕ·şÎñÆ÷Æô¶¯°ü´íÎó¡£");
+			//::AfxMessageBox(L"æ¥æ”¶æœåŠ¡å™¨å¯åŠ¨åŒ…é”™è¯¯ã€‚");
 			break;
 		}
 		
@@ -1756,14 +1756,14 @@ void CguiconsoleDlg::OnToolBar_StopServer()
 		if(!bhandler.broadcast())
 		{
 			ERROR_MSG("CguiconsoleDlg::OnToolBar_StartServer: broadcast error!\n");
-			//::AfxMessageBox(L"²»ÄÜ·¢ËÍ·şÎñÆ÷Æô¶¯°ü¡£");
+			//::AfxMessageBox(L"ä¸èƒ½å‘é€æœåŠ¡å™¨å¯åŠ¨åŒ…ã€‚");
 			break;
 		}
 
 		if(!bhandler.receive(NULL, 0, 3000000))
 		{
 			ERROR_MSG("CguiconsoleDlg::OnToolBar_StartServer: recv error!\n");
-			//::AfxMessageBox(L"½ÓÊÕ·şÎñÆ÷Æô¶¯°ü´íÎó¡£");
+			//::AfxMessageBox(L"æ¥æ”¶æœåŠ¡å™¨å¯åŠ¨åŒ…é”™è¯¯ã€‚");
 			break;
 		}
 		

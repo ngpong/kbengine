@@ -172,7 +172,7 @@ PyObject* AllClients::onScriptGetAttribute(PyObject* attr)
 	}
 	else
 	{
-		// ÊÇ·ñÊÇ×é¼ş·½·¨µ÷ÓÃ
+		// æ˜¯å¦æ˜¯ç»„ä»¶æ–¹æ³•è°ƒç”¨
 		PropertyDescription* pComponentPropertyDescription = const_cast<ScriptDefModule*>(pScriptModule_)->findComponentPropertyDescription(ccattr);
 		if (pComponentPropertyDescription)
 		{

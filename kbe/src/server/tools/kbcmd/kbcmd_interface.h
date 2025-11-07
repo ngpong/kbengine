@@ -25,18 +25,18 @@
 namespace KBEngine{
 
 /**
-	KBCMD��Ϣ�꣬  ����Ϊ���� ��Ҫ�Լ��⿪
+	KBCMD消息宏，  参数为流， 需要自己解开
 */
 
 /**
-	KBCMD������Ϣ�ӿ��ڴ˶���
+	KBCMD所有消息接口在此定义
 */
 NETWORK_INTERFACE_DECLARE_BEGIN(KBCMDInterface)
 
-	// ĳapp��������look��
+	// 某app主动请求look。
 	KBCMD_MESSAGE_DECLARE_ARGS0(lookApp, NETWORK_FIXED_MESSAGE)
 
-	// ĳ��app��app��֪���ڻ״̬��
+	// 某个app向本app告知处于活动状态。
 	KBCMD_MESSAGE_DECLARE_ARGS2(onAppActiveTick, NETWORK_FIXED_MESSAGE,
 		COMPONENT_TYPE, componentType,
 		COMPONENT_ID, componentID)

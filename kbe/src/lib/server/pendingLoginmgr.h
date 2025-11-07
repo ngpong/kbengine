@@ -20,7 +20,7 @@ class EventDispatcher;
 }
 
 /*
-	��¼�����������ɹ��� ����û�н��뵽��Ϸ����ʱ�� ��Ҫ���˺Ż���һ�±��ں�������
+	登录到服务器检测成功， 但还没有进入到游戏世界时， 需要将账号缓存一下便于后续处理
 */
 class PendingLoginMgr : public Task
 {

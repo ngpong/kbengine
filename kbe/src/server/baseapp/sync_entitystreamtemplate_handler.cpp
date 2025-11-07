@@ -40,7 +40,7 @@ networkInterface_(networkInterface)
 		{
 			PropertyDescription* propertyDescription = iter->second;
 
-			// Èç¹ûÄ³¸öÊµÌåÃ»ÓĞcell²¿·Ö£¬ ¶ø×é¼şÊôĞÔÃ»ÓĞbase²¿·ÖÔòºöÂÔ
+			// å¦‚æœæŸä¸ªå®ä½“æ²¡æœ‰celléƒ¨åˆ†ï¼Œ è€Œç»„ä»¶å±æ€§æ²¡æœ‰baseéƒ¨åˆ†åˆ™å¿½ç•¥
 			if (!pScriptModule->hasCell())
 			{
 				if (propertyDescription->getDataType()->type() == DATA_TYPE_ENTITY_COMPONENT && !propertyDescription->hasBase())
@@ -106,7 +106,7 @@ bool SyncEntityStreamTemplateHandler::process()
 	{
 		PropertyDescription* propertyDescription = iter->second;
 
-		// Èç¹ûÄ³¸öÊµÌåÃ»ÓĞcell²¿·Ö£¬ ¶ø×é¼şÊôĞÔÃ»ÓĞbase²¿·ÖÔòºöÂÔ
+		// å¦‚æœæŸä¸ªå®ä½“æ²¡æœ‰celléƒ¨åˆ†ï¼Œ è€Œç»„ä»¶å±æ€§æ²¡æœ‰baseéƒ¨åˆ†åˆ™å¿½ç•¥
 		if (!pScriptModule->hasCell())
 		{
 			if (propertyDescription->getDataType()->type() == DATA_TYPE_ENTITY_COMPONENT && !propertyDescription->hasBase())

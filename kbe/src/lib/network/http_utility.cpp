@@ -196,7 +196,7 @@ Request::Status Request::setURL(const std::string& url)
 {
 	CURLcode curlCode = CURLE_OK;
 
-	if (!setVerifySSL_/* Èç¹ûÃ»ÉèÖÃ¹ı£¬×Ô¶¯ÉèÖÃÒ»¸öÄ¬ÈÏÖµ */ && url.substr(0, 6) == "https:")
+	if (!setVerifySSL_/* å¦‚æœæ²¡è®¾ç½®è¿‡ï¼Œè‡ªåŠ¨è®¾ç½®ä¸€ä¸ªé»˜è®¤å€¼ */ && url.substr(0, 6) == "https:")
 	{
 		curlCode = curl_easy_setopt((CURL*)pContext_, CURLOPT_SSL_VERIFYPEER, 0L);
 		curlCode = curl_easy_setopt((CURL*)pContext_, CURLOPT_SSL_VERIFYHOST, 0L);
@@ -849,7 +849,7 @@ Request::Status Requests::perform(const std::string& url, const Request::Callbac
 		r->setHeader(headers);
 
 	Request::Status status = perform(r);
-	// ÓÉcurlµÄ»Øµ÷ÖĞÏú»Ù
+	// ç”±curlçš„å›è°ƒä¸­é”€æ¯
 	// delete r;
 	return status;
 }
@@ -867,7 +867,7 @@ Request::Status Requests::perform(const std::string& url, const Request::Callbac
 		r->setHeader(headers);
 
 	Request::Status status = perform(r);
-	// ÓÉcurlµÄ»Øµ÷ÖĞÏú»Ù
+	// ç”±curlçš„å›è°ƒä¸­é”€æ¯
 	// delete r;
 	return status;
 }

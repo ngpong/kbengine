@@ -221,7 +221,7 @@ END:
 
 void CConnectRemoteMachineWindow::saveHistory()
 {
-    //´´½¨Ò»¸öXMLµÄÎÄµµ¶ÔÏó¡£
+    //åˆ›å»ºä¸€ä¸ªXMLçš„æ–‡æ¡£å¯¹è±¡ã€‚
     TiXmlDocument *pDocument = new TiXmlDocument();
 
 	int i = 0;
@@ -275,7 +275,7 @@ void CConnectRemoteMachineWindow::saveIpMapping()
 	{
 		for (std::multimap<CString, CString>::iterator iter = m_ipMapping.begin(); iter != m_ipMapping.end();)
 		{
-			// Èç¹ûÒÑ¾­´æÔÚÕâ¸öhostµÄ¼ÇÂ¼ÔòÇå¿Õ
+			// å¦‚æžœå·²ç»å­˜åœ¨è¿™ä¸ªhostçš„è®°å½•åˆ™æ¸…ç©º
 			if (iter->first == host)
 				iter = m_ipMapping.erase(iter);
 			else

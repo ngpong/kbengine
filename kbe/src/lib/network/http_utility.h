@@ -38,7 +38,7 @@ namespace Http
             {      
                 buf[0] = sIn[ix];
             }
-            //else if ( isspace( (uint8)sIn[ix] ) ) //Ã²ËÆ°Ñ¿Õ¸ñ±àÂë³É%20»òÕß+¶¼¿ÉÒÔ
+            //else if ( isspace( (uint8)sIn[ix] ) ) //è²Œä¼¼æŠŠç©ºæ ¼ç¼–ç æˆ%20æˆ–è€…+éƒ½å¯ä»¥
             //{
             //    buf[0] = '+';
             //}
@@ -116,7 +116,7 @@ namespace Http
 		Status setHeader(const std::map<std::string, std::string>& headers);
 		Status setHeader(const std::string& header);
 
-		// set certã€caã€key
+		// set certéŠ†ä¹§aéŠ†ä¹²ey
 		Status setCAInfo(const std::string& cainfo);
 		Status setSSLCert(const std::string& sslCert);
 		Status setSSLKey(const std::string& sslKey);

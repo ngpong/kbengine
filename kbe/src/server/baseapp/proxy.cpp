@@ -81,7 +81,7 @@ PyObject* Proxy::pyDisconnect()
 //-------------------------------------------------------------------------------------
 void Proxy::kick()
 {
-	// Èç¹û±»Ïú»ÙÆµµÀÈÔÈ»´æ»îÔò½«Æä¹Ø±Õ
+	// å¦‚æœè¢«é”€æ¯é¢‘é“ä»ç„¶å­˜æ´»åˆ™å°†å…¶å…³é—­
 	Network::Channel* pChannel = Baseapp::getSingleton().networkInterface().findChannel(addr_);
 	if(pChannel && !pChannel->isDestroyed())
 	{
@@ -149,7 +149,7 @@ void Proxy::initClientCellPropertys()
 
 	MemoryStream* s = MemoryStream::createPoolObject(OBJECTPOOL_POINT);
 
-	// celldata»ñÈ¡¿Í»§¶Ë¸ĞĞËÈ¤µÄÊı¾İ³õÊ¼»¯¿Í»§¶Ë Èç:ALL_CLIENTS
+	// celldataè·å–å®¢æˆ·ç«¯æ„Ÿå…´è¶£çš„æ•°æ®åˆå§‹åŒ–å®¢æˆ·ç«¯ å¦‚:ALL_CLIENTS
 	try
 	{
 		addCellDataToStream(CLIENT_TYPE, ED_FLAG_ALL_CLIENTS|ED_FLAG_CELL_PUBLIC_AND_OWN|ED_FLAG_OWN_CLIENT, s, true);
@@ -240,7 +240,7 @@ void Proxy::onClientDeath(void)
 //-------------------------------------------------------------------------------------
 void Proxy::onClientGetCell(Network::Channel* pChannel, COMPONENT_ID componentID)
 {	
-	// »Øµ÷¸ø½Å±¾£¬»ñµÃÁËcell
+	// å›è°ƒç»™è„šæœ¬ï¼Œè·å¾—äº†cell
 	if(cellEntityCall_ == NULL)
 		cellEntityCall_ = new EntityCall(pScriptModule_, NULL, componentID, id_, ENTITYCALL_TYPE_CELL);
 
@@ -291,7 +291,7 @@ PyObject* Proxy::pyGiveClientTo(PyObject* pyOterProxy)
 		return 0;
 	}
 
-	// Èç¹ûÎªNone ÔòÉèÖÃÎªNULL
+	// å¦‚æœä¸ºNone åˆ™è®¾ç½®ä¸ºNULL
 	Proxy* oterProxy = NULL;
 	if(pyOterProxy != Py_None)
 		oterProxy = static_cast<Proxy*>(pyOterProxy);
@@ -376,22 +376,22 @@ void Proxy::giveClientTo(Proxy* proxy)
 
 		if(cellEntityCall())
 		{
-			// µ±Ç°Õâ¸öentityÈç¹ûÓĞcell£¬ËµÃ÷ÒÑ¾­°ó¶¨ÁËwitness£¬ ÄÇÃ´¼ÈÈ»ÎÒÃÇ½«¿ØÖÆÈ¨
-			// ½»»»¸øÁËÁíÒ»¸öentity£¬ Õâ¸öentityĞèÒª½â°ó¶¨witness¡£
-			// Í¨Öªcell¶ªÊ§witness
+			// å½“å‰è¿™ä¸ªentityå¦‚æœæœ‰cellï¼Œè¯´æ˜å·²ç»ç»‘å®šäº†witnessï¼Œ é‚£ä¹ˆæ—¢ç„¶æˆ‘ä»¬å°†æ§åˆ¶æƒ
+			// äº¤æ¢ç»™äº†å¦ä¸€ä¸ªentityï¼Œ è¿™ä¸ªentityéœ€è¦è§£ç»‘å®šwitnessã€‚
+			// é€šçŸ¥cellä¸¢å¤±witness
 			Network::Bundle* pBundle = Network::Bundle::createPoolObject(OBJECTPOOL_POINT);
 			(*pBundle).newMessage(CellappInterface::onLoseWitness);
 			(*pBundle) << this->id();
 			sendToCellapp(pBundle);
 		}
 
-		// ¼ÈÈ»¿Í»§¶ËÊ§È¥¶ÔÆäµÄ¿ØÖÆ, ÄÇÃ´Í¨ÖªclientÏú»ÙÕâ¸öentity
+		// æ—¢ç„¶å®¢æˆ·ç«¯å¤±å»å¯¹å…¶çš„æ§åˆ¶, é‚£ä¹ˆé€šçŸ¥clienté”€æ¯è¿™ä¸ªentity
 		Network::Bundle* pBundle = Network::Bundle::createPoolObject(OBJECTPOOL_POINT);
 		(*pBundle).newMessage(ClientInterface::onEntityDestroyed);
 		(*pBundle) << this->id();
 		sendToClient(ClientInterface::onEntityDestroyed, pBundle);
 
-		// ½«¿ØÖÆÈ¨½»»»
+		// å°†æ§åˆ¶æƒäº¤æ¢
 		clientEnabled_ = false;
 		clientEntityCall()->addr(Network::Address::NONE);
 		Py_DECREF(clientEntityCall());
@@ -414,8 +414,8 @@ void Proxy::onGiveClientTo(Network::Channel* lpChannel)
 	addr(lpChannel->addr());
 	Baseapp::getSingleton().createClientProxies(this);
 
-	// Èç¹ûÓĞcell, ĞèÒªÍ¨ÖªÆä»ñµÃwitness£¬ ÒòÎªÕâ¸ö¿Í»§¶Ë¸Õ¸Õ°ó¶¨µ½Õâ¸öproxy
-	// ´ËÊ±Õâ¸öentity¼´Ê¹ÓĞcellÕı³£Çé¿ö±ØĞëÊÇÃ»ÓĞwitnessµÄ¡£
+	// å¦‚æœæœ‰cell, éœ€è¦é€šçŸ¥å…¶è·å¾—witnessï¼Œ å› ä¸ºè¿™ä¸ªå®¢æˆ·ç«¯åˆšåˆšç»‘å®šåˆ°è¿™ä¸ªproxy
+	// æ­¤æ—¶è¿™ä¸ªentityå³ä½¿æœ‰cellæ­£å¸¸æƒ…å†µå¿…é¡»æ˜¯æ²¡æœ‰witnessçš„ã€‚
 	onGetWitness();
 }
 
@@ -424,7 +424,7 @@ void Proxy::onGetWitness()
 {
 	if(cellEntityCall())
 	{
-		// Í¨Öªcell»ñµÃ¿Í»§¶Ë
+		// é€šçŸ¥cellè·å¾—å®¢æˆ·ç«¯
 		Network::Bundle* pBundle = Network::Bundle::createPoolObject(OBJECTPOOL_POINT);
 		(*pBundle).newMessage(CellappInterface::onGetWitnessFromBase);
 		(*pBundle) << this->id();
@@ -767,7 +767,7 @@ bool Proxy::pushBundle(Network::Bundle* pBundle)
 	pChannel->pushBundle(pBundle);
 
 	{
-		// Èç¹ûÊı¾İ´óÁ¿×èÈû·¢²»³öÈ¥½«»á±¨¾¯
+		// å¦‚æœæ•°æ®å¤§é‡é˜»å¡å‘ä¸å‡ºå»å°†ä¼šæŠ¥è­¦
 		//AUTO_SCOPED_PROFILE("pushBundleAndSendToClient");
 		//pChannel->send(pBundle);
 	}
@@ -817,7 +817,7 @@ bool Proxy::sendToClient(bool expectData)
 	}
 
 	{
-		// Èç¹ûÊı¾İ´óÁ¿×èÈû·¢²»³öÈ¥½«»á±¨¾¯
+		// å¦‚æœæ•°æ®å¤§é‡é˜»å¡å‘ä¸å‡ºå»å°†ä¼šæŠ¥è­¦
 		AUTO_SCOPED_PROFILE("sendToClient");
 		pChannel->send();
 	}

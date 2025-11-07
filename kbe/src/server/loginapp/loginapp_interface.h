@@ -25,75 +25,75 @@
 namespace KBEngine{
 
 /**
-	LOGINAPPËùÓĞÏûÏ¢½Ó¿ÚÔÚ´Ë¶¨Òå
+	LOGINAPPæ‰€æœ‰æ¶ˆæ¯æ¥å£åœ¨æ­¤å®šä¹‰
 */
 NETWORK_INTERFACE_DECLARE_BEGIN(LoginappInterface)
-	// ¿Í»§¶ËĞ­Òéµ¼³ö¡£
+	// å®¢æˆ·ç«¯åè®®å¯¼å‡ºã€‚
 	LOGINAPP_MESSAGE_EXPOSED(importClientMessages)
 	LOGINAPP_MESSAGE_DECLARE_ARGS0(importClientMessages,							NETWORK_FIXED_MESSAGE)
 
-	// ´íÎóÂëÃèÊöµ¼³ö¡£
+	// é”™è¯¯ç æè¿°å¯¼å‡ºã€‚
 	LOGINAPP_MESSAGE_EXPOSED(importServerErrorsDescr)
 	LOGINAPP_MESSAGE_DECLARE_ARGS0(importServerErrorsDescr,							NETWORK_FIXED_MESSAGE)
 
-	// ¿Í»§¶ËSDKµ¼³ö¡£
+	// å®¢æˆ·ç«¯SDKå¯¼å‡ºã€‚
 	LOGINAPP_MESSAGE_EXPOSED(importClientSDK)
 	LOGINAPP_MESSAGE_DECLARE_STREAM(importClientSDK,								NETWORK_VARIABLE_MESSAGE)
 
-	// Ä³appÖ÷¶¯ÇëÇó¶ÏÏß¡£
+	// æŸappä¸»åŠ¨è¯·æ±‚æ–­çº¿ã€‚
 	LOGINAPP_MESSAGE_DECLARE_ARGS0(reqClose,										NETWORK_FIXED_MESSAGE)
 
-	// Ä³appÖ÷¶¯ÇëÇólook¡£
+	// æŸappä¸»åŠ¨è¯·æ±‚lookã€‚
 	LOGINAPP_MESSAGE_DECLARE_ARGS0(lookApp,											NETWORK_FIXED_MESSAGE)
 
-	// Ä³¸öappÇëÇó²é¿´¸Ãapp¸ºÔØ×´Ì¬¡£
+	// æŸä¸ªappè¯·æ±‚æŸ¥çœ‹è¯¥appè´Ÿè½½çŠ¶æ€ã€‚
 	LOGINAPP_MESSAGE_DECLARE_ARGS0(queryLoad,										NETWORK_FIXED_MESSAGE)
 
-	// helloÎÕÊÖ¡£
+	// helloæ¡æ‰‹ã€‚
 	NETWORK_MESSAGE_EXPOSED(Loginapp, hello)
 	LOGINAPP_MESSAGE_DECLARE_STREAM(hello,											NETWORK_VARIABLE_MESSAGE)
 
-	// Ä³¸öappÏò±¾app¸æÖª´¦ÓÚ»î¶¯×´Ì¬¡£
+	// æŸä¸ªappå‘æœ¬appå‘ŠçŸ¥å¤„äºæ´»åŠ¨çŠ¶æ€ã€‚
 	LOGINAPP_MESSAGE_EXPOSED(onClientActiveTick)
 	LOGINAPP_MESSAGE_DECLARE_ARGS0(onClientActiveTick,								NETWORK_FIXED_MESSAGE)
 	
-	// ÇëÇó´´½¨ÕËºÅ
+	// è¯·æ±‚åˆ›å»ºè´¦å·
 	LOGINAPP_MESSAGE_EXPOSED(reqCreateAccount)
 	LOGINAPP_MESSAGE_DECLARE_STREAM(reqCreateAccount,								NETWORK_VARIABLE_MESSAGE)
 
 	LOGINAPP_MESSAGE_EXPOSED(reqCreateMailAccount)
 	LOGINAPP_MESSAGE_DECLARE_STREAM(reqCreateMailAccount,							NETWORK_VARIABLE_MESSAGE)
 
-	// ÖØÖÃÕËºÅÃÜÂëÉêÇë
+	// é‡ç½®è´¦å·å¯†ç ç”³è¯·
 	LOGINAPP_MESSAGE_EXPOSED(reqAccountResetPassword)
 	LOGINAPP_MESSAGE_DECLARE_ARGS1(reqAccountResetPassword,							NETWORK_VARIABLE_MESSAGE,
 									std::string,									accountName)
 
-	// ÖØÖÃÕËºÅÃÜÂëÉêÇëµÄ»Øµ÷
+	// é‡ç½®è´¦å·å¯†ç ç”³è¯·çš„å›è°ƒ
 	LOGINAPP_MESSAGE_DECLARE_ARGS4(onReqAccountResetPasswordCB,						NETWORK_VARIABLE_MESSAGE,
 									std::string,									accountName,
 									std::string,									email,
 									SERVER_ERROR_CODE,								failedcode,
 									std::string,									code)
-	// ÓÃ»§µÇÂ¼·şÎñÆ÷ 
+	// ç”¨æˆ·ç™»å½•æœåŠ¡å™¨ 
 	LOGINAPP_MESSAGE_EXPOSED(login)
 	LOGINAPP_MESSAGE_DECLARE_STREAM(login,											NETWORK_VARIABLE_MESSAGE)
 
-	// Ä³appÇëÇó»ñÈ¡Ò»¸öentityID¶ÎµÄ»Øµ÷
+	// æŸappè¯·æ±‚è·å–ä¸€ä¸ªentityIDæ®µçš„å›è°ƒ
 	LOGINAPP_MESSAGE_DECLARE_ARGS3(onDbmgrInitCompleted,							NETWORK_VARIABLE_MESSAGE,
 									COMPONENT_ORDER,								startGlobalOrder,
 									COMPONENT_ORDER,								startGroupOrder,
 									std::string,									digest)
 
-	// Ä³¸öappÏò±¾app¸æÖª´¦ÓÚ»î¶¯×´Ì¬¡£
+	// æŸä¸ªappå‘æœ¬appå‘ŠçŸ¥å¤„äºæ´»åŠ¨çŠ¶æ€ã€‚
 	LOGINAPP_MESSAGE_DECLARE_ARGS2(onAppActiveTick,									NETWORK_FIXED_MESSAGE,
 									COMPONENT_TYPE,									componentType, 
 									COMPONENT_ID,									componentID)
 
-	// ´Ódbmgr²éÑ¯µ½ÓÃ»§ºÏ·¨ĞÔ½á¹û
+	// ä»dbmgræŸ¥è¯¢åˆ°ç”¨æˆ·åˆæ³•æ€§ç»“æœ
 	LOGINAPP_MESSAGE_DECLARE_STREAM(onLoginAccountQueryResultFromDbmgr,				NETWORK_VARIABLE_MESSAGE)
 
-	// baseappmgr·µ»ØµÄµÇÂ¼Íø¹ØµØÖ·
+	// baseappmgrè¿”å›çš„ç™»å½•ç½‘å…³åœ°å€
 	LOGINAPP_MESSAGE_DECLARE_ARGS5(onLoginAccountQueryBaseappAddrFromBaseappmgr,	NETWORK_VARIABLE_MESSAGE,
 									std::string,									loginName, 
 									std::string,									accountName,
@@ -101,26 +101,26 @@ NETWORK_INTERFACE_DECLARE_BEGIN(LoginappInterface)
 									uint16,											tcp_port,
 									uint16,											udp_port)
 
-	// ÏòdbmgrÇëÇó´´½¨ÕËºÅ·µ»Ø½á¹û
+	// å‘dbmgrè¯·æ±‚åˆ›å»ºè´¦å·è¿”å›ç»“æœ
 	LOGINAPP_MESSAGE_DECLARE_STREAM(onReqCreateAccountResult,						NETWORK_VARIABLE_MESSAGE)
 	LOGINAPP_MESSAGE_DECLARE_STREAM(onReqCreateMailAccountResult,					NETWORK_VARIABLE_MESSAGE)
 
-	// dbmgrÕËºÅ¼¤»î·µ»Ø
+	// dbmgrè´¦å·æ¿€æ´»è¿”å›
 	LOGINAPP_MESSAGE_DECLARE_ARGS2(onAccountActivated,								NETWORK_VARIABLE_MESSAGE,
 									std::string,									code, 
 									bool,											success)
 	
-	// dbmgrÕËºÅ°ó¶¨email·µ»Ø
+	// dbmgrè´¦å·ç»‘å®šemailè¿”å›
 	LOGINAPP_MESSAGE_DECLARE_ARGS2(onAccountBindedEmail,							NETWORK_VARIABLE_MESSAGE,
 									std::string,									code, 
 									bool,											success)
 
-	// dbmgrÕËºÅÖØÉèÃÜÂë·µ»Ø
+	// dbmgrè´¦å·é‡è®¾å¯†ç è¿”å›
 	LOGINAPP_MESSAGE_DECLARE_ARGS2(onAccountResetPassword,							NETWORK_VARIABLE_MESSAGE,
 									std::string,									code, 
 									bool,											success)
 
-	// baseappÇëÇó°ó¶¨email£¨·µ»ØÊ±ĞèÒªÕÒµ½loginappµÄµØÖ·£©
+	// baseappè¯·æ±‚ç»‘å®šemailï¼ˆè¿”å›æ—¶éœ€è¦æ‰¾åˆ°loginappçš„åœ°å€ï¼‰
 	LOGINAPP_MESSAGE_DECLARE_ARGS6(onReqAccountBindEmailAllocCallbackLoginapp,		NETWORK_VARIABLE_MESSAGE,
 									COMPONENT_ID,									reqBaseappID,
 									ENTITY_ID,										entityID,
@@ -129,21 +129,21 @@ NETWORK_INTERFACE_DECLARE_BEGIN(LoginappInterface)
 									SERVER_ERROR_CODE,								failedcode,
 									std::string,									code)
 
-	// ÇëÇó¹Ø±Õ·şÎñÆ÷
+	// è¯·æ±‚å…³é—­æœåŠ¡å™¨
 	LOGINAPP_MESSAGE_DECLARE_STREAM(reqCloseServer,									NETWORK_VARIABLE_MESSAGE)
 
 
-	// ÇëÇó²éÑ¯watcherÊı¾İ
+	// è¯·æ±‚æŸ¥è¯¢watcheræ•°æ®
 	LOGINAPP_MESSAGE_DECLARE_STREAM(queryWatcher,									NETWORK_VARIABLE_MESSAGE)
 
-	// baseappÍ¬²½×Ô¼ºµÄ³õÊ¼»¯ĞÅÏ¢
+	// baseappåŒæ­¥è‡ªå·±çš„åˆå§‹åŒ–ä¿¡æ¯
 	LOGINAPP_MESSAGE_DECLARE_ARGS1(onBaseappInitProgress,							NETWORK_FIXED_MESSAGE,
 									float,											progress)
 
-	// ¿ªÊ¼profile
+	// å¼€å§‹profile
 	LOGINAPP_MESSAGE_DECLARE_STREAM(startProfile,									NETWORK_VARIABLE_MESSAGE)
 
-	// ÇëÇóÇ¿ÖÆÉ±ËÀµ±Ç°app
+	// è¯·æ±‚å¼ºåˆ¶æ€æ­»å½“å‰app
 	LOGINAPP_MESSAGE_DECLARE_STREAM(reqKillServer,									NETWORK_VARIABLE_MESSAGE)
 
 NETWORK_INTERFACE_DECLARE_END()

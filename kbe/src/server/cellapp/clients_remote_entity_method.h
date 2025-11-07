@@ -25,7 +25,7 @@ namespace KBEngine{
 
 class ClientsRemoteEntityMethod : public script::ScriptObject
 {
-	/** ×ÓÀà»¯ ½«Ò»Ğ©py²Ù×÷Ìî³ä½øÅÉÉúÀà */
+	/** å­ç±»åŒ– å°†ä¸€äº›pyæ“ä½œå¡«å……è¿›æ´¾ç”Ÿç±» */
 	INSTANCE_SCRIPT_HREADER(ClientsRemoteEntityMethod, script::ScriptObject)	
 public:	
 	ClientsRemoteEntityMethod(PropertyDescription* pComponentPropertyDescription, 
@@ -54,10 +54,10 @@ public:
 protected:	
 	PropertyDescription*	pComponentPropertyDescription_;
 
-	const ScriptDefModule*	pScriptModule_;			// ¸ÃentityËùÊ¹ÓÃµÄ½Å±¾Ä£¿é¶ÔÏó
-	MethodDescription*		methodDescription_;		// Õâ¸ö·½·¨µÄÃèÊö
+	const ScriptDefModule*	pScriptModule_;			// è¯¥entityæ‰€ä½¿ç”¨çš„è„šæœ¬æ¨¡å—å¯¹è±¡
+	MethodDescription*		methodDescription_;		// è¿™ä¸ªæ–¹æ³•çš„æè¿°
 
-	bool					otherClients_;			// ÊÇ·ñÖ»ÊÇÆäËû¿Í»§¶Ë£¬ ²»°üÀ¨×Ô¼º
+	bool					otherClients_;			// æ˜¯å¦åªæ˜¯å…¶ä»–å®¢æˆ·ç«¯ï¼Œ ä¸åŒ…æ‹¬è‡ªå·±
 
 	ENTITY_ID				id_;					// entityID
 };

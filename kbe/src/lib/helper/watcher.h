@@ -36,7 +36,7 @@ typedef uint8 WATCHER_VALUE_TYPE;
 class Watchers;
 
 /*
-	watcher»ù´¡¶ÔÏó
+	watcheråŸºç¡€å¯¹è±¡
 */
 class WatcherObject
 {
@@ -224,7 +224,7 @@ inline void WatcherObject::updateStream<const char*>(MemoryStream* s)
 
 
 /*
-	watcher: Ö±½Ó¼àÊÓÒ»¸öÖµ
+	watcher: ç›´æ¥ç›‘è§†ä¸€ä¸ªå€¼
 */
 template <class T>
 class WatcherValue : public WatcherObject
@@ -257,7 +257,7 @@ protected:
 };
 
 /*
-	watcher: ¼àÊÓÒ»¸ö·½·¨·µ»ØµÄÖµ
+	watcher: ç›‘è§†ä¸€ä¸ªæ–¹æ³•è¿”å›çš„å€¼
 */
 template <class RETURN_TYPE>
 class WatcherFunction : public WatcherObject
@@ -291,7 +291,7 @@ protected:
 };
 
 /*
-	watcher: ¼àÊÓÒ»¸ö³ÉÔ±º¯Êı·µ»ØµÄÖµ
+	watcher: ç›‘è§†ä¸€ä¸ªæˆå‘˜å‡½æ•°è¿”å›çš„å€¼
 */
 template <class RETURN_TYPE, class OBJ_TYPE>
 class WatcherMethod : public WatcherObject
@@ -361,7 +361,7 @@ protected:
 };
 
 /*
-	watcher¹ÜÀíÆ÷
+	watcherç®¡ç†å™¨
 */
 class Watchers
 {
@@ -432,7 +432,7 @@ protected:
 };
 
 /**
-	ÓÃÓÚ¼àÊÓÒ»¸öÖµ
+	ç”¨äºç›‘è§†ä¸€ä¸ªå€¼
 	int32 a = 1;
 	addWatcher("a", a);
 
@@ -450,7 +450,7 @@ inline WatcherObject* addWatcher(std::string path, const TYPE& type)
 };
 
 /**
-	ÓÃÓÚ¼àÊÓÒ»¸öº¯ÊıµÄ·µ»ØÖµ
+	ç”¨äºç›‘è§†ä¸€ä¸ªå‡½æ•°çš„è¿”å›å€¼
 
 	int32 func(){}
 
@@ -466,7 +466,7 @@ inline WatcherObject* addWatcher(std::string path, RETURN_TYPE (*func)())
 };
 
 /**
-	ÓÃÓÚ¼àÊÓÒ»¸ö³ÉÔ±º¯ÊıµÄ·µ»ØÖµ
+	ç”¨äºç›‘è§†ä¸€ä¸ªæˆå‘˜å‡½æ•°çš„è¿”å›å€¼
 
 	int32 AAA::func(){}
 	AAA a;

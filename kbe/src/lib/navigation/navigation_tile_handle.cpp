@@ -277,9 +277,9 @@ int NavTileHandle::findRandomPointAroundCircle(int layer, const Position3D& cent
 	for (uint32 i = 0; i < max_points; i++)
 	{
 		float rnd = frand();
-		float a = maxRadius * rnd;						// °ë¾¶ÔÚmaxRadiusÃ×ÄÚ
-		float b = 360.0f * rnd;							// Ëæ»úÒ»¸ö½Ç¶È
-		currpos.x = centerPos.x + (a * cos(b)); 		// °ë¾¶ * ÕýÓàÐþ
+		float a = maxRadius * rnd;						// åŠå¾„åœ¨maxRadiusç±³å†…
+		float b = 360.0f * rnd;							// éšæœºä¸€ä¸ªè§’åº¦
+		currpos.x = centerPos.x + (a * cos(b)); 		// åŠå¾„ * æ­£ä½™çŽ„
 		currpos.z = centerPos.z + (a * sin(b));
 		points.push_back(currpos);
 	}
@@ -513,7 +513,7 @@ bool NavTileHandle::MapSearchNode::GetSuccessors(AStarSearch<MapSearchNode> *ast
 		astarsearch->AddSuccessor( NewNode );
 	}	
 
-	// Èç¹ûÊÇ8·½ÏòÒÆ¶¯
+	// å¦‚æžœæ˜¯8æ–¹å‘ç§»åŠ¨
 	if(NavTileHandle::pCurrNavTileHandle->direction8())
 	{
 		if( (NavTileHandle::pCurrNavTileHandle->getMap( x + 1, y + 1 ) < TILE_STATE_CLOSED) 
@@ -559,20 +559,20 @@ bool NavTileHandle::MapSearchNode::GetSuccessors(AStarSearch<MapSearchNode> *ast
 float NavTileHandle::MapSearchNode::GetCost( MapSearchNode &successor )
 {
 	/*
-		Ò»¸ötileÑ°Â·µÄÐÔ¼Û±È
-		Ã¿¸ötile¶¼¿ÉÒÔ¶¨Òå´Ó0~5µÄÐÔ¼Û±ÈÖµ£¬ ÖµÔ½´óÐÔ¼Û±ÈÔ½µÍ
-		±ÈÈç£º Ç°·½ËäÈ»ÄÜ¹»Í¨¹ýµ«ÊÇÇ°·½ÊÇÄà°ÍÂ·£¬ ÐÐ×ßÆðÀ´·Ç³£·ÑÁ¦£¬ 
-		»òÕßÊÇÇ°·½Îª¸ßËÙ¹«Â·£¬ ÐÐ×ß·Ç³£¿ì¡£
+		ä¸€ä¸ªtileå¯»è·¯çš„æ€§ä»·æ¯”
+		æ¯ä¸ªtileéƒ½å¯ä»¥å®šä¹‰ä»Ž0~5çš„æ€§ä»·æ¯”å€¼ï¼Œ å€¼è¶Šå¤§æ€§ä»·æ¯”è¶Šä½Ž
+		æ¯”å¦‚ï¼š å‰æ–¹è™½ç„¶èƒ½å¤Ÿé€šè¿‡ä½†æ˜¯å‰æ–¹æ˜¯æ³¥å·´è·¯ï¼Œ è¡Œèµ°èµ·æ¥éžå¸¸è´¹åŠ›ï¼Œ 
+		æˆ–è€…æ˜¯å‰æ–¹ä¸ºé«˜é€Ÿå…¬è·¯ï¼Œ è¡Œèµ°éžå¸¸å¿«ã€‚
 	*/
 	
 	/*
-		¼ÆËã´ú¼Û£º
-		Í¨³£ÓÃ¹«Ê½±íÊ¾Îª£ºf = g + h.
-		g¾ÍÊÇ´ÓÆðµãµ½µ±Ç°µãµÄ´ú¼Û.
-		hÊÇµ±Ç°µãµ½ÖÕµãµÄ¹À¼Æ´ú¼Û£¬ÊÇÍ¨¹ý¹À¼Ûº¯Êý¼ÆËã³öÀ´µÄ.
+		è®¡ç®—ä»£ä»·ï¼š
+		é€šå¸¸ç”¨å…¬å¼è¡¨ç¤ºä¸ºï¼šf = g + h.
+		gå°±æ˜¯ä»Žèµ·ç‚¹åˆ°å½“å‰ç‚¹çš„ä»£ä»·.
+		hæ˜¯å½“å‰ç‚¹åˆ°ç»ˆç‚¹çš„ä¼°è®¡ä»£ä»·ï¼Œæ˜¯é€šè¿‡ä¼°ä»·å‡½æ•°è®¡ç®—å‡ºæ¥çš„.
 
-		¶ÔÓÚÒ»¸ö²»ÔÙ±ßÉÏµÄ½Úµã£¬ËûÖÜÎ§»áÓÐ8¸ö½Úµã£¬¿ÉÒÔ¿´³ÉËûµ½ÖÜÎ§8¸öµãµÄ´ú¼Û¶¼ÊÇ1¡£
-		¾«È·µã£¬µ½ÉÏÏÂ×óÓÒ4¸öµãµÄ´ú¼ÛÊÇ1£¬µ½×óÉÏ×óÏÂÓÒÉÏÓÒÏÂµÄ1.414¾ÍÊÇ¡°¸ùºÅ2¡±£¬Õâ¸öÖµ¾ÍÊÇÇ°ÃæËµµÄg.
+		å¯¹äºŽä¸€ä¸ªä¸å†è¾¹ä¸Šçš„èŠ‚ç‚¹ï¼Œä»–å‘¨å›´ä¼šæœ‰8ä¸ªèŠ‚ç‚¹ï¼Œå¯ä»¥çœ‹æˆä»–åˆ°å‘¨å›´8ä¸ªç‚¹çš„ä»£ä»·éƒ½æ˜¯1ã€‚
+		ç²¾ç¡®ç‚¹ï¼Œåˆ°ä¸Šä¸‹å·¦å³4ä¸ªç‚¹çš„ä»£ä»·æ˜¯1ï¼Œåˆ°å·¦ä¸Šå·¦ä¸‹å³ä¸Šå³ä¸‹çš„1.414å°±æ˜¯â€œæ ¹å·2â€ï¼Œè¿™ä¸ªå€¼å°±æ˜¯å‰é¢è¯´çš„g.
 		2.8  2.4  2  2.4  2.8
 		2.4  1.4  1  1.4  2.4
 		2    1    0    1    2
@@ -582,7 +582,7 @@ float NavTileHandle::MapSearchNode::GetCost( MapSearchNode &successor )
 	if(NavTileHandle::pCurrNavTileHandle->direction8())
 	{
 		if (x != successor.x && y != successor.y) {
-			return (float) (NavTileHandle::pCurrNavTileHandle->getMap( x, y ) + 0.41421356/* ±¾ÉíÓÐÖÁÉÙ1µÄÖµ */); //sqrt(2)
+			return (float) (NavTileHandle::pCurrNavTileHandle->getMap( x, y ) + 0.41421356/* æœ¬èº«æœ‰è‡³å°‘1çš„å€¼ */); //sqrt(2)
 		}
 	}
 

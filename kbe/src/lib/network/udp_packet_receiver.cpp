@@ -146,7 +146,7 @@ bool UDPPacketReceiver::processRecv(UDPPacket* pReceiveWindow)
 //-------------------------------------------------------------------------------------
 Reason UDPPacketReceiver::processFilteredPacket(Channel* pChannel, Packet * pPacket)
 {
-	// Èç¹ûÎªNone£¬ Ôò¿ÉÄÜÊÇ±»¹ýÂËÆ÷¹ýÂËµôÁË(¹ýÂËÆ÷ÕýÔÚ°´ÕÕ×Ô¼ºµÄ¹æÔò×é°ü½âÃÜ)
+	// å¦‚æžœä¸ºNoneï¼Œ åˆ™å¯èƒ½æ˜¯è¢«è¿‡æ»¤å™¨è¿‡æ»¤æŽ‰äº†(è¿‡æ»¤å™¨æ­£åœ¨æŒ‰ç…§è‡ªå·±çš„è§„åˆ™ç»„åŒ…è§£å¯†)
 	if(pPacket)
 	{
 		pChannel->addReceiveWindow(pPacket);
@@ -200,7 +200,7 @@ PacketReceiver::RecvState UDPPacketReceiver::checkSocketErrors(int len, bool exp
 			// exceptions is built into BaseApp::onClientNoSuchPort().
 			if (errno == ECONNREFUSED)
 			{
-				// Î´ÊµÏÖ
+				// æœªå®žçŽ°
 			}
 
 			this->dispatcher().errorReporter().reportException(

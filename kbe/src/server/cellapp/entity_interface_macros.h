@@ -20,7 +20,7 @@
 namespace KBEngine{
 
 /**
-	EntityÏûÏ¢ºê£¬  ²ÎÊıÎªÁ÷£¬ ĞèÒª×Ô¼º½â¿ª
+	Entityæ¶ˆæ¯å®ï¼Œ  å‚æ•°ä¸ºæµï¼Œ éœ€è¦è‡ªå·±è§£å¼€
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef ENTITY_MESSAGE_HANDLER_STREAM
@@ -83,7 +83,7 @@ namespace KBEngine{
 																				\
 
 /**
-	EntityÏûÏ¢ºê£¬  Ö»ÓĞÒ»¸ö²ÎÊıµÄÏûÏ¢
+	Entityæ¶ˆæ¯å®ï¼Œ  åªæœ‰ä¸€ä¸ªå‚æ•°çš„æ¶ˆæ¯
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef ENTITY_MESSAGE_HANDLER_ARGS1
@@ -148,7 +148,7 @@ namespace KBEngine{
 																				\
 
 /**
-	EntityÏûÏ¢ºê£¬  Ö»ÓĞ¶ş¸ö²ÎÊıµÄÏûÏ¢
+	Entityæ¶ˆæ¯å®ï¼Œ  åªæœ‰äºŒä¸ªå‚æ•°çš„æ¶ˆæ¯
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef ENTITY_MESSAGE_HANDLER_ARGS2
@@ -222,7 +222,7 @@ namespace KBEngine{
 
 
 /**
-	EntityÏûÏ¢ºê£¬  Ö»ÓĞÁã¸ö²ÎÊıµÄÏûÏ¢
+	Entityæ¶ˆæ¯å®ï¼Œ  åªæœ‰é›¶ä¸ªå‚æ•°çš„æ¶ˆæ¯
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef ENTITY_MESSAGE_HANDLER_ARGS0
@@ -286,7 +286,7 @@ namespace KBEngine{
 
 
 /**
-	EntityÏûÏ¢ºê£¬  Ö»ÓĞÈı¸ö²ÎÊıµÄÏûÏ¢
+	Entityæ¶ˆæ¯å®ï¼Œ  åªæœ‰ä¸‰ä¸ªå‚æ•°çš„æ¶ˆæ¯
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef ENTITY_MESSAGE_HANDLER_ARGS3

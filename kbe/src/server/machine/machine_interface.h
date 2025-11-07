@@ -25,10 +25,10 @@
 namespace KBEngine{
 
 /**
-	machine������Ϣ�ӿ��ڴ˶���
+	machine所有消息接口在此定义
 */
 NETWORK_INTERFACE_DECLARE_BEGIN(MachineInterface)
-	// ���������app�㲥�Լ��Ľӿڵ�ַ
+	// 其他组件向app广播自己的接口地址
 	MACHINE_MESSAGE_DECLARE_ARGS25(onBroadcastInterface,			NETWORK_VARIABLE_MESSAGE,
 									int32,							uid, 
 									std::string,					username,
@@ -56,7 +56,7 @@ NETWORK_INTERFACE_DECLARE_BEGIN(MachineInterface)
 									uint32,							backRecvAddr,
 									uint16,							backRecvPort)
 	
-	// ���������app�����ȡĳ��������ĵ�ַ
+	// 其他组件向app请求获取某个组件类别的地址
 	MACHINE_MESSAGE_DECLARE_ARGS7(onFindInterfaceAddr,				NETWORK_VARIABLE_MESSAGE,
 									int32,							uid, 
 									std::string,					username,
@@ -66,13 +66,13 @@ NETWORK_INTERFACE_DECLARE_BEGIN(MachineInterface)
 									uint32,							addr, 
 									uint16,							finderRecvPort)
 						
-	// ��ѯ���нӿ���Ϣ
+	// 查询所有接口信息
 	MACHINE_MESSAGE_DECLARE_ARGS3(onQueryAllInterfaceInfos,			NETWORK_VARIABLE_MESSAGE,
 									int32,							uid, 
 									std::string,					username,
 									uint16,							finderRecvPort)
 		
-	// ��ѯ����machine����
+	// 查询所有machine进程
 	MACHINE_MESSAGE_DECLARE_ARGS3(onQueryMachines,					NETWORK_VARIABLE_MESSAGE,
 									int32,							uid, 
 									std::string,					username,
@@ -85,25 +85,25 @@ NETWORK_INTERFACE_DECLARE_BEGIN(MachineInterface)
 									uint16,							finderRecvPort,
 									int,							macMD5,
 									int32,							pid)
-	// ĳapp��������look��
+	// 某app主动请求look。
 	MACHINE_MESSAGE_DECLARE_ARGS0(lookApp,							NETWORK_FIXED_MESSAGE)
 
-	// ĳ��app����鿴��app����״̬��
+	// 某个app请求查看该app负载状态。
 	MACHINE_MESSAGE_DECLARE_ARGS0(queryLoad,						NETWORK_FIXED_MESSAGE)
 
-	// ����������
+	// 启动服务器
 	MACHINE_MESSAGE_DECLARE_STREAM(startserver,						NETWORK_VARIABLE_MESSAGE)
 
-	// �رշ�����
+	// 关闭服务器
 	MACHINE_MESSAGE_DECLARE_STREAM(stopserver,						NETWORK_VARIABLE_MESSAGE)
 
-	// �رշ�����
+	// 关闭服务器
 	MACHINE_MESSAGE_DECLARE_STREAM(killserver,						NETWORK_VARIABLE_MESSAGE)
 
-	// ����flags
+	// 设置flags
 	MACHINE_MESSAGE_DECLARE_STREAM(setflags,						NETWORK_VARIABLE_MESSAGE)
 
-	// ����ǿ��ɱ����ǰapp
+	// 请求强制杀死当前app
 	MACHINE_MESSAGE_DECLARE_STREAM(reqKillServer,					NETWORK_VARIABLE_MESSAGE)
 
 NETWORK_INTERFACE_DECLARE_END()

@@ -19,14 +19,14 @@ class EventDispatcher;
 }
 
 /*
-	Èç¹ûÔÚappÉÏÃ»ÓĞÕÒµ½ÈÎºÎcellapp»òÕßbaseappÕâ¸öÄ£¿é½«Ò»Ğ©ÏûÏ¢»º´æÆğÀ´£¬ 
-	µÈ´ıÓĞĞÂµÄcellapp»òÕßbaseapp¼ÓÈëÔò¿ªÊ¼½«Ö¸Áî×ª·¢¡£
+	å¦‚æœåœ¨appä¸Šæ²¡æœ‰æ‰¾åˆ°ä»»ä½•cellappæˆ–è€…baseappè¿™ä¸ªæ¨¡å—å°†ä¸€äº›æ¶ˆæ¯ç¼“å­˜èµ·æ¥ï¼Œ 
+	ç­‰å¾…æœ‰æ–°çš„cellappæˆ–è€…baseappåŠ å…¥åˆ™å¼€å§‹å°†æŒ‡ä»¤è½¬å‘ã€‚
 */
 
 
 /*
-	µ±Ò»¸öÏûÏ¢±»³É¹¦×ª¼ÄÔòµ÷ÓÃÕâ¸öhandler´¦ÀíÊ£ÓàµÄÊÂÇé
-	ĞèÒªÖØĞ´process
+	å½“ä¸€ä¸ªæ¶ˆæ¯è¢«æˆåŠŸè½¬å¯„åˆ™è°ƒç”¨è¿™ä¸ªhandlerå¤„ç†å‰©ä½™çš„äº‹æƒ…
+	éœ€è¦é‡å†™process
 */
 class ForwardMessageOverHandler
 {
@@ -57,7 +57,7 @@ public:
 };
 
 /*
-	×ª·¢»º´æÏûÏ¢µ½Ö¸¶¨×é¼şÉÏ
+	è½¬å‘ç¼“å­˜æ¶ˆæ¯åˆ°æŒ‡å®šç»„ä»¶ä¸Š
 */
 class ForwardComponent_MessageBuffer : public Task, 
 						public Singleton<ForwardComponent_MessageBuffer>
@@ -85,7 +85,7 @@ private:
 };
 
 /*
-	×ª·¢»º´æÏûÏ¢µ½Í¬ÀàĞÍÈÎÒâ×é¼şÉÏ
+	è½¬å‘ç¼“å­˜æ¶ˆæ¯åˆ°åŒç±»å‹ä»»æ„ç»„ä»¶ä¸Š
 */
 class ForwardAnywhere_MessageBuffer : public Task, 
 						public Singleton<ForwardAnywhere_MessageBuffer>

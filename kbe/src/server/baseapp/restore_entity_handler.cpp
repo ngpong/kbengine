@@ -124,11 +124,11 @@ bool RestoreEntityHandler::process()
 
 	int count = 0;
 
-	// Ê×ÏÈĞèÒªÕÒµ½Õâ¸öcellÉÏµÄspace
+	// é¦–å…ˆéœ€è¦æ‰¾åˆ°è¿™ä¸ªcellä¸Šçš„space
 	// KBE_ASSERT(restoreSpaces_.size() > 0);
-	// Èç¹ûspaceEntity²»ÔÚÕâ¸öbaseappÉÏ´´½¨Ôò¼ÌĞøµÈ´ı
-	// µ±spaceEntityµÄcell´´½¨ºÃÁËÖ®ºó»á¹ã²¥¸øËùÓĞµÄbaseapp£¬ Ã¿¸öbaseapp
-	// È¥ÅĞ¶ÏÊÇ·ñÓĞĞèÒª»Ö¸´µÄentity
+	// å¦‚æœspaceEntityä¸åœ¨è¿™ä¸ªbaseappä¸Šåˆ›å»ºåˆ™ç»§ç»­ç­‰å¾…
+	// å½“spaceEntityçš„cellåˆ›å»ºå¥½äº†ä¹‹åä¼šå¹¿æ’­ç»™æ‰€æœ‰çš„baseappï¼Œ æ¯ä¸ªbaseapp
+	// å»åˆ¤æ–­æ˜¯å¦æœ‰éœ€è¦æ¢å¤çš„entity
 	if(restoreSpaces_.size() > 0)
 	{
 		if(timestamp() - tickReport_ > uint64( 3 * stampsPerSecond() ))
@@ -140,7 +140,7 @@ bool RestoreEntityHandler::process()
 
 		int spaceCellCount = 0;
 
-		// ±ØĞëµÈ´ıspace»Ö¸´
+		// å¿…é¡»ç­‰å¾…spaceæ¢å¤
 		std::vector<RestoreData>::iterator restoreSpacesIter = restoreSpaces_.begin();
 		for(; restoreSpacesIter != restoreSpaces_.end(); ++restoreSpacesIter)
 		{
@@ -184,7 +184,7 @@ bool RestoreEntityHandler::process()
 		if(spaceCellCount != (int)restoreSpaces_.size())
 			return true;
 
-		// Í¨ÖªÆäËûbaseapp£¬ space»Ö¸´ÁËcell
+		// é€šçŸ¥å…¶ä»–baseappï¼Œ spaceæ¢å¤äº†cell
 		if(!broadcastOtherBaseapps_)
 		{
 			broadcastOtherBaseapps_ = true;
@@ -244,7 +244,7 @@ bool RestoreEntityHandler::process()
 		return true;
 	}
 
-	// »Ö¸´ÆäËûentity
+	// æ¢å¤å…¶ä»–entity
 	std::vector<RestoreData>::iterator iter = entities_.begin();
 	for(; iter != entities_.end(); )
 	{

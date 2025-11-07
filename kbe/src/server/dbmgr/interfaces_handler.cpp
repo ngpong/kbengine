@@ -67,7 +67,7 @@ bool InterfacesHandler_Dbmgr::createAccount(Network::Channel* pChannel, std::str
 		return false;
 	}
 
-	// Èç¹ûÊÇemail£¬ÏÈ²éÑ¯ÕËºÅÊÇ·ñ´æÔÚÈ»ºó½«ÆäµÇ¼ÇÈë¿â
+	// å¦‚æœæ˜¯emailï¼Œå…ˆæŸ¥è¯¢è´¦å·æ˜¯å¦å­˜åœ¨ç„¶åå°†å…¶ç™»è®°å…¥åº“
 	if(uatype == ACCOUNT_TYPE_MAIL)
 	{
 		pThreadPool->addTask(new DBTaskCreateMailAccount(pChannel->addr(),
@@ -514,7 +514,7 @@ bool InterfacesHandler_Interfaces::reconnect()
 		}
 	}
 
-	// ²»¼ì²é³¬Ê±
+	// ä¸æ£€æŸ¥è¶…æ—¶
 	pInterfacesChannel->stopInactivityDetection();
 
 	if (!Dbmgr::getSingleton().networkInterface().registerChannel(pInterfacesChannel))
@@ -607,7 +607,7 @@ void InterfacesHandler_Interfaces::onChargeCB(KBEngine::MemoryStream& s)
 		ERROR_MSG(fmt::format("InterfacesHandler_Interfaces::onChargeCB: baseapp not found!, chargeID={}, cid={}.\n", 
 			chargeID, cid));
 
-		// ´ËÊ±Ó¦¸ÃËæ»úÕÒÒ»¸öbaseappµ÷ÓÃonLoseChargeCB
+		// æ­¤æ—¶åº”è¯¥éšæœºæ‰¾ä¸€ä¸ªbaseappè°ƒç”¨onLoseChargeCB
 		bool found = false;
 
 		Components::COMPONENTS& components = Components::getSingleton().getComponents(BASEAPP_TYPE);
@@ -669,21 +669,21 @@ void InterfacesHandler_Interfaces::eraseClientReq(Network::Channel* pChannel, st
 //-------------------------------------------------------------------------------------
 void InterfacesHandler_Interfaces::accountActivate(Network::Channel* pChannel, std::string& scode)
 {
-	// ¸Ã¹¦ÄÜ²»Ö§³ÖµÚÈı·½ÏµÍ³£¬ËùÒÔµ±×ö±¾µØÕËºÅÏµÍ³Ö´ĞĞ
+	// è¯¥åŠŸèƒ½ä¸æ”¯æŒç¬¬ä¸‰æ–¹ç³»ç»Ÿï¼Œæ‰€ä»¥å½“åšæœ¬åœ°è´¦å·ç³»ç»Ÿæ‰§è¡Œ
 	InterfacesHandler_Dbmgr::accountActivate(pChannel, scode);
 }
 
 //-------------------------------------------------------------------------------------
 void InterfacesHandler_Interfaces::accountReqResetPassword(Network::Channel* pChannel, std::string& accountName)
 {
-	// ¸Ã¹¦ÄÜ²»Ö§³ÖµÚÈı·½ÏµÍ³£¬ËùÒÔµ±×ö±¾µØÕËºÅÏµÍ³Ö´ĞĞ
+	// è¯¥åŠŸèƒ½ä¸æ”¯æŒç¬¬ä¸‰æ–¹ç³»ç»Ÿï¼Œæ‰€ä»¥å½“åšæœ¬åœ°è´¦å·ç³»ç»Ÿæ‰§è¡Œ
 	InterfacesHandler_Dbmgr::accountReqResetPassword(pChannel, accountName);
 }
 
 //-------------------------------------------------------------------------------------
 void InterfacesHandler_Interfaces::accountResetPassword(Network::Channel* pChannel, std::string& accountName, std::string& newpassword, std::string& scode)
 {
-	// ¸Ã¹¦ÄÜ²»Ö§³ÖµÚÈı·½ÏµÍ³£¬ËùÒÔµ±×ö±¾µØÕËºÅÏµÍ³Ö´ĞĞ
+	// è¯¥åŠŸèƒ½ä¸æ”¯æŒç¬¬ä¸‰æ–¹ç³»ç»Ÿï¼Œæ‰€ä»¥å½“åšæœ¬åœ°è´¦å·ç³»ç»Ÿæ‰§è¡Œ
 	InterfacesHandler_Dbmgr::accountResetPassword(pChannel, accountName, newpassword, scode);
 }
 
@@ -691,14 +691,14 @@ void InterfacesHandler_Interfaces::accountResetPassword(Network::Channel* pChann
 void InterfacesHandler_Interfaces::accountReqBindMail(Network::Channel* pChannel, ENTITY_ID entityID, std::string& accountName,
 												   std::string& password, std::string& email)
 {
-	// ¸Ã¹¦ÄÜ²»Ö§³ÖµÚÈı·½ÏµÍ³£¬ËùÒÔµ±×ö±¾µØÕËºÅÏµÍ³Ö´ĞĞ
+	// è¯¥åŠŸèƒ½ä¸æ”¯æŒç¬¬ä¸‰æ–¹ç³»ç»Ÿï¼Œæ‰€ä»¥å½“åšæœ¬åœ°è´¦å·ç³»ç»Ÿæ‰§è¡Œ
 	InterfacesHandler_Dbmgr::accountReqBindMail(pChannel, entityID, accountName, password, email);
 }
 
 //-------------------------------------------------------------------------------------
 void InterfacesHandler_Interfaces::accountBindMail(Network::Channel* pChannel, std::string& username, std::string& scode)
 {
-	// ¸Ã¹¦ÄÜ²»Ö§³ÖµÚÈı·½ÏµÍ³£¬ËùÒÔµ±×ö±¾µØÕËºÅÏµÍ³Ö´ĞĞ
+	// è¯¥åŠŸèƒ½ä¸æ”¯æŒç¬¬ä¸‰æ–¹ç³»ç»Ÿï¼Œæ‰€ä»¥å½“åšæœ¬åœ°è´¦å·ç³»ç»Ÿæ‰§è¡Œ
 	InterfacesHandler_Dbmgr::accountBindMail(pChannel, username, scode);
 }
 
@@ -706,7 +706,7 @@ void InterfacesHandler_Interfaces::accountBindMail(Network::Channel* pChannel, s
 void InterfacesHandler_Interfaces::accountNewPassword(Network::Channel* pChannel, ENTITY_ID entityID, std::string& accountName,
 												   std::string& password, std::string& newpassword)
 {
-	// ¸Ã¹¦ÄÜ²»Ö§³ÖµÚÈı·½ÏµÍ³£¬ËùÒÔµ±×ö±¾µØÕËºÅÏµÍ³Ö´ĞĞ
+	// è¯¥åŠŸèƒ½ä¸æ”¯æŒç¬¬ä¸‰æ–¹ç³»ç»Ÿï¼Œæ‰€ä»¥å½“åšæœ¬åœ°è´¦å·ç³»ç»Ÿæ‰§è¡Œ
 	InterfacesHandler_Dbmgr::accountNewPassword(pChannel, entityID, accountName, password, newpassword);
 }
 

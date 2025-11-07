@@ -16,7 +16,7 @@ public:
 	virtual ~ViewTrigger();
 	
 	/**
-		某个节点进入或者离开了rangeTrigger
+		鏌愪釜鑺傜偣杩涘叆鎴栬�呯寮�浜唕angeTrigger
 	*/
 	virtual void onEnter(CoordinateNode * pNode);
 	virtual void onLeave(CoordinateNode * pNode);

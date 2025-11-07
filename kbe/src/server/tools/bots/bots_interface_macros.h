@@ -20,7 +20,7 @@
 namespace KBEngine{
 
 /**
-	Bots��Ϣ�꣬  ����Ϊ���� ��Ҫ�Լ��⿪
+	Bots消息宏，  参数为流， 需要自己解开
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef BOTS_MESSAGE_HANDLER_STREAM
@@ -61,7 +61,7 @@ namespace KBEngine{
 																				\
 
 /**
-	Bots��Ϣ�꣬  ֻ�������������Ϣ
+	Bots消息宏，  只有零个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef BOTS_MESSAGE_HANDLER_ARGS0
@@ -102,7 +102,7 @@ namespace KBEngine{
 																				\
 
 /**
-	Bots��Ϣ�꣬  ֻ�ж�����������Ϣ
+	Bots消息宏，  只有二个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef BOTS_MESSAGE_HANDLER_ARGS2
@@ -154,7 +154,7 @@ namespace KBEngine{
 
 
 /**
-	Bots��Ϣ�꣬  ֻ��һ����������Ϣ
+	Bots消息宏，  只有一个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef BOTS_MESSAGE_HANDLER_ARGS1
@@ -197,7 +197,7 @@ namespace KBEngine{
 																				\
 	
 /**
-	Bots��Ϣ�꣬  ֻ���ĸ���������Ϣ
+	Bots消息宏，  只有四个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef BOTS_MESSAGE_HANDLER_ARGS4
@@ -265,7 +265,7 @@ namespace KBEngine{
 											ARG_TYPE4, ARG_NAME4)				\
 
 /**
-	Bots��Ϣ�꣬  ֻ�������������Ϣ
+	Bots消息宏，  只有五个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef BOTS_MESSAGE_HANDLER_ARGS5
@@ -342,7 +342,7 @@ namespace KBEngine{
 
 
 /**
-	Bots��Ϣ�꣬  ֻ��������������Ϣ
+	Bots消息宏，  只有六个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef BOTS_MESSAGE_HANDLER_ARGS6
@@ -426,7 +426,7 @@ namespace KBEngine{
 											ARG_TYPE6, ARG_NAME6)				\
 
 /**
-	Bots��Ϣ�꣬  ֻ�а˸���������Ϣ
+	Bots消息宏，  只有八个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef BOTS_MESSAGE_HANDLER_ARGS8

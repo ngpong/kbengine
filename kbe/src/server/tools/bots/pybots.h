@@ -28,7 +28,7 @@ namespace KBEngine{
 class PyBots  : public script::ScriptObject
 {
 	/** 
-		×ÓÀà»¯ ½«Ò»Ğ©py²Ù×÷Ìî³ä½øÅÉÉúÀà 
+		å­ç±»åŒ– å°†ä¸€äº›pyæ“ä½œå¡«å……è¿›æ´¾ç”Ÿç±» 
 	*/
 	INSTANCE_SCRIPT_HREADER(PyBots, ScriptObject)	
 public:
@@ -36,7 +36,7 @@ public:
 	~PyBots();
 
 	/** 
-		±©Â¶Ò»Ğ©×Öµä·½·¨¸øpython 
+		æš´éœ²ä¸€äº›å­—å…¸æ–¹æ³•ç»™python 
 	*/
 	DECLARE_PY_MOTHOD_ARG1(pyHas_key, ENTITY_ID);
 	DECLARE_PY_MOTHOD_ARG0(pyKeys);
@@ -47,7 +47,7 @@ public:
 		PyObject * args, PyObject* kwds);
 
 	/** 
-		map²Ù×÷º¯ÊıÏà¹Ø 
+		mapæ“ä½œå‡½æ•°ç›¸å…³ 
 	*/
 	static PyObject* mp_subscript(PyObject * self, PyObject * key);
 

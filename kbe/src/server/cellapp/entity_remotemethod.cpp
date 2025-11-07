@@ -64,7 +64,7 @@ PyObject* EntityRemoteMethod::tp_call(PyObject* self, PyObject* args,
 		return RemoteEntityMethod::tp_call(self, args, kwds);
 	}
 	
-	// Èç¹ûÊÇµ÷ÓÃ¿Í»§¶Ë·½·¨£¬ ÎÒÃÇ¼ÇÂ¼ÊÂ¼þ²¢ÇÒ¼ÇÂ¼´ø¿í
+	// å¦‚æžœæ˜¯è°ƒç”¨å®¢æˆ·ç«¯æ–¹æ³•ï¼Œ æˆ‘ä»¬è®°å½•äº‹ä»¶å¹¶ä¸”è®°å½•å¸¦å®½
 	if(methodDescription->checkArgs(args))
 	{
 		Network::Bundle* pBundle = pChannel->createSendBundle();
@@ -113,7 +113,7 @@ PyObject* EntityRemoteMethod::tp_call(PyObject* self, PyObject* args,
 				DebugHelper::getSingleton().changeLogger(COMPONENT_NAME_EX(g_componentType));																				
 		}
 
-		// ¼ÇÂ¼Õâ¸öÊÂ¼þ²úÉúµÄÊý¾ÝÁ¿´óÐ¡
+		// è®°å½•è¿™ä¸ªäº‹ä»¶äº§ç”Ÿçš„æ•°æ®é‡å¤§å°
 		g_privateClientEventHistoryStats.trackEvent(pEntity->scriptName(), 
 			methodDescription->getName(), 
 			pBundle->currMsgLength(), 

@@ -15,7 +15,7 @@ namespace Network{
 typedef uint32 HistoryEventID;
 
 /**
-	ÃèÊöÒ»¸öÀúÊ·ÊÂ¼ş
+	æè¿°ä¸€ä¸ªå†å²äº‹ä»¶
 */
 class HistoryEvent
 {
@@ -35,7 +35,7 @@ protected:
 };
 
 /**
-	¹ÜÀíËùÓĞµÄÀúÊ·ÊÂ¼ş
+	ç®¡ç†æ‰€æœ‰çš„å†å²äº‹ä»¶
 */
 class EventHistory
 {

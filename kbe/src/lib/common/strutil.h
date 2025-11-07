@@ -11,7 +11,7 @@
 
 namespace KBEngine{ 
 /*---------------------------------------------------------------------------------
-	¿çÆ½Ì¨½Ó¿Ú¶¨Òå
+	è·¨å¹³å°æ¥å£å®šä¹‰
 ---------------------------------------------------------------------------------*/
 #if defined( __WIN32__ ) || defined( WIN32 ) || defined( _WIN32 )
 
@@ -63,7 +63,7 @@ namespace strutil {
 	std::string toUpper(const std::string& str);
 
 	/*
-	 ×ª»»Îª´óĞ´
+	 è½¬æ¢ä¸ºå¤§å†™
 	*/
 	inline char* str_toupper(char* s)
 	{
@@ -79,7 +79,7 @@ namespace strutil {
 	}
 
 	/*
-	 ×ª»»ÎªĞ¡Ğ´
+	 è½¬æ¢ä¸ºå°å†™
 	*/
 	inline char* str_tolower(char* s)
 	{
@@ -129,7 +129,7 @@ namespace strutil {
 }
 
 namespace strutil {
-	// vector<string>Ö®ÀàµÄÈİÒ×Ê¹ÓÃ std::find_if À´²éÕÒÊÇ·ñ´æÔÚÄ³¸ö×Ö·û´®
+	// vector<string>ä¹‹ç±»çš„å®¹æ˜“ä½¿ç”¨ std::find_if æ¥æŸ¥æ‰¾æ˜¯å¦å­˜åœ¨æŸä¸ªå­—ç¬¦ä¸²
 	template<typename T>
 	class find_vec_string_exist_handle
 	{

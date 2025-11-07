@@ -77,7 +77,7 @@ void SpaceViewers::handleTimeout(TimerHandle handle, void * arg)
 	std::map< Network::Address, SpaceViewer>::iterator iter = spaceViews_.begin();
 	for (; iter != spaceViews_.end(); )
 	{
-		// Èç¹û¸ÃviewerµØÖ·ÕÒ²»µ½ÁËÔò½«Æä²Á³ı
+		// å¦‚æœè¯¥vieweråœ°å€æ‰¾ä¸åˆ°äº†åˆ™å°†å…¶æ“¦é™¤
 		Network::Channel* pChannel = Cellappmgr::getSingleton().networkInterface().findChannel(iter->second.addr());
 		if (pChannel == NULL)
 		{
@@ -178,8 +178,8 @@ void SpaceViewer::updateClient()
 			{
 				s << iter3->first;
 
-				// ÆäËûĞÅÏ¢´ı·Ö¸î¹¦ÄÜÊµÏÖºóÍê³É
-				// ÀıÈçcell´óĞ¡ĞÎ×´µÈĞÅÏ¢
+				// å…¶ä»–ä¿¡æ¯å¾…åˆ†å‰²åŠŸèƒ½å®ç°åå®Œæˆ
+				// ä¾‹å¦‚cellå¤§å°å½¢çŠ¶ç­‰ä¿¡æ¯
 			}
 		}
 	}

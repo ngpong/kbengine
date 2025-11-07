@@ -40,7 +40,7 @@ protected:
 
 	Network::Address addr_;
 
-	// 当前所查看的space
+	// 褰撳墠鎵�鏌ョ湅鐨剆pace
 	SPACE_ID spaceID_;
 };
 

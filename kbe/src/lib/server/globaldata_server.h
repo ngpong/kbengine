@@ -25,26 +25,26 @@ public:
 	GlobalDataServer(DATA_TYPE dataType);
 	~GlobalDataServer();
 			
-	/** Ğ´Êı¾İ */
+	/** å†™æ•°æ® */
 	bool write(Network::Channel* pChannel, COMPONENT_TYPE componentType, const std::string& key, const std::string& value);
 	
-	/** É¾³ıÊı¾İ */
+	/** åˆ é™¤æ•°æ® */
 	bool del(Network::Channel* pChannel, COMPONENT_TYPE componentType, const std::string& key);	
 	
-	/** Ìí¼Ó¸Ã·şÎñÆ÷ËùĞèÒª¹ØĞÄµÄ×é¼şÀà±ğ */
+	/** æ·»åŠ è¯¥æœåŠ¡å™¨æ‰€éœ€è¦å…³å¿ƒçš„ç»„ä»¶ç±»åˆ« */
 	void addConcernComponentType(COMPONENT_TYPE ct){ concernComponentTypes_.push_back(ct); }
 	
-	/** ¹ã²¥Ò»¸öÊı¾İµÄ¸Ä±ä¸øËù¹ØĞÄµÄ×é¼ş */
+	/** å¹¿æ’­ä¸€ä¸ªæ•°æ®çš„æ”¹å˜ç»™æ‰€å…³å¿ƒçš„ç»„ä»¶ */
 	void broadcastDataChanged(Network::Channel* pChannel, COMPONENT_TYPE componentType, const std::string& key, 
 							const std::string& value, bool isDelete = false);
 	
-	/** Ò»¸öĞÂµÄ¿Í»§¶ËµÇÂ½ */
+	/** ä¸€ä¸ªæ–°çš„å®¢æˆ·ç«¯ç™»é™† */
 	void onGlobalDataClientLogon(Network::Channel* client, COMPONENT_TYPE componentType);
 
 private:
 	DATA_TYPE dataType_;
 
-	std::vector<COMPONENT_TYPE> concernComponentTypes_;						// ¸ÃGlobalDataServerËùĞèÒª¹ØĞÄµÄ×é¼şÀà±ğ
+	std::vector<COMPONENT_TYPE> concernComponentTypes_;						// è¯¥GlobalDataServeræ‰€éœ€è¦å…³å¿ƒçš„ç»„ä»¶ç±»åˆ«
 	typedef std::map<std::string, std::string> DATA_MAP;
 	typedef DATA_MAP::iterator DATA_MAP_KEY;
 	DATA_MAP dict_;

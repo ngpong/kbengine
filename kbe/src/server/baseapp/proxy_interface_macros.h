@@ -20,7 +20,7 @@
 namespace KBEngine{
 
 /**
-	PROXY��Ϣ�꣬  ����Ϊ���� ��Ҫ�Լ��⿪
+	PROXY消息宏，  参数为流， 需要自己解开
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef PROXY_MESSAGE_HANDLER_STREAM
@@ -75,7 +75,7 @@ namespace KBEngine{
 																				\
 
 /**
-	Proxy��Ϣ�꣬  ֻ�������������Ϣ
+	Proxy消息宏，  只有零个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef PROXY_MESSAGE_HANDLER_ARGS0
@@ -130,7 +130,7 @@ namespace KBEngine{
 																				\
 	
 /**
-	Proxy��Ϣ�꣬  ֻ��һ����������Ϣ
+	Proxy消息宏，  只有一个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef PROXY_MESSAGE_HANDLER_ARGS1

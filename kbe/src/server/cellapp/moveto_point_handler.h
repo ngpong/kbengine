@@ -15,9 +15,9 @@ class MoveToPointHandler : public Updatable
 public:
 	enum MoveType
 	{
-		MOVE_TYPE_POINT = 0,		// ³£¹æÀàĞÍ
-		MOVE_TYPE_ENTITY = 1,		// ·¶Î§´¥·¢Æ÷ÀàĞÍ
-		MOVE_TYPE_NAV = 2,			// ÒÆ¶¯¿ØÖÆÆ÷ÀàĞÍ
+		MOVE_TYPE_POINT = 0,		// å¸¸è§„ç±»å‹
+		MOVE_TYPE_ENTITY = 1,		// èŒƒå›´è§¦å‘å™¨ç±»å‹
+		MOVE_TYPE_NAV = 2,			// ç§»åŠ¨æ§åˆ¶å™¨ç±»å‹
 	};
 
 	void addToStream(KBEngine::MemoryStream& s);
@@ -50,9 +50,9 @@ public:
 
 protected:
 	Position3D destPos_;
-	float velocity_;			// ËÙ¶È
-	bool faceMovement_;			// ÊÇ·ñ²»¸Ä±äÃæÏòÒÆ¶¯
-	bool moveVertically_;		// trueÔò¿ÉÒÔ·ÉÆğÀ´ÒÆ¶¯·ñÔòÌùµØ
+	float velocity_;			// é€Ÿåº¦
+	bool faceMovement_;			// æ˜¯å¦ä¸æ”¹å˜é¢å‘ç§»åŠ¨
+	bool moveVertically_;		// trueåˆ™å¯ä»¥é£èµ·æ¥ç§»åŠ¨å¦åˆ™è´´åœ°
 	PyObject* pyuserarg_;
 	float distance_;
 	KBEShared_ptr<Controller> pController_;

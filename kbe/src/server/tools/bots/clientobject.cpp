@@ -181,7 +181,7 @@ bool ClientObject::initCreate()
 	pTCPPacketReceiverEx_ = new Network::TCPPacketReceiverEx(*pEndpoint, this->networkInterface_, this);
 	Bots::getSingleton().networkInterface().dispatcher().registerReadFileDescriptor((*pEndpoint), pTCPPacketReceiverEx_);
 	
-	//²»ÔÚÕâÀï×¢²á
+	//ä¸åœ¨è¿™é‡Œæ³¨å†Œ
 	//Bots::getSingleton().networkInterface().dispatcher().registerWriteFileDescriptor((*pEndpoint), pTCPPacketSenderEx_);
 	pServerChannel_->pPacketSender(pTCPPacketSenderEx_);
 
@@ -233,7 +233,7 @@ bool ClientObject::initLoginBaseapp()
 	connectedBaseapp_ = false;
 	pServerChannel_->id(0);
 
-	// Ê×ÏÈ³¢ÊÔÓÃudp½»»¥
+	// é¦–å…ˆå°è¯•ç”¨udpäº¤äº’
 	if (udp_port_ > 0)
 	{
 		Network::EndPoint* pUdpEndpoint = Network::EndPoint::createPoolObject(OBJECTPOOL_POINT);
@@ -255,7 +255,7 @@ bool ClientObject::initLoginBaseapp()
 
 		if (pUdpEndpoint->sendto((void*)Network::UDP_HELLO, strlen(Network::UDP_HELLO)) != -1)
 		{
-			// µÈ´ı½ÓÊÕ·µ»Ø°ü
+			// ç­‰å¾…æ¥æ”¶è¿”å›åŒ…
 			Network::UDPPacket* pHelloAckUDPPacket = Network::UDPPacket::createPoolObject(OBJECTPOOL_POINT);
 
 			bool ret = Network::kbe_poll(int(*pUdpEndpoint));
@@ -343,7 +343,7 @@ bool ClientObject::initLoginBaseapp()
 		}
 	}
 
-	// Èç¹ûudp¿ÉÒÔÍ¨Ñ¶Ôò²»ÔÙÆôÓÃtcp½»»¥
+	// å¦‚æœudpå¯ä»¥é€šè®¯åˆ™ä¸å†å¯ç”¨tcpäº¤äº’
 	if (!connectedBaseapp_ && tcp_port_ > 0)
 	{
 		Network::EndPoint* pTcpEndpoint = Network::EndPoint::createPoolObject(OBJECTPOOL_POINT);
@@ -381,7 +381,7 @@ bool ClientObject::initLoginBaseapp()
 		pTCPPacketReceiverEx_ = new Network::TCPPacketReceiverEx(*pTcpEndpoint, this->networkInterface_, this);
 		Bots::getSingleton().networkInterface().dispatcher().registerReadFileDescriptor((*pTcpEndpoint), pTCPPacketReceiverEx_);
 
-		//²»ÔÚÕâÀï×¢²á
+		//ä¸åœ¨è¿™é‡Œæ³¨å†Œ
 		//Bots::getSingleton().networkInterface().dispatcher().registerWriteFileDescriptor((*pEndpoint), pTCPPacketSenderEx_);
 		pServerChannel_->pPacketSender(pTCPPacketSenderEx_);
 
@@ -530,7 +530,7 @@ void ClientObject::onCreateAccountResult(Network::Channel * pChannel, MemoryStre
 	{
 		//error_ = C_ERROR_CREATE_FAILED;
 
-		// ¼ÌĞø³¢ÊÔµÇÂ¼
+		// ç»§ç»­å°è¯•ç™»å½•
 		state_ = C_STATE_LOGIN;
 		
 		INFO_MSG(fmt::format("ClientObject::onCreateAccountResult: {} create is failed! code={}.\n", 
@@ -573,7 +573,7 @@ void ClientObject::onLoginFailed(Network::Channel * pChannel, MemoryStream& s)
 
 	// error_ = C_ERROR_LOGIN_FAILED;
 
-	// ¼ÌĞø³¢ÊÔµÇÂ¼
+	// ç»§ç»­å°è¯•ç™»å½•
 	state_ = C_STATE_LOGIN;
 }
 

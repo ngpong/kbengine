@@ -58,7 +58,7 @@ namespace KBEngine{
 																				\
 
 /**
-	Cellapp��Ϣ�꣬  ֻ�������������Ϣ
+	Cellapp消息宏，  只有零个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPP_MESSAGE_HANDLER_ARGS0
@@ -99,7 +99,7 @@ namespace KBEngine{
 																				\
 
 /**
-	Cellapp��Ϣ�꣬  ֻ��һ����������Ϣ
+	Cellapp消息宏，  只有一个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPP_MESSAGE_HANDLER_ARGS1
@@ -142,7 +142,7 @@ namespace KBEngine{
 																				\
 
 /**
-	Cellapp��Ϣ�꣬  ֻ�ж�����������Ϣ
+	Cellapp消息宏，  只有二个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPP_MESSAGE_HANDLER_ARGS2
@@ -194,7 +194,7 @@ namespace KBEngine{
 
 
 /**
-	Cellapp��Ϣ�꣬  ֻ��������������Ϣ
+	Cellapp消息宏，  只有三个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPP_MESSAGE_HANDLER_ARGS3
@@ -254,7 +254,7 @@ namespace KBEngine{
 											ARG_TYPE3, ARG_NAME3)				\
 
 /**
-	Cellapp��Ϣ�꣬  ֻ���ĸ���������Ϣ
+	Cellapp消息宏，  只有四个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPP_MESSAGE_HANDLER_ARGS4
@@ -322,7 +322,7 @@ namespace KBEngine{
 											ARG_TYPE4, ARG_NAME4)				\
 
 /**
-	Cellapp��Ϣ�꣬  ֻ�������������Ϣ
+	Cellapp消息宏，  只有五个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPP_MESSAGE_HANDLER_ARGS5
@@ -399,7 +399,7 @@ namespace KBEngine{
 
 
 /**
-	Cellapp��Ϣ�꣬  ֻ��������������Ϣ
+	Cellapp消息宏，  只有六个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPP_MESSAGE_HANDLER_ARGS6
@@ -484,7 +484,7 @@ namespace KBEngine{
 
 
 /**
-	Cellapp��Ϣ�ֻ꣬���߸���������Ϣ
+	Cellapp消息宏，只有七个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPP_MESSAGE_HANDLER_ARGS7
@@ -579,7 +579,7 @@ namespace KBEngine{
 
 
 /**
-	Cellapp��Ϣ�꣬  ֻ�а˸���������Ϣ
+	Cellapp消息宏，  只有八个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPP_MESSAGE_HANDLER_ARGS8
@@ -681,7 +681,7 @@ namespace KBEngine{
 
 
 /**
-	Cellapp��Ϣ�꣬  ֻ�оŸ���������Ϣ
+	Cellapp消息宏，  只有九个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPP_MESSAGE_HANDLER_ARGS9
@@ -791,7 +791,7 @@ namespace KBEngine{
 
 
 /**
-	Cellapp��Ϣ�꣬  ֻ��ʮ����������Ϣ
+	Cellapp消息宏，  只有十个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPP_MESSAGE_HANDLER_ARGS10
@@ -910,7 +910,7 @@ namespace KBEngine{
 
 
 /**
-	Cellapp��Ϣ�꣬  ֻ��ʮһ����������Ϣ
+	Cellapp消息宏，  只有十一个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPP_MESSAGE_HANDLER_ARGS11

@@ -2,15 +2,15 @@
 
 	
 /*
-	CallbackMgr( »Øµ÷¹ÜÀíÆ÷ )
-		ÓÉÓÚÒ»Ğ©»Øµ÷²Ù×÷¶¼ÊÇÒì²½µÄ£¬ ÎÒÃÇÍ¨¹ıÒ»¸ö¹ÜÀíÆ÷½«ÕâĞ©»Øµ÷¹ÜÀíÆğÀ´£¬ ²¢¶ÔÍâ·µ»ØÒ»¸ö
-		±êÊ¶¸Ã»Øµ÷µÄÎ¨Ò»id£¬ Íâ²¿¿ÉÒÔÍ¨¹ı¸ÃidÀ´´¥·¢Õâ¸ö»Øµ÷¡£
+	CallbackMgr( å›è°ƒç®¡ç†å™¨ )
+		ç”±äºä¸€äº›å›è°ƒæ“ä½œéƒ½æ˜¯å¼‚æ­¥çš„ï¼Œ æˆ‘ä»¬é€šè¿‡ä¸€ä¸ªç®¡ç†å™¨å°†è¿™äº›å›è°ƒç®¡ç†èµ·æ¥ï¼Œ å¹¶å¯¹å¤–è¿”å›ä¸€ä¸ª
+		æ ‡è¯†è¯¥å›è°ƒçš„å”¯ä¸€idï¼Œ å¤–éƒ¨å¯ä»¥é€šè¿‡è¯¥idæ¥è§¦å‘è¿™ä¸ªå›è°ƒã€‚
 		
-	ÓÃ·¨:
+	ç”¨æ³•:
 	typedef CallbackMgr<std::tr1::function<void(Entity*, int64, bool)>> CALLBACK_MGR;
 	CALLBACK_MGR callbackMgr;
 	void xxx(Entity*, int64, bool){}
-	CALLBACK_ID callbackID = callbackMgr.save(&xxx); // ¿ÉÒÔÊ¹ÓÃbindÀ´°ó¶¨Ò»¸öÀà³ÉÔ±º¯Êı
+	CALLBACK_ID callbackID = callbackMgr.save(&xxx); // å¯ä»¥ä½¿ç”¨bindæ¥ç»‘å®šä¸€ä¸ªç±»æˆå‘˜å‡½æ•°
 */
 
 #ifndef KBE_CALLBACKMGR_H
@@ -57,7 +57,7 @@ public:
 	void createFromStream(KBEngine::MemoryStream& s);
 
 	/** 
-		Ïò¹ÜÀíÆ÷Ìí¼ÓÒ»¸ö»Øµ÷ 
+		å‘ç®¡ç†å™¨æ·»åŠ ä¸€ä¸ªå›è°ƒ 
 	*/
 	CALLBACK_ID save(T callback, uint64 timeout = 0/*secs*/)
 	{
@@ -73,7 +73,7 @@ public:
 	}
 	
 	/** 
-		Í¨¹ıcallbackIDÈ¡×ß»Øµ÷ 
+		é€šè¿‡callbackIDå–èµ°å›è°ƒ 
 	*/
 	T take(CALLBACK_ID cbID)
 	{
@@ -116,7 +116,7 @@ public:
 	}
 
 	/**
-		³¬Ê±µÄcallback
+		è¶…æ—¶çš„callback
 	*/
 	bool processTimeout(CALLBACK_ID cbID, T callback)
 	{
@@ -125,8 +125,8 @@ public:
 	}
 
 protected:
-	CALLBACKS cbMap_;									// ËùÓĞµÄ»Øµ÷¶¼´æ´¢ÔÚÕâ¸ömapÖĞ
-	IDAllocate<CALLBACK_ID> idAlloc_;					// »Øµ÷µÄid·ÖÅäÆ÷
+	CALLBACKS cbMap_;									// æ‰€æœ‰çš„å›è°ƒéƒ½å­˜å‚¨åœ¨è¿™ä¸ªmapä¸­
+	IDAllocate<CALLBACK_ID> idAlloc_;					// å›è°ƒçš„idåˆ†é…å™¨
 	uint64 lastTimestamp_;
 };
 

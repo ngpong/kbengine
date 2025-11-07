@@ -19,7 +19,7 @@ namespace Network{
 }
 
 /*
-	处理计费、第三方运营账号、注册登录系统等挂接
+	澶勭悊璁¤垂銆佺涓夋柟杩愯惀璐﹀彿銆佹敞鍐岀櫥褰曠郴缁熺瓑鎸傛帴
 */
 class InterfacesHandler
 {

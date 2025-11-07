@@ -51,7 +51,7 @@ protected:
 
 	uint32 totalBytes_;
 
-	// ×Ü¹²·¢ËÍµÄ×Ö½ÚÊı
+	// æ€»å…±å‘é€çš„å­—èŠ‚æ•°
 	uint32 totalSentBytes_;
 	uint32 remainSent_;
 	uint32 currSent_;

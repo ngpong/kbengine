@@ -231,7 +231,7 @@ CPPFLAGS += -DUSE_TMXPARSER
 endif
 
 JEMALLOC_DIR = $(KBE_ROOT)/kbe/src/lib/dependencies/jemalloc
-KBE_INCLUDES += -I$(JEMALLOC_DIR)/include
+KBE_INCLUDES += -isystem $(JEMALLOC_DIR)/include
 #ifeq ($(USE_JEMALLOC),1)
 LDLIBS += -ljemalloc -lrt -ldl
 CPPFLAGS += -DUSE_JEMALLOC

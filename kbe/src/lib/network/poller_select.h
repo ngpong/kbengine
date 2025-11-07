@@ -32,10 +32,10 @@ private:
 	fd_set						fdReadSet_;
 	fd_set						fdWriteSet_;
 
-	// ×îºó×¢²áµÄsocketÃèÊö·û £¨¶Á»òĞ´£©
+	// æœ€åæ³¨å†Œçš„socketæè¿°ç¬¦ ï¼ˆè¯»æˆ–å†™ï¼‰
 	int							fdLargest_;
 
-	// ×¢²áĞ´µÄsocketÃèÊö·ûÊıÁ¿
+	// æ³¨å†Œå†™çš„socketæè¿°ç¬¦æ•°é‡
 	int							fdWriteCount_;
 };
 

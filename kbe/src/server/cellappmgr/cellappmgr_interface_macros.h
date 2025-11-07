@@ -20,7 +20,7 @@
 namespace KBEngine{
 
 /**
-	Cellappmgr��Ϣ�꣬  ����Ϊ���� ��Ҫ�Լ��⿪
+	Cellappmgr消息宏，  参数为流， 需要自己解开
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPPMGR_MESSAGE_HANDLER_STREAM
@@ -61,7 +61,7 @@ namespace KBEngine{
 																				\
 
 /**
-	Cellappmgr��Ϣ�꣬  ֻ�������������Ϣ
+	Cellappmgr消息宏，  只有零个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPPMGR_MESSAGE_HANDLER_ARGS0
@@ -103,7 +103,7 @@ namespace KBEngine{
 
 
 /**
-	Cellappmgr��Ϣ�꣬  ֻ��һ����������Ϣ
+	Cellappmgr消息宏，  只有一个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPPMGR_MESSAGE_HANDLER_ARGS1
@@ -147,7 +147,7 @@ namespace KBEngine{
 
 
 /**
-	Cellappmgr��Ϣ�꣬  ֻ�ж�����������Ϣ
+	Cellappmgr消息宏，  只有二个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPPMGR_MESSAGE_HANDLER_ARGS2
@@ -199,7 +199,7 @@ namespace KBEngine{
 
 
 /**
-	Cellappmgr��Ϣ�꣬  ֻ��������������Ϣ
+	Cellappmgr消息宏，  只有三个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPPMGR_MESSAGE_HANDLER_ARGS3
@@ -261,7 +261,7 @@ namespace KBEngine{
 
 
 /**
-	Cellappmgr��Ϣ�꣬  ֻ���ĸ���������Ϣ
+	Cellappmgr消息宏，  只有四个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPPMGR_MESSAGE_HANDLER_ARGS4
@@ -329,7 +329,7 @@ namespace KBEngine{
 											ARG_TYPE4, ARG_NAME4)				\
 
 /**
-	Cellappmgr��Ϣ�꣬  ֻ�������������Ϣ
+	Cellappmgr消息宏，  只有五个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPPMGR_MESSAGE_HANDLER_ARGS5
@@ -406,7 +406,7 @@ namespace KBEngine{
 
 
 /**
-	Cellappmgr��Ϣ�꣬  ֻ��������������Ϣ
+	Cellappmgr消息宏，  只有六个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPPMGR_MESSAGE_HANDLER_ARGS6
@@ -490,7 +490,7 @@ namespace KBEngine{
 											ARG_TYPE6, ARG_NAME6)				\
 
 /**
-	Cellappmgr��Ϣ�꣬  ֻ�а˸���������Ϣ
+	Cellappmgr消息宏，  只有八个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPPMGR_MESSAGE_HANDLER_ARGS8
@@ -592,7 +592,7 @@ namespace KBEngine{
 
 
 /**
-	Cellappmgr��Ϣ�꣬  ֻ�оŸ���������Ϣ
+	Cellappmgr消息宏，  只有九个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPPMGR_MESSAGE_HANDLER_ARGS9
@@ -702,7 +702,7 @@ namespace KBEngine{
 
 
 /**
-	Cellappmgr��Ϣ�꣬  ֻ��ʮ����������Ϣ
+	Cellappmgr消息宏，  只有十个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPPMGR_MESSAGE_HANDLER_ARGS10
@@ -821,7 +821,7 @@ namespace KBEngine{
 
 
 /**
-	Cellappmgr��Ϣ�꣬  ֻ��ʮһ����������Ϣ
+	Cellappmgr消息宏，  只有十一个参数的消息
 */
 #if defined(NETWORK_INTERFACE_DECLARE_BEGIN)
 	#undef CELLAPPMGR_MESSAGE_HANDLER_ARGS11

@@ -67,7 +67,7 @@ dbInterfaceIndex_(0)
 	script::PyGC::incTracing("Entity");
 	ENTITY_INIT_PROPERTYS(Entity);
 
-	// ´´½¨²¢³õÊ¼»¯cellData
+	// åˆ›å»ºå¹¶åˆå§‹åŒ–cellData
 	createCellData();
 }
 
@@ -128,7 +128,7 @@ void Entity::onDefDataChanged(EntityComponent* pEntityComponent, const PropertyD
 	if((flags & ED_FLAG_BASE_AND_CLIENT) <= 0 || clientEntityCall_ == NULL)
 		return;
 
-	// ´´½¨Ò»¸öĞèÒª¹ã²¥µÄÄ£°åÁ÷
+	// åˆ›å»ºä¸€ä¸ªéœ€è¦å¹¿æ’­çš„æ¨¡æ¿æµ
 	MemoryStream* mstream = MemoryStream::createPoolObject(OBJECTPOOL_POINT);
 
 	propertyDescription->getDataType()->addToStream(mstream, pyData);
@@ -154,8 +154,8 @@ void Entity::onDefDataChanged(EntityComponent* pEntityComponent, const PropertyD
 		propertyDescription->getName(), 
 		pBundle->currMsgLength());
 
-	// °´ÕÕµ±Ç°µÄÉè¼ÆÀ´Ëµ£¬ÓĞclientEntityCall_±Ø¶¨ÊÇproxy
-	// ÖÁÓÚÎªºÎÅÜµ½baseEntityÀïÀ´ºÍpython±¾ÉíÊÇCÓïÑÔÊµÏÖÓĞ¹Ø
+	// æŒ‰ç…§å½“å‰çš„è®¾è®¡æ¥è¯´ï¼Œæœ‰clientEntityCall_å¿…å®šæ˜¯proxy
+	// è‡³äºä¸ºä½•è·‘åˆ°baseEntityé‡Œæ¥å’Œpythonæœ¬èº«æ˜¯Cè¯­è¨€å®ç°æœ‰å…³
 	static_cast<Proxy*>(this)->sendToClient(ClientInterface::onUpdatePropertys, pBundle);
 	MemoryStream::reclaimPoolObject(mstream);
 }
@@ -176,8 +176,8 @@ void Entity::onDestroy(bool callScript)
 	
 	eraseEntityLog();
 
-	// °´ÕÕµ±Ç°µÄÉè¼ÆÀ´Ëµ£¬ÓĞclientEntityCall_±Ø¶¨ÊÇproxy
-	// ÖÁÓÚÎªºÎÅÜµ½baseEntityÀïÀ´ºÍpython±¾ÉíÊÇCÓïÑÔÊµÏÖÓĞ¹Ø
+	// æŒ‰ç…§å½“å‰çš„è®¾è®¡æ¥è¯´ï¼Œæœ‰clientEntityCall_å¿…å®šæ˜¯proxy
+	// è‡³äºä¸ºä½•è·‘åˆ°baseEntityé‡Œæ¥å’Œpythonæœ¬èº«æ˜¯Cè¯­è¨€å®ç°æœ‰å…³
 	if(clientEntityCall_)
 		static_cast<Proxy*>(this)->kick();
 }
@@ -185,9 +185,9 @@ void Entity::onDestroy(bool callScript)
 //-------------------------------------------------------------------------------------
 void Entity::eraseEntityLog()
 {
-	// ÕâÀïÃ»ÓĞÊ¹ÓÃhasDB()À´½øĞĞÅĞ¶Ï
-	// ÓÃ»§¿ÉÄÜdestroy( writeToDB = False ), Õâ¸ö²Ù×÷»áµ¼ÖÂhasDBÎªfalse£¬ Òò´ËÕâÀï
-	// ĞèÒªÅĞ¶ÏdbidÊÇ·ñ´óÓÚ0£¬ Èç¹û´óÓÚ0ÔòÓ¦¸ÃÒªÈ¥²Á³ıÔÚÏßµÈ¼ÇÂ¼Çé¿ö.
+	// è¿™é‡Œæ²¡æœ‰ä½¿ç”¨hasDB()æ¥è¿›è¡Œåˆ¤æ–­
+	// ç”¨æˆ·å¯èƒ½destroy( writeToDB = False ), è¿™ä¸ªæ“ä½œä¼šå¯¼è‡´hasDBä¸ºfalseï¼Œ å› æ­¤è¿™é‡Œ
+	// éœ€è¦åˆ¤æ–­dbidæ˜¯å¦å¤§äº0ï¼Œ å¦‚æœå¤§äº0åˆ™åº”è¯¥è¦å»æ“¦é™¤åœ¨çº¿ç­‰è®°å½•æƒ…å†µ.
 	if(this->dbid() > 0)
 	{
 		Network::Bundle* pBundle = Network::Bundle::createPoolObject(OBJECTPOOL_POINT);
@@ -293,7 +293,7 @@ void Entity::createCellData(void)
 		SCRIPT_ERROR_CHECK();
 	}
 
-	// ³õÊ¼»¯cellEntityµÄÎ»ÖÃºÍ·½Ïò±äÁ¿
+	// åˆå§‹åŒ–cellEntityçš„ä½ç½®å’Œæ–¹å‘å˜é‡
 	PyObject* position = PyTuple_New(3);
 	PyTuple_SET_ITEM(position, 0, PyFloat_FromDouble(0.0));
 	PyTuple_SET_ITEM(position, 1, PyFloat_FromDouble(0.0));
@@ -338,7 +338,7 @@ void Entity::addCellDataToStream(COMPONENT_TYPE sendTo, uint32 flags, MemoryStre
 
 			if (propertyDescription->getDataType()->type() == DATA_TYPE_ENTITY_COMPONENT)
 			{
-				// ÓÉÓÚ´æÔÚÒ»ÖÖÇé¿ö£¬ ×é¼şdefÖĞÃ»ÓĞÄÚÈİ£¬ µ«ÓĞcell½Å±¾£¬´ËÊ±baseappÉÏÎŞ·¨ÅĞ¶ÏËûÊÇ·ñÓĞcellÊôĞÔ£¬ËùÒÔĞ´celldataÊ±Ã»ÓĞÊı¾İĞ´Èë
+				// ç”±äºå­˜åœ¨ä¸€ç§æƒ…å†µï¼Œ ç»„ä»¶defä¸­æ²¡æœ‰å†…å®¹ï¼Œ ä½†æœ‰cellè„šæœ¬ï¼Œæ­¤æ—¶baseappä¸Šæ— æ³•åˆ¤æ–­ä»–æ˜¯å¦æœ‰cellå±æ€§ï¼Œæ‰€ä»¥å†™celldataæ—¶æ²¡æœ‰æ•°æ®å†™å…¥
 				EntityComponentType* pEntityComponentType = (EntityComponentType*)propertyDescription->getDataType();
 				if (pEntityComponentType->pScriptDefModule()->getCellPropertyDescriptions().size() == 0)
 					continue;
@@ -399,10 +399,10 @@ void Entity::addPersistentsDataToStream(uint32 flags, MemoryStream* s)
 {
 	std::vector<ENTITY_PROPERTY_UID> log;
 
-	// ÔÙ½«baseÖĞ´æ´¢ÊôĞÔÈ¡³ö
+	// å†å°†baseä¸­å­˜å‚¨å±æ€§å–å‡º
 	PyObject* pydict = PyObject_GetAttrString(this, "__dict__");
 
-	// ÏÈ½«celldataÖĞµÄ´æ´¢ÊôĞÔÈ¡³ö
+	// å…ˆå°†celldataä¸­çš„å­˜å‚¨å±æ€§å–å‡º
 	ScriptDefModule::PROPERTYDESCRIPTION_MAP& propertyDescrs = pScriptModule_->getPersistentPropertyDescriptions();
 	ScriptDefModule::PROPERTYDESCRIPTION_MAP::const_iterator iter = propertyDescrs.begin();
 
@@ -427,7 +427,7 @@ void Entity::addPersistentsDataToStream(uint32 flags, MemoryStream* s)
 
 			PyObject *key = PyUnicode_FromString(attrname);
 
-			if(!isComponent /* Èç¹ûÊÇ×é¼şÀàĞÍ£¬Ó¦¸ÃÏÈ´ÓÊµÌå×ÔÉíÕÒµ½Õâ¸ö×é¼şÊôĞÔ */
+			if(!isComponent /* å¦‚æœæ˜¯ç»„ä»¶ç±»å‹ï¼Œåº”è¯¥å…ˆä»å®ä½“è‡ªèº«æ‰¾åˆ°è¿™ä¸ªç»„ä»¶å±æ€§ */
 				&& cellDataDict_ != NULL && PyDict_Contains(cellDataDict_, key) > 0)
 			{
 				PyObject* pyVal = PyDict_GetItemString(cellDataDict_, attrname);
@@ -473,10 +473,10 @@ void Entity::addPersistentsDataToStream(uint32 flags, MemoryStream* s)
 				}
 				else
 				{
-					// Ò»Ğ©ÊµÌåÃ»ÓĞcell²¿·Ö£¬ Òò´ËcellÊôĞÔºöÂÔ
+					// ä¸€äº›å®ä½“æ²¡æœ‰celléƒ¨åˆ†ï¼Œ å› æ­¤cellå±æ€§å¿½ç•¥
 					if (cellDataDict_)
 					{
-						// Ò»Ğ©×é¼ş¿ÉÄÜÃ»ÓĞcellÊôĞÔ
+						// ä¸€äº›ç»„ä»¶å¯èƒ½æ²¡æœ‰cellå±æ€§
 						EntityComponentType* pEntityComponentType = (EntityComponentType*)propertyDescription->getDataType();
 						if (pEntityComponentType->pScriptDefModule()->getCellPropertyDescriptions().size() == 0)
 							continue;
@@ -559,7 +559,7 @@ void Entity::sendToCellapp(Network::Channel* pChannel, Network::Bundle* pBundle)
 //-------------------------------------------------------------------------------------
 void Entity::destroyCellData(void)
 {
-	// cellDataDict_ ¼ÌĞø±£Áô£¬ ÒÔ¹©±¸·İÊ±Ê¹ÓÃ£¬ ÕâÀï½ö½öÈÃ½Å²½²ãÎŞ·¨·ÃÎÊµ½¼´¿É
+	// cellDataDict_ ç»§ç»­ä¿ç•™ï¼Œ ä»¥ä¾›å¤‡ä»½æ—¶ä½¿ç”¨ï¼Œ è¿™é‡Œä»…ä»…è®©è„šæ­¥å±‚æ— æ³•è®¿é—®åˆ°å³å¯
 	// S_RELEASE(cellDataDict_);
 	if(PyObject_DelAttrString(this, "cellData") == -1)
 	{
@@ -675,8 +675,8 @@ PyObject* Entity::__py_pyDestroyEntity(PyObject* self, PyObject* args, PyObject 
 
 	if(deleteFromDB || writeToDB)
 	{
-		// ÓĞ¿ÉÄÜÒÑ¾­ÇëÇóÁËwriteToDBµ«»¹Î´·µ»ØĞ´ÈëµÄdbid
-		// ÕâÖÖÇé¿öĞèÒª·µ»Ø¸øÓÃ»§Ò»¸ö´íÎó£¬ ÓÃ»§¿ÉÒÔ¼ÌĞø³¢ÊÔÕâ¸ö²Ù×÷
+		// æœ‰å¯èƒ½å·²ç»è¯·æ±‚äº†writeToDBä½†è¿˜æœªè¿”å›å†™å…¥çš„dbid
+		// è¿™ç§æƒ…å†µéœ€è¦è¿”å›ç»™ç”¨æˆ·ä¸€ä¸ªé”™è¯¯ï¼Œ ç”¨æˆ·å¯ä»¥ç»§ç»­å°è¯•è¿™ä¸ªæ“ä½œ
 		if(pobj->hasDB() && pobj->dbid() == 0)
 		{
 			PyErr_Format(PyExc_AssertionError, "%s::destroy: id:%i has db, current dbid is 0. "
@@ -727,7 +727,7 @@ void Entity::onDestroyEntity(bool deleteFromDB, bool writeToDB)
 
 	if(writeToDB)
 	{
-		// Õâ¸öĞĞÎªÄ¬ÈÏ»á´¦Àí
+		// è¿™ä¸ªè¡Œä¸ºé»˜è®¤ä¼šå¤„ç†
 		// this->writeToDB(NULL);
 	}
 	else
@@ -940,7 +940,7 @@ void Entity::onRemoteMethodCall(Network::Channel* pChannel, MemoryStream& s)
 		return;
 	}
 
-	// Èç¹ûÊÇÍâ²¿Í¨µÀµ÷ÓÃÔòÅĞ¶ÏÀ´Ô´ĞÔ
+	// å¦‚æœæ˜¯å¤–éƒ¨é€šé“è°ƒç”¨åˆ™åˆ¤æ–­æ¥æºæ€§
 	if (pChannel->isExternal())
 	{
 		ENTITY_ID srcEntityID = pChannel->proxyID();
@@ -1020,10 +1020,10 @@ void Entity::onGetCell(Network::Channel* pChannel, COMPONENT_ID componentID)
 
 	creatingCell_ = false;
 
-	// É¾³ıcellDataÊôĞÔ
+	// åˆ é™¤cellDataå±æ€§
 	destroyCellData();
 	
-	// »Øµ÷¸ø½Å±¾£¬»ñµÃÁËcell
+	// å›è°ƒç»™è„šæœ¬ï¼Œè·å¾—äº†cell
 	if(cellEntityCall_ == NULL)
 		cellEntityCall_ = new EntityCall(pScriptModule_, NULL, componentID, id_, ENTITYCALL_TYPE_CELL);
 
@@ -1143,7 +1143,7 @@ void Entity::writeToDB(void* data, void* extra1, void* extra2)
 	PyObject* pyCallback = NULL;
 	int8 shouldAutoLoad = dbid() <= 0 ? 0 : -1;
 
-	// data ÊÇÓĞ¿ÉÄÜ»áNULLµÄ£¬ ±ÈÈç¶¨Ê±´æµµÊÇ²»ĞèÒª»Øµ÷º¯ÊıµÄ
+	// data æ˜¯æœ‰å¯èƒ½ä¼šNULLçš„ï¼Œ æ¯”å¦‚å®šæ—¶å­˜æ¡£æ˜¯ä¸éœ€è¦å›è°ƒå‡½æ•°çš„
 	if(data != NULL)
 		pyCallback = static_cast<PyObject*>(data);
 
@@ -1181,7 +1181,7 @@ void Entity::writeToDB(void* data, void* extra1, void* extra2)
 
 	if(isArchiveing_)
 	{
-		// __py_pyWriteToDBÃ»ÓĞÔö¼ÓÒıÓÃ
+		// __py_pyWriteToDBæ²¡æœ‰å¢åŠ å¼•ç”¨
 		//if(pyCallback != NULL)
 		//	Py_DECREF(pyCallback);
 
@@ -1195,7 +1195,7 @@ void Entity::writeToDB(void* data, void* extra1, void* extra2)
 
 	if(isDestroyed())
 	{	
-		// __py_pyWriteToDBÃ»ÓĞÔö¼ÓÒıÓÃ
+		// __py_pyWriteToDBæ²¡æœ‰å¢åŠ å¼•ç”¨
 		//if(pyCallback != NULL)
 		//	Py_DECREF(pyCallback);
 
@@ -1211,9 +1211,9 @@ void Entity::writeToDB(void* data, void* extra1, void* extra2)
 		callbackID = callbackMgr().save(pyCallback);
 	}
 
-	// creatingCell_ ´ËÊ±¿ÉÄÜÕıÔÚ´´½¨cell
-	// ²»¹ıÎÒÃÇÔÚ´Ë¼ÙÉèÔÚcellÎ´´´½¨Íê³ÉµÄÊ±ºòbaseÕâ¸ö½Ó¿Ú±»µ÷ÓÃ
-	// Ğ´ÈëÊı¾İ¿âµÄÊÇ¸ÃentityµÄ³õÊ¼Öµ£¬ ²¢²»Ó°Ïì
+	// creatingCell_ æ­¤æ—¶å¯èƒ½æ­£åœ¨åˆ›å»ºcell
+	// ä¸è¿‡æˆ‘ä»¬åœ¨æ­¤å‡è®¾åœ¨cellæœªåˆ›å»ºå®Œæˆçš„æ—¶å€™baseè¿™ä¸ªæ¥å£è¢«è°ƒç”¨
+	// å†™å…¥æ•°æ®åº“çš„æ˜¯è¯¥entityçš„åˆå§‹å€¼ï¼Œ å¹¶ä¸å½±å“
 	if(this->cellEntityCall() == NULL) 
 	{
 		onCellWriteToDBCompleted(callbackID, shouldAutoLoad, -1);
@@ -1298,7 +1298,7 @@ void Entity::onCellWriteToDBCompleted(CALLBACK_ID callbackID, int8 shouldAutoLoa
 	
 	onWriteToDB();
 	
-	// Èç¹ûÔÚÊı¾İ¿âÖĞÒÑ¾­´æÔÚ¸ÃentityÔòÔÊĞíÓ¦ÓÃ²ã¶à´Îµ÷ÓÃĞ´¿â½øĞĞÊı¾İ¼°Ê±¸²¸ÇĞèÇó
+	// å¦‚æœåœ¨æ•°æ®åº“ä¸­å·²ç»å­˜åœ¨è¯¥entityåˆ™å…è®¸åº”ç”¨å±‚å¤šæ¬¡è°ƒç”¨å†™åº“è¿›è¡Œæ•°æ®åŠæ—¶è¦†ç›–éœ€æ±‚
 	if(this->DBID_ > 0)
 		isArchiveing_ = false;
 	
@@ -1343,7 +1343,7 @@ void Entity::onCellWriteToDBCompleted(CALLBACK_ID callbackID, int8 shouldAutoLoa
 	sha.Input(s->data(), s->length());
 	sha.Result(digest);
 
-	// ¼ì²éÊı¾İÊÇ·ñÓĞ±ä»¯£¬ÓĞ±ä»¯Ôò½«Êı¾İ±¸·İ²¢ÇÒ¼ÇÂ¼Êı¾İhash£¬Ã»±ä»¯Ê²Ã´Ò²²»×ö
+	// æ£€æŸ¥æ•°æ®æ˜¯å¦æœ‰å˜åŒ–ï¼Œæœ‰å˜åŒ–åˆ™å°†æ•°æ®å¤‡ä»½å¹¶ä¸”è®°å½•æ•°æ®hashï¼Œæ²¡å˜åŒ–ä»€ä¹ˆä¹Ÿä¸åš
 	if (memcmp((void*)&persistentDigest_[0], (void*)&digest[0], sizeof(persistentDigest_)) == 0)
 	{
 		MemoryStream::reclaimPoolObject(s);
@@ -1365,7 +1365,7 @@ void Entity::onCellWriteToDBCompleted(CALLBACK_ID callbackID, int8 shouldAutoLoa
 	(*pBundle) << callbackID;
 	(*pBundle) << shouldAutoLoad;
 
-	// ¼ÇÂ¼µÇÂ¼µØÖ·
+	// è®°å½•ç™»å½•åœ°å€
 	if(this->dbid() == 0)
 	{
 		uint32 ip = 0;
@@ -1517,8 +1517,8 @@ void Entity::forwardEntityMessageToCellappFromClient(Network::Channel* pChannel,
 	if(mb == NULL)
 		return;
 
-	// ½«Õâ¸öÏûÏ¢ÔÙ´ò°ü×ª¼Ä¸øcellapp£¬ cellapp»á¶ÔÕâ¸ö°üÖĞµÄÃ¿¸öÏûÏ¢½øĞĞÅĞ¶Ï
-	// ¼ì²éÊÇ·ñÊÇentityÏûÏ¢£¬ ·ñÔò²»ºÏ·¨.
+	// å°†è¿™ä¸ªæ¶ˆæ¯å†æ‰“åŒ…è½¬å¯„ç»™cellappï¼Œ cellappä¼šå¯¹è¿™ä¸ªåŒ…ä¸­çš„æ¯ä¸ªæ¶ˆæ¯è¿›è¡Œåˆ¤æ–­
+	// æ£€æŸ¥æ˜¯å¦æ˜¯entityæ¶ˆæ¯ï¼Œ å¦åˆ™ä¸åˆæ³•.
 	Network::Bundle* pBundle = Network::Bundle::createPoolObject(OBJECTPOOL_POINT);
 	(*pBundle).newMessage(CellappInterface::forwardEntityMessageToCellappFromClient);
 	(*pBundle) << this->id();
@@ -1594,8 +1594,8 @@ void Entity::onMigrationCellappEnd(Network::Channel* pChannel, COMPONENT_ID sour
 
 	KBE_ASSERT(!pBufferedSendToClientMessages_);
 	
-	// Ä³Ğ©¼«¶ËÇé¿öÏÂ¿ÉÄÜonMigrationCellappStart»áÂıÓÚonMigrationCellappEnd´¥·¢£¬´ËÊ±±ØĞëÉèÖÃ±ê¼Ç
-	// µÈ´ıonMigrationCellappEnd´¥·¢ºó×öÇåÀí
+	// æŸäº›æç«¯æƒ…å†µä¸‹å¯èƒ½onMigrationCellappStartä¼šæ…¢äºonMigrationCellappEndè§¦å‘ï¼Œæ­¤æ—¶å¿…é¡»è®¾ç½®æ ‡è®°
+	// ç­‰å¾…onMigrationCellappEndè§¦å‘ååšæ¸…ç†
 	if (!hasFlags(ENTITY_FLAGS_TELEPORT_START))
 	{
 		addFlags(ENTITY_FLAGS_TELEPORT_STOP);
@@ -1624,7 +1624,7 @@ void Entity::onMigrationCellappOver(COMPONENT_ID targetCellAppID)
 		pInfos->pChannel->send(pBundle);
 	}
 	
-	// ¸Ä±äcellµÄÖ¸Ïòµ½ĞÂµÄcellapp
+	// æ”¹å˜cellçš„æŒ‡å‘åˆ°æ–°çš„cellapp
 	if(this->cellEntityCall())
 		this->cellEntityCall()->componentID(targetCellAppID);
 }

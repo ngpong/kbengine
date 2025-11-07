@@ -62,7 +62,7 @@ class Channel;
 	return *this;																							\
 
 
-// ´Ó¶ÔÏó³ØÖĞ´´½¨Óë»ØÊÕ
+// ä»å¯¹è±¡æ± ä¸­åˆ›å»ºä¸å›æ”¶
 #define MALLOC_BUNDLE() Network::Bundle::createPoolObject()
 #define DELETE_BUNDLE(obj) { Network::Bundle::reclaimPoolObject(obj); obj = NULL; }
 #define RECLAIM_BUNDLE(obj) { Network::Bundle::reclaimPoolObject(obj);}
@@ -94,7 +94,7 @@ public:
 	INLINE const Network::MessageHandler* pCurrMsgHandler() const;
 
 	/**
-		¼ÆËãËùÓĞ°ü°üÀ¨µ±Ç°»¹Î´Ğ´ÍêµÄ°üµÄ×Ü³¤¶È
+		è®¡ç®—æ‰€æœ‰åŒ…åŒ…æ‹¬å½“å‰è¿˜æœªå†™å®Œçš„åŒ…çš„æ€»é•¿åº¦
 	*/
 	int32 packetsLength(bool calccurr = true);
 
@@ -110,12 +110,12 @@ public:
 	int packetsSize() const;
 
 	/**
-		³·ÏúÒ»Ğ©ÏûÏ¢×Ö½Ú
+		æ’¤é”€ä¸€äº›æ¶ˆæ¯å­—èŠ‚
 	*/
 	bool revokeMessage(int32 size);
 		
 	/**
-		¼ÆËãpacketMaxSize-×îºóÒ»¸ö°üµÄlengthºóÊ£ÓàµÄ¿ÉÓÃ¿Õ¼ä
+		è®¡ç®—packetMaxSize-æœ€åä¸€ä¸ªåŒ…çš„lengthåå‰©ä½™çš„å¯ç”¨ç©ºé—´
 	*/
 	INLINE int32 lastPacketSpace();
 	INLINE bool packetHaveSpace();
@@ -247,7 +247,7 @@ public:
 
     Bundle &operator<<(const std::string &value)
     {
-		int32 len = (int32)value.size() + 1; // +1Îª×Ö·û´®Î²²¿µÄ0Î»ÖÃ
+		int32 len = (int32)value.size() + 1; // +1ä¸ºå­—ç¬¦ä¸²å°¾éƒ¨çš„0ä½ç½®
 		int32 addtotalsize = 0;
 
 		while(len > 0)
@@ -263,7 +263,7 @@ public:
 	
     Bundle &operator<<(const char *str)
     {
-		int32 len = (int32)strlen(str) + 1;  // +1Îª×Ö·û´®Î²²¿µÄ0Î»ÖÃ
+		int32 len = (int32)strlen(str) + 1;  // +1ä¸ºå­—ç¬¦ä¸²å°¾éƒ¨çš„0ä½ç½®
 		int32 addtotalsize = 0;
 
 		while(len > 0)
@@ -368,8 +368,8 @@ public:
 		y -= minf / 2.f;
 		z -= minf;
 
-		// ×î´óÖµ²»Òª³¬¹ı-256~256
-		// y ²»Òª³¬¹ı-128~128
+		// æœ€å¤§å€¼ä¸è¦è¶…è¿‡-256~256
+		// y ä¸è¦è¶…è¿‡-128~128
         uint32 packed = 0;
         packed |= ((int)(x / 0.25f) & 0x7FF);
         packed |= ((int)(z / 0.25f) & 0x7FF) << 11;
@@ -386,11 +386,11 @@ public:
 		MemoryStream::PackFloatXType zPackData; 
 		zPackData.fv = z;
 		
-		// 0-7Î»´æ·ÅÎ²Êı, 8-10Î»´æ·ÅÖ¸Êı, 11Î»´æ·Å±êÖ¾
-		// ÓÉÓÚÊ¹ÓÃÁË24Î»À´´æ´¢2¸öfloat£¬ ²¢ÇÒÒªÇóÄÜ¹»´ïµ½-512~512Ö®¼äµÄÊı
-		// 8Î»Î²ÊıÖ»ÄÜ·Å×î´óÖµ256, Ö¸ÊıÖ»ÓĞ3Î»(¾ö¶¨¸¡µãÊı×î´óÖµÎª2^(2^3)=256) 
-		// ÎÒÃÇÉáÈ¥µÚÒ»Î»Ê¹·¶Î§´ïµ½(-512~-2), (2~512)Ö®¼ä
-		// Òò´ËÕâÀïÎÒÃÇ±£Ö¤×îĞ¡ÊıÎª-2.f»òÕß2.f
+		// 0-7ä½å­˜æ”¾å°¾æ•°, 8-10ä½å­˜æ”¾æŒ‡æ•°, 11ä½å­˜æ”¾æ ‡å¿—
+		// ç”±äºä½¿ç”¨äº†24ä½æ¥å­˜å‚¨2ä¸ªfloatï¼Œ å¹¶ä¸”è¦æ±‚èƒ½å¤Ÿè¾¾åˆ°-512~512ä¹‹é—´çš„æ•°
+		// 8ä½å°¾æ•°åªèƒ½æ”¾æœ€å¤§å€¼256, æŒ‡æ•°åªæœ‰3ä½(å†³å®šæµ®ç‚¹æ•°æœ€å¤§å€¼ä¸º2^(2^3)=256) 
+		// æˆ‘ä»¬èˆå»ç¬¬ä¸€ä½ä½¿èŒƒå›´è¾¾åˆ°(-512~-2), (2~512)ä¹‹é—´
+		// å› æ­¤è¿™é‡Œæˆ‘ä»¬ä¿è¯æœ€å°æ•°ä¸º-2.fæˆ–è€…2.f
 		xPackData.fv += xPackData.iv < 0 ? -2.f : 2.f;
 		zPackData.fv += zPackData.iv < 0 ? -2.f : 2.f;
 
@@ -401,26 +401,26 @@ public:
 		const uint32 xCeilingValues[] = { 0, 0x7ff000 };
 		const uint32 zCeilingValues[] = { 0, 0x0007ff };
 
-		// ÕâÀïÈç¹ûÕâ¸ö¸¡µãÊıÒç³öÁËÔòÉèÖÃ¸¡µãÊıÎª×î´óÊı
-		// ÕâÀï¼ì²éÁËÖ¸Êı¸ß4Î»ºÍ±ê¼ÇÎ»£¬ Èç¹û¸ßËÄÎ»²»Îª0Ôò¿Ï¶¨Òç³ö£¬ Èç¹ûµÍ4Î»ºÍ8Î»Î²Êı²»Îª0ÔòÒç³ö
+		// è¿™é‡Œå¦‚æœè¿™ä¸ªæµ®ç‚¹æ•°æº¢å‡ºäº†åˆ™è®¾ç½®æµ®ç‚¹æ•°ä¸ºæœ€å¤§æ•°
+		// è¿™é‡Œæ£€æŸ¥äº†æŒ‡æ•°é«˜4ä½å’Œæ ‡è®°ä½ï¼Œ å¦‚æœé«˜å››ä½ä¸ä¸º0åˆ™è‚¯å®šæº¢å‡ºï¼Œ å¦‚æœä½4ä½å’Œ8ä½å°¾æ•°ä¸ä¸º0åˆ™æº¢å‡º
 		// 0x7c000000 = 1111100000000000000000000000000
 		// 0x40000000 = 1000000000000000000000000000000
 		// 0x3ffc000  = 0000011111111111100000000000000
 		data |= xCeilingValues[((xPackData.uv & 0x7c000000) != 0x40000000) || ((xPackData.uv & 0x3ffc000) == 0x3ffc000)];
 		data |= zCeilingValues[((zPackData.uv & 0x7c000000) != 0x40000000) || ((zPackData.uv & 0x3ffc000) == 0x3ffc000)];
 		
-		// ¸´ÖÆ8Î»Î²ÊıºÍ3Î»Ö¸Êı£¬ Èç¹û¸¡µãÊıÊ£ÓàÎ²Êı×î¸ßÎ»ÊÇ1Ôò+1ËÄÉáÎåÈë, ²¢ÇÒ´æ·Åµ½dataÖĞ
+		// å¤åˆ¶8ä½å°¾æ•°å’Œ3ä½æŒ‡æ•°ï¼Œ å¦‚æœæµ®ç‚¹æ•°å‰©ä½™å°¾æ•°æœ€é«˜ä½æ˜¯1åˆ™+1å››èˆäº”å…¥, å¹¶ä¸”å­˜æ”¾åˆ°dataä¸­
 		// 0x7ff000 = 11111111111000000000000
 		// 0x0007ff = 00000000000011111111111
 		// 0x4000	= 00000000100000000000000
 		data |= ((xPackData.uv >>  3) & 0x7ff000) + ((xPackData.uv & 0x4000) >> 2);
 		data |= ((zPackData.uv >> 15) & 0x0007ff) + ((zPackData.uv & 0x4000) >> 14);
 		
-		// È·±£ÖµÔÚ·¶Î§ÄÚ
+		// ç¡®ä¿å€¼åœ¨èŒƒå›´å†…
 		// 0x7ff7ff = 11111111111011111111111
 		data &= 0x7ff7ff;
 
-		// ¸´ÖÆ±ê¼ÇÎ»
+		// å¤åˆ¶æ ‡è®°ä½
 		// 0x800000 = 100000000000000000000000
 		// 0x000800 = 000000000000100000000000
 		data |=  (xPackData.uv >>  8) & 0x800000;
@@ -521,12 +521,12 @@ public:
 
     Bundle &operator>>(COMPONENT_TYPE &value)
     {
-        PACKET_OUT_VALUE(value, sizeof(int32/*²Î¿¼MemoryStream*/));
+        PACKET_OUT_VALUE(value, sizeof(int32/*å‚è€ƒMemoryStream*/));
     }
 
     Bundle &operator>>(ENTITYCALL_TYPE &value)
     {
-        PACKET_OUT_VALUE(value, sizeof(int32/*²Î¿¼MemoryStream*/));
+        PACKET_OUT_VALUE(value, sizeof(int32/*å‚è€ƒMemoryStream*/));
     }
 
     Bundle &operator>>(std::string& value)

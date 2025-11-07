@@ -78,7 +78,7 @@ int UDPPacket::recvFromEndPoint(EndPoint & ep, Address* pAddr)
 {
 	KBE_ASSERT(maxBufferSize() > wpos());
 
-	// 当接收来的大小大于接收缓冲区的时候，recvfrom返回-1
+	// 褰撴帴鏀舵潵鐨勫ぇ灏忓ぇ浜庢帴鏀剁紦鍐插尯鐨勬椂鍊欙紝recvfrom杩斿洖-1
 	int len = ep.recvfrom(data() + wpos(), size() - wpos(),
 		(u_int16_t*)&pAddr->port, (u_int32_t*)&pAddr->ip);
 

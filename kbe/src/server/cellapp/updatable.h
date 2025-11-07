@@ -17,8 +17,8 @@
 namespace KBEngine{
 
 /*
-	ÓÃÀ´ÃèÊöÒ»¸ö×ÜÊÇ»á±»¸üĞÂµÄ¶ÔÏó£¬ appÃ¿¸ötick¶¼»áµ÷ÓÃËùÓĞµÄ
-	UpdatableÀ´¸üĞÂ×´Ì¬£¬ ĞèÒªÊµÏÖ²»Í¬µÄUpdatableÀ´Íê³É²»Í¬µÄ¸üĞÂÌØĞÔ¡£
+	ç”¨æ¥æè¿°ä¸€ä¸ªæ€»æ˜¯ä¼šè¢«æ›´æ–°çš„å¯¹è±¡ï¼Œ appæ¯ä¸ªtickéƒ½ä¼šè°ƒç”¨æ‰€æœ‰çš„
+	Updatableæ¥æ›´æ–°çŠ¶æ€ï¼Œ éœ€è¦å®ç°ä¸åŒçš„Updatableæ¥å®Œæˆä¸åŒçš„æ›´æ–°ç‰¹æ€§ã€‚
 */
 class Updatable
 {
@@ -34,7 +34,7 @@ public:
 
 	std::string c_str() { return updatableName; }
 
-	// ×ÔÉíÔÚUpdatablesÈİÆ÷ÖĞµÄÎ»ÖÃ
+	// è‡ªèº«åœ¨Updatableså®¹å™¨ä¸­çš„ä½ç½®
 	int removeIdx;
 
 	std::string updatableName;

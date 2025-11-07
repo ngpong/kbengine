@@ -104,8 +104,8 @@ void Bundle::onReclaimObject()
 //-------------------------------------------------------------------------------------
 void Bundle::copy(const Bundle& bundle)
 {
-	// ÕâĞ©±ØĞëÔÚÇ°ÃæÉèÖÃ
-	// ·ñÔòÖĞÍ¾´´½¨packet¿ÉÄÜ´íÎó
+	// è¿™äº›å¿…é¡»åœ¨å‰é¢è®¾ç½®
+	// å¦åˆ™ä¸­é€”åˆ›å»ºpacketå¯èƒ½é”™è¯¯
 	isTCPPacket_ = bundle.isTCPPacket_;
 	pChannel_ = bundle.pChannel_;
 	pCurrMsgHandler_ = bundle.pCurrMsgHandler_;
@@ -137,8 +137,8 @@ void Bundle::copy(const Bundle& bundle)
 //-------------------------------------------------------------------------------------
 void Bundle::_calcPacketMaxSize()
 {
-	// Èç¹ûÊ¹ÓÃÁËopenssl¼ÓÃÜÍ¨Ñ¶ÔòÎÒÃÇ±£Ö¤Ò»¸ö°ü×î´óÄÜ±»Blowfish::BLOCK_SIZE³ı¾¡
-	// ÕâÑùÎÒÃÇÔÚ¼ÓÃÜÒ»¸öÂúÔØ°üÊ±²»ĞèÒª¶îÍâÌî³ä×Ö½Ú
+	// å¦‚æœä½¿ç”¨äº†opensslåŠ å¯†é€šè®¯åˆ™æˆ‘ä»¬ä¿è¯ä¸€ä¸ªåŒ…æœ€å¤§èƒ½è¢«Blowfish::BLOCK_SIZEé™¤å°½
+	// è¿™æ ·æˆ‘ä»¬åœ¨åŠ å¯†ä¸€ä¸ªæ»¡è½½åŒ…æ—¶ä¸éœ€è¦é¢å¤–å¡«å……å­—èŠ‚
 	if(g_channelExternalEncryptType == 1)
 	{
 		packetMaxSize_ = isTCPPacket_ ? (int)(TCPPacket::maxBufferSize() - ENCRYPTTION_WASTAGE_SIZE) :
@@ -183,7 +183,7 @@ int32 Bundle::onPacketAppend(int32 addsize, bool inseparable)
 	if(inseparable)
 		fwpos += addsize;
 
-	// Èç¹ûµ±Ç°°ü×°²»ÏÂ±¾´ÎappendµÄÊı¾İ£¬½«ÆäÌî³äµ½ĞÂ°üÖĞ
+	// å¦‚æœå½“å‰åŒ…è£…ä¸ä¸‹æœ¬æ¬¡appendçš„æ•°æ®ï¼Œå°†å…¶å¡«å……åˆ°æ–°åŒ…ä¸­
 	if(fwpos >= packetMaxSize_)
 	{
 		packets_.push_back(pCurrPacket_);
@@ -195,7 +195,7 @@ int32 Bundle::onPacketAppend(int32 addsize, bool inseparable)
 	int32 remainsize = packetMaxSize_ - totalsize;
 	int32 taddsize = addsize;
 
-	// Èç¹ûµ±Ç°°üÊ£Óà¿Õ¼äĞ¡ÓÚÒªÌí¼ÓµÄ×Ö½ÚÔò±¾´ÎÌîÂú´Ë°ü
+	// å¦‚æœå½“å‰åŒ…å‰©ä½™ç©ºé—´å°äºè¦æ·»åŠ çš„å­—èŠ‚åˆ™æœ¬æ¬¡å¡«æ»¡æ­¤åŒ…
 	if(remainsize < addsize)
 		taddsize = remainsize;
 	
@@ -296,7 +296,7 @@ void Bundle::newMessage(const MessageHandler& msgHandler)
 	(*this) << msgHandler.msgID;
 	pCurrPacket_->messageID(msgHandler.msgID);
 
-	// ´Ë´¦¶ÔÓÚ·Ç¹Ì¶¨³¤¶ÈµÄÏûÏ¢À´ËµĞèÒªÏÈÉèÖÃËüµÄÏûÏ¢³¤¶ÈÎ»Îª0£¬ µ½×îºóĞèÒªÌî³ä³¤¶È
+	// æ­¤å¤„å¯¹äºéå›ºå®šé•¿åº¦çš„æ¶ˆæ¯æ¥è¯´éœ€è¦å…ˆè®¾ç½®å®ƒçš„æ¶ˆæ¯é•¿åº¦ä½ä¸º0ï¼Œ åˆ°æœ€åéœ€è¦å¡«å……é•¿åº¦
 	if(msgHandler.msgLen == NETWORK_VARIABLE_MESSAGE)
 	{
 		MessageLength msglen = 0;
@@ -323,7 +323,7 @@ void Bundle::finiMessage(bool isSend)
 		packets_.push_back(pCurrPacket_);
 	}
 
-	// ¶ÔÏûÏ¢½øĞĞ¸ú×Ù
+	// å¯¹æ¶ˆæ¯è¿›è¡Œè·Ÿè¸ª
 	if(pCurrMsgHandler_){
 		if(isSend || numMessages_ > 1)
 		{
@@ -332,7 +332,7 @@ void Bundle::finiMessage(bool isSend)
 		}
 	}
 
-	// ´Ë´¦¶ÔÓÚ·Ç¹Ì¶¨³¤¶ÈµÄÏûÏ¢À´ËµĞèÒªÉèÖÃËüµÄ×îÖÕ³¤¶ÈĞÅÏ¢
+	// æ­¤å¤„å¯¹äºéå›ºå®šé•¿åº¦çš„æ¶ˆæ¯æ¥è¯´éœ€è¦è®¾ç½®å®ƒçš„æœ€ç»ˆé•¿åº¦ä¿¡æ¯
 	if(currMsgID_ > 0 && (currMsgHandlerLength_ < 0))
 	{
 		Packet* pPacket = pCurrPacket_;
@@ -342,15 +342,15 @@ void Bundle::finiMessage(bool isSend)
 		currMsgLength_ -= NETWORK_MESSAGE_ID_SIZE;
 		currMsgLength_ -= NETWORK_MESSAGE_LENGTH_SIZE;
 
-		// °´ÕÕÉè¼ÆÒ»¸ö°ü×î´óÒ²²»¿ÉÄÜ³¬¹ıNETWORK_MESSAGE_MAX_SIZE
+		// æŒ‰ç…§è®¾è®¡ä¸€ä¸ªåŒ…æœ€å¤§ä¹Ÿä¸å¯èƒ½è¶…è¿‡NETWORK_MESSAGE_MAX_SIZE
 		if(g_componentType == BOTS_TYPE || g_componentType == CLIENT_TYPE)
 		{
 			KBE_ASSERT(currMsgLength_ <= NETWORK_MESSAGE_MAX_SIZE);
 		}
 
-		// Èç¹ûÏûÏ¢³¤¶È´óÓÚµÈÓÚNETWORK_MESSAGE_MAX_SIZE
-		// Ê¹ÓÃÀ©Õ¹ÏûÏ¢³¤¶È»úÖÆ£¬ÏòÏûÏ¢³¤¶ÈºóÃæÔÙÌî³ä4×Ö½Ú
-		// ÓÃÓÚÃèÊö¸ü´óµÄ³¤¶È
+		// å¦‚æœæ¶ˆæ¯é•¿åº¦å¤§äºç­‰äºNETWORK_MESSAGE_MAX_SIZE
+		// ä½¿ç”¨æ‰©å±•æ¶ˆæ¯é•¿åº¦æœºåˆ¶ï¼Œå‘æ¶ˆæ¯é•¿åº¦åé¢å†å¡«å……4å­—èŠ‚
+		// ç”¨äºæè¿°æ›´å¤§çš„é•¿åº¦
 		if(currMsgLength_ >= NETWORK_MESSAGE_MAX_SIZE)
 		{
 			MessageLength1 ex_msg_length = currMsgLength_;
@@ -403,7 +403,7 @@ void Bundle::debugCurrentMessages(MessageID currMsgID, const Network::MessageHan
 
 	if (pCurrMsgHandler->msgLen == NETWORK_VARIABLE_MESSAGE)
 	{
-		// ÒòÎªBundle::finiMessageµÈµØ·½Óöµ½¿É±ä²ÎÊıÏûÏ¢Ê±½«³¤¶ÈÈ¥µôÁËÏûÏ¢Í·²¿£¬ÕâÀïÒª»¹Ô­ÏûÏ¢¾ÍÒª¼Ó»ØÀ´
+		// å› ä¸ºBundle::finiMessageç­‰åœ°æ–¹é‡åˆ°å¯å˜å‚æ•°æ¶ˆæ¯æ—¶å°†é•¿åº¦å»æ‰äº†æ¶ˆæ¯å¤´éƒ¨ï¼Œè¿™é‡Œè¦è¿˜åŸæ¶ˆæ¯å°±è¦åŠ å›æ¥
 		currMsgLength += NETWORK_MESSAGE_ID_SIZE;
 		currMsgLength += NETWORK_MESSAGE_LENGTH_SIZE;
 		if (currMsgLength - NETWORK_MESSAGE_ID_SIZE - NETWORK_MESSAGE_LENGTH_SIZE >= NETWORK_MESSAGE_MAX_SIZE)
@@ -421,11 +421,11 @@ void Bundle::debugCurrentMessages(MessageID currMsgID, const Network::MessageHan
 
 	MemoryStream* pMemoryStream = MemoryStream::createPoolObject(OBJECTPOOL_POINT);
 	
-	// Í¨¹ıÏûÏ¢³¤¶ÈÕÒµ½ÏûÏ¢Í·£¬È»ºó½«ÏûÏ¢ÄÚÈİÊä³ö
+	// é€šè¿‡æ¶ˆæ¯é•¿åº¦æ‰¾åˆ°æ¶ˆæ¯å¤´ï¼Œç„¶åå°†æ¶ˆæ¯å†…å®¹è¾“å‡º
 	int msglen = currMsgLength;
 	if(pCurrPacket)
 	{
-		// Èç¹ûµ±Ç°ÏûÏ¢ËùÓĞÄÚÈİ¶¼ÔÚµ±Ç°°üÖĞ£¬Ö±½ÓÊä³öÄÚÈİ¼´¿É
+		// å¦‚æœå½“å‰æ¶ˆæ¯æ‰€æœ‰å†…å®¹éƒ½åœ¨å½“å‰åŒ…ä¸­ï¼Œç›´æ¥è¾“å‡ºå†…å®¹å³å¯
 		msglen -= pCurrPacket->length();
 		if(msglen <= 0)
 		{
@@ -442,11 +442,11 @@ void Bundle::debugCurrentMessages(MessageID currMsgID, const Network::MessageHan
 
 				Network::Packet* pPacket = (*packiter);
 
-				// µ±Ç°°ü¿ÉÄÜÒÑ¾­¼ÆËã¹ı
+				// å½“å‰åŒ…å¯èƒ½å·²ç»è®¡ç®—è¿‡
 				if (pCurrPacket == pPacket)
 					continue;
 
-				// Èç¹ûËùÓĞÄÚÈİ¶¼ÔÚ°üÖĞ
+				// å¦‚æœæ‰€æœ‰å†…å®¹éƒ½åœ¨åŒ…ä¸­
 				if((int)pPacket->length() >= msglen)
 				{
 					int wpos = pPacket->length() - msglen;
@@ -456,15 +456,15 @@ void Bundle::debugCurrentMessages(MessageID currMsgID, const Network::MessageHan
 					{
 						Network::Packet* pPacket1 = packets[i];
 						
-						// Õâ¸ö°üÒÑ¾­ÔÚÉÏÃæ´¦Àí¹ıÁË
+						// è¿™ä¸ªåŒ…å·²ç»åœ¨ä¸Šé¢å¤„ç†è¿‡äº†
 						if (pPacket1 == pPacket || pCurrPacket == pPacket1)
 							continue;
 						
-						// ÆÚ¼äµÄ°üÄÚÈİÈ«²¿¼ÓÈë
+						// æœŸé—´çš„åŒ…å†…å®¹å…¨éƒ¨åŠ å…¥
 						pMemoryStream->append(pPacket1->data() + pPacket1->rpos(), pPacket1->length());
 					}
 					
-					// °Ñµ±Ç°µÄ°üÄÚÈİÈ«²¿¼Ó½øÈ¥
+					// æŠŠå½“å‰çš„åŒ…å†…å®¹å…¨éƒ¨åŠ è¿›å»
 					pMemoryStream->append(pCurrPacket->data() + pCurrPacket->rpos(), pCurrPacket->length());
 					break;
 				}
@@ -476,7 +476,7 @@ void Bundle::debugCurrentMessages(MessageID currMsgID, const Network::MessageHan
 		}
 	}
 	
-	// Ò»Ğ©sendto²Ù×÷µÄ°üµ¼ÖÂ, ÕâÀà°üÒ²²»ĞèÒª×·×Ù
+	// ä¸€äº›sendtoæ“ä½œçš„åŒ…å¯¼è‡´, è¿™ç±»åŒ…ä¹Ÿä¸éœ€è¦è¿½è¸ª
 	if(pMemoryStream->length() < NETWORK_MESSAGE_ID_SIZE)
 	{
 		MemoryStream::reclaimPoolObject(pMemoryStream);

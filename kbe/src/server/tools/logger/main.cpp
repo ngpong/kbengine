@@ -1,6 +1,6 @@
 // Copyright 2008-2018 Yolo Technologies, Inc. All Rights Reserved. https://www.comblockengine.com
 
-// logger需要增加吞吐量
+// logger闇�瑕佸鍔犲悶鍚愰噺
 #define PACKET_MAX_SIZE_TCP 65535
 
 #include "common/common.h"

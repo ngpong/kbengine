@@ -96,8 +96,8 @@ bool SyncAppDatasHandler::process()
 
 	std::string digest = EntityDef::md5().getDigestStr();
 
-	// Èç¹ûÊÇÁ¬½Óµ½dbmgrÔòĞèÒªµÈ´ı½ÓÊÕapp³õÊ¼ĞÅÏ¢
-	// ÀıÈç£º³õÊ¼»á·ÖÅäentityID¶ÎÒÔ¼°Õâ¸öappÆô¶¯µÄË³ĞòĞÅÏ¢£¨ÊÇ·ñµÚÒ»¸öbaseappÆô¶¯£©
+	// å¦‚æœæ˜¯è¿æ¥åˆ°dbmgråˆ™éœ€è¦ç­‰å¾…æ¥æ”¶appåˆå§‹ä¿¡æ¯
+	// ä¾‹å¦‚ï¼šåˆå§‹ä¼šåˆ†é…entityIDæ®µä»¥åŠè¿™ä¸ªappå¯åŠ¨çš„é¡ºåºä¿¡æ¯ï¼ˆæ˜¯å¦ç¬¬ä¸€ä¸ªbaseappå¯åŠ¨ï¼‰
 	iter = apps_.begin();
 	for(; iter != apps_.end(); ++iter)
 	{

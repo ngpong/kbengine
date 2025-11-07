@@ -74,7 +74,7 @@ void Interfaces::onShutdownBegin()
 {
 	PythonApp::onShutdownBegin();
 
-	// Í¨Öª½Å±¾
+	// é€šçŸ¥è„šæœ¬
 	SCOPED_PROFILE(SCRIPTCALL_PROFILE);
 	SCRIPT_OBJECT_CALL_ARGS0(getEntryScript().get(), const_cast<char*>("onInterfaceAppShutDown"), false);
 }
@@ -128,7 +128,7 @@ bool Interfaces::inInitialize()
 {
 	PythonApp::inInitialize();
 
-	// ¹ã²¥×Ô¼ºµÄµØÖ·¸øÍøÉÏÉÏµÄËùÓĞkbemachine
+	// å¹¿æ’­è‡ªå·±çš„åœ°å€ç»™ç½‘ä¸Šä¸Šçš„æ‰€æœ‰kbemachine
 	Components::getSingleton().pHandler(this);
 	return true;
 }
@@ -141,7 +141,7 @@ bool Interfaces::initializeEnd()
 	mainProcessTimer_ = this->dispatcher().addTimer(1000000 / g_kbeSrvConfig.gameUpdateHertz(), this,
 							reinterpret_cast<void *>(TIMEOUT_TICK));
 
-	// ²»×öÆµµÀ³¬Ê±¼ì²é
+	// ä¸åšé¢‘é“è¶…æ—¶æ£€æŸ¥
 	CLOSE_CHANNEL_INACTIVITIY_DETECTION();
 
 	if (!initDB())
@@ -149,7 +149,7 @@ bool Interfaces::initializeEnd()
 
 	SCOPED_PROFILE(SCRIPTCALL_PROFILE);
 
-	// ËùÓĞ½Å±¾¶¼¼ÓÔØÍê±Ï
+	// æ‰€æœ‰è„šæœ¬éƒ½åŠ è½½å®Œæ¯•
 	PyObject* pyResult = PyObject_CallMethod(getEntryScript().get(), 
 										const_cast<char*>("onInterfaceAppReady"), 
 										const_cast<char*>(""));
@@ -518,7 +518,7 @@ void Interfaces::reqCreateAccount(Network::Channel* pChannel, KBEngine::MemorySt
 
 	reqCreateAccount_requests_[pinfo->commitName] = pinfo;
 
-	// °ÑÇëÇó½»ÓÉ½Å±¾´¦Àí
+	// æŠŠè¯·æ±‚äº¤ç”±è„šæœ¬å¤„ç†
 	SCOPED_PROFILE(SCRIPTCALL_PROFILE);
 	SCOPED_PROFILE(SCRIPTCALL_CREATEACCOUNT_PROFILE);
 
@@ -542,7 +542,7 @@ void Interfaces::createAccountResponse(std::string commitName, std::string realA
 	REQCREATE_MAP::iterator iter = reqCreateAccount_requests_.find(commitName);
 	if (iter == reqCreateAccount_requests_.end())
 	{
-		// ÀíÂÛÉÏ²»¿ÉÄÜÕÒ²»µ½£¬µ«Èç¹ûÕæÕÒ²»µ½£¬ÕâÊÇ¸öºÜ¿Ö²ÀµÄÊÂÇé£¬±ØĞëĞ´ÈÕÖ¾¼ÇÂ¼ÏÂÀ´
+		// ç†è®ºä¸Šä¸å¯èƒ½æ‰¾ä¸åˆ°ï¼Œä½†å¦‚æœçœŸæ‰¾ä¸åˆ°ï¼Œè¿™æ˜¯ä¸ªå¾ˆææ€–çš„äº‹æƒ…ï¼Œå¿…é¡»å†™æ—¥å¿—è®°å½•ä¸‹æ¥
 		ERROR_MSG(fmt::format("Interfaces::createAccountResponse: accountName '{}' not found!" \
 			"realAccountName = '{}', extra datas = '{}', error code = '{}'\n", 
 			commitName, 
@@ -575,7 +575,7 @@ void Interfaces::createAccountResponse(std::string commitName, std::string realA
 		Network::Bundle::reclaimPoolObject(pBundle);
 	}
 
-	// ÇåÀí
+	// æ¸…ç†
 	reqCreateAccount_requests_.erase(iter);
 	delete task;
 }
@@ -630,7 +630,7 @@ void Interfaces::onAccountLogin(Network::Channel* pChannel, KBEngine::MemoryStre
 
 	reqAccountLogin_requests_[pinfo->commitName] = pinfo;
 
-	// °ÑÇëÇó½»ÓÉ½Å±¾´¦Àí
+	// æŠŠè¯·æ±‚äº¤ç”±è„šæœ¬å¤„ç†
 	SCOPED_PROFILE(SCRIPTCALL_PROFILE);
 	SCOPED_PROFILE(SCRIPTCALL_ACCOUNTLOGIN_PROFILE);
 
@@ -654,7 +654,7 @@ void Interfaces::accountLoginResponse(std::string commitName, std::string realAc
 	REQLOGIN_MAP::iterator iter = reqAccountLogin_requests_.find(commitName);
 	if (iter == reqAccountLogin_requests_.end())
 	{
-		// ÀíÂÛÉÏ²»¿ÉÄÜÕÒ²»µ½£¬µ«Èç¹ûÕæÕÒ²»µ½£¬ÕâÊÇ¸öºÜ¿Ö²ÀµÄÊÂÇé£¬±ØĞëĞ´ÈÕÖ¾¼ÇÂ¼ÏÂÀ´
+		// ç†è®ºä¸Šä¸å¯èƒ½æ‰¾ä¸åˆ°ï¼Œä½†å¦‚æœçœŸæ‰¾ä¸åˆ°ï¼Œè¿™æ˜¯ä¸ªå¾ˆææ€–çš„äº‹æƒ…ï¼Œå¿…é¡»å†™æ—¥å¿—è®°å½•ä¸‹æ¥
 		ERROR_MSG(fmt::format("Interfaces::accountLoginResponse: commitName '{}' not found! " \
 			"realAccountName = '{}', extra datas = '{}', error code = '{}'\n", 
 			commitName, 
@@ -687,7 +687,7 @@ void Interfaces::accountLoginResponse(std::string commitName, std::string realAc
 		Network::Bundle::reclaimPoolObject(pBundle);
 	}
 
-	// ÇåÀí
+	// æ¸…ç†
 	reqAccountLogin_requests_.erase(iter);
 	delete task;
 }
@@ -745,7 +745,7 @@ void Interfaces::charge(Network::Channel* pChannel, KBEngine::MemoryStream& s)
 	pinfo->pOrders = pOrdersCharge;
 	orders_[pOrdersCharge->ordersID].reset(pOrdersCharge);
 	
-	// °ÑÇëÇó½»ÓÉ½Å±¾´¦Àí
+	// æŠŠè¯·æ±‚äº¤ç”±è„šæœ¬å¤„ç†
 	SCOPED_PROFILE(SCRIPTCALL_PROFILE);
 	SCOPED_PROFILE(SCRIPTCALL_CHARGE_PROFILE);
 
@@ -773,9 +773,9 @@ void Interfaces::chargeResponse(std::string orderID, std::string extraDatas, KBE
 			extraDatas, 
 			errorCode));
 		
-		// ÕâÖÖÇé¿öÒ²ĞèÒªbaseapp´¦ÀíonLoseChargeCB
-		// ÀıÈçÄ³Ğ©Ê±ºò¿Í»§¶Ë³öÎÊÌâÎ´Ïò·şÎñÆ÷×¢²áÕâ¸ö¶©µ¥ºÅ£¬µ«ÊÇ¼Æ·ÑÆ½Ì¨ÓĞ·µ»ØµÄÇé¿ö
-		// ½«¶©µ¥·¢ËÍ¸ø×¢²áµÄËùÓĞµÄdbmgr
+		// è¿™ç§æƒ…å†µä¹Ÿéœ€è¦baseappå¤„ç†onLoseChargeCB
+		// ä¾‹å¦‚æŸäº›æ—¶å€™å®¢æˆ·ç«¯å‡ºé—®é¢˜æœªå‘æœåŠ¡å™¨æ³¨å†Œè¿™ä¸ªè®¢å•å·ï¼Œä½†æ˜¯è®¡è´¹å¹³å°æœ‰è¿”å›çš„æƒ…å†µ
+		// å°†è®¢å•å‘é€ç»™æ³¨å†Œçš„æ‰€æœ‰çš„dbmgr
 		const Network::NetworkInterface::ChannelMap& channels = Interfaces::getSingleton().networkInterface().channels();
 		if(channels.size() > 0)
 		{

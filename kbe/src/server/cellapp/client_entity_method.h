@@ -25,7 +25,7 @@ namespace KBEngine{
 
 class ClientEntityMethod : public script::ScriptObject
 {
-	/** ×ÓÀà»¯ ½«Ò»Ğ©py²Ù×÷Ìî³ä½øÅÉÉúÀà */
+	/** å­ç±»åŒ– å°†ä¸€äº›pyæ“ä½œå¡«å……è¿›æ´¾ç”Ÿç±» */
 	INSTANCE_SCRIPT_HREADER(ClientEntityMethod, script::ScriptObject)	
 public:	
 	ClientEntityMethod(PropertyDescription* pComponentPropertyDescription,
@@ -52,9 +52,9 @@ public:
 protected:
 	PropertyDescription*					pComponentPropertyDescription_;
 
-	const ScriptDefModule*					pScriptModule_;						// ¸ÃentityËùÊ¹ÓÃµÄ½Å±¾Ä£¿é¶ÔÏó
+	const ScriptDefModule*					pScriptModule_;						// è¯¥entityæ‰€ä½¿ç”¨çš„è„šæœ¬æ¨¡å—å¯¹è±¡
 
-	MethodDescription*						methodDescription_;					// Õâ¸ö·½·¨µÄÃèÊö
+	MethodDescription*						methodDescription_;					// è¿™ä¸ªæ–¹æ³•çš„æè¿°
 
 	ENTITY_ID								srcEntityID_;						// srcEntityID_
 

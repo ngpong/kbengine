@@ -27,7 +27,7 @@ void createMiniDump(EXCEPTION_POINTERS* pep)
 		}		
 	}
 	
-	// 每次都尝试创建一个存放CrashDump目录
+	// 姣忔閮藉皾璇曞垱寤轰竴涓瓨鏀綜rashDump鐩綍
 	CreateDirectory(L"CrashDumps", 0);
 
 	// Open the file 

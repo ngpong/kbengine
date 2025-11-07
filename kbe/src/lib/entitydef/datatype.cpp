@@ -1520,7 +1520,7 @@ void EntityCallType::addToStream(MemoryStream* mstream, PyObject* pyValue)
 	{
 		PyTypeObject* stype = script::ScriptObject::getScriptObjectType("Entity");
 		{
-			// ÊÇ·ñÊÇÒ»¸öentity?
+			// æ˜¯å¦æ˜¯ä¸€ä¸ªentity?
 			if(PyObject_IsInstance(pyValue, (PyObject *)stype))
 			{
 				PyObject* pyid = PyObject_GetAttrString(pyValue, "id");
@@ -1553,7 +1553,7 @@ void EntityCallType::addToStream(MemoryStream* mstream, PyObject* pyValue)
 				}
 				else
 				{
-					// Ä³Ğ©Çé¿öÏÂ»áÎªNULL£¬ ÀıÈç£ºÊ¹ÓÃÁËweakproxy£¬¶øentityCallÒÑ¾­±äÎªNULLÁË
+					// æŸäº›æƒ…å†µä¸‹ä¼šä¸ºNULLï¼Œ ä¾‹å¦‚ï¼šä½¿ç”¨äº†weakproxyï¼Œè€ŒentityCallå·²ç»å˜ä¸ºNULLäº†
 					SCRIPT_ERROR_CHECK();
 					id = 0;
 					cid = 0;
@@ -1561,7 +1561,7 @@ void EntityCallType::addToStream(MemoryStream* mstream, PyObject* pyValue)
 			}
 		}
 		
-		// Ö»ÄÜÊÇentityCall
+		// åªèƒ½æ˜¯entityCall
 		if(id == 0)
 		{
 			EntityCallAbstract* pEntityCallAbstract = static_cast<EntityCallAbstract*>(pyValue);
@@ -1590,7 +1590,7 @@ PyObject* EntityCallType::createFromStream(MemoryStream* mstream)
 
 		(*mstream) >> id >> cid >> type >> utype;
 
-		// ÔÊĞí´«ÊäPy_None
+		// å…è®¸ä¼ è¾“Py_None
 		if(id > 0)
 		{
 			if (entityCallType2ComponentType((ENTITYCALL_TYPE)type) == g_componentType)
@@ -2031,8 +2031,8 @@ PyObject* FixedDictType::createNewFromObj(PyObject* pyobj)
 		return impl_createObjFromDict(pyobj);
 	}
 
-	// ¿ÉÄÜÔÚ´«Èë²ÎÊıµÄÊ±ºòÒÑ¾­ÊÇFixedDictÀàĞÍÁË, ÒòÎªparseDefaultStr
-	// »á³õÊ¼Îª×îÖÕ¶ÔÏóÀàĞÍ
+	// å¯èƒ½åœ¨ä¼ å…¥å‚æ•°çš„æ—¶å€™å·²ç»æ˜¯FixedDictç±»å‹äº†, å› ä¸ºparseDefaultStr
+	// ä¼šåˆå§‹ä¸ºæœ€ç»ˆå¯¹è±¡ç±»å‹
 	if(PyObject_TypeCheck(pyobj, FixedDict::getScriptType()))
 	{
 		Py_INCREF(pyobj);
@@ -2409,8 +2409,8 @@ bool FixedDictType::setImplModule(PyObject* pyobj)
 //-------------------------------------------------------------------------------------
 PyObject* FixedDictType::impl_createObjFromDict(PyObject* dictData)
 {
-	// ¿ÉÄÜÔÚ´«Èë²ÎÊıµÄÊ±ºòÒÑ¾­ÊÇÓÃ»§ÀàĞÍÁË, ÒòÎªparseDefaultStr
-	// »á³õÊ¼Îª×îÖÕ¶ÔÏóÀàĞÍ
+	// å¯èƒ½åœ¨ä¼ å…¥å‚æ•°çš„æ—¶å€™å·²ç»æ˜¯ç”¨æˆ·ç±»å‹äº†, å› ä¸ºparseDefaultStr
+	// ä¼šåˆå§‹ä¸ºæœ€ç»ˆå¯¹è±¡ç±»å‹
 	if(!PyObject_TypeCheck(dictData, FixedDict::getScriptType()) && impl_isSameType(dictData))
 	{
 		Py_INCREF(dictData);
@@ -2506,8 +2506,8 @@ bool FixedDictType::isSameType(PyObject* pyValue)
 
 	if(hasImpl())
 	{
-		// ÕâÀï·µ»Øfalseºó»¹¼ÌĞøÅĞ¶ÏµÄÔ­ÒòÊÇisSameTypeÒòÎªÏà¹ØÌØĞÔ
-		// fixeddict»òÕßÓÃ»§²úÉúµÄÀà±ğ¶¼Ó¦¸ÃÊÇºÏ·¨µÄ
+		// è¿™é‡Œè¿”å›falseåè¿˜ç»§ç»­åˆ¤æ–­çš„åŸå› æ˜¯isSameTypeå› ä¸ºç›¸å…³ç‰¹æ€§
+		// fixeddictæˆ–è€…ç”¨æˆ·äº§ç”Ÿçš„ç±»åˆ«éƒ½åº”è¯¥æ˜¯åˆæ³•çš„
 		if(impl_isSameType(pyValue))
 			return true;
 	}
@@ -2787,7 +2787,7 @@ PyObject* EntityComponentType::parseDefaultStr(std::string defaultVal)
 
 	PyObject* pyobj = pScriptDefModule_->createObject();
 
-	// Ö´ĞĞEntityµÄ¹¹Ôìº¯Êı
+	// æ‰§è¡ŒEntityçš„æ„é€ å‡½æ•°
 	return new(pyobj) EntityComponent(EntityDef::context().currEntityID, pScriptDefModule_, EntityDef::context().currComponentType);
 }
 
@@ -2810,7 +2810,7 @@ void EntityComponentType::addPersistentToStream(MemoryStream* mstream, PyObject*
 		{
 			PropertyDescription* propertyDescription = iter->second;
 
-			// Èç¹ûÕâÀï´«ÈëµÄÊÇÒ»¸ö×Öµä£¬ÄÇÃ´¿Ï¶¨ÊÇÒ»¸öcelldata×Öµä£¬Òò´ËÕâÀïÖ»²éÕÒcellÊôĞÔ
+			// å¦‚æœè¿™é‡Œä¼ å…¥çš„æ˜¯ä¸€ä¸ªå­—å…¸ï¼Œé‚£ä¹ˆè‚¯å®šæ˜¯ä¸€ä¸ªcelldataå­—å…¸ï¼Œå› æ­¤è¿™é‡ŒåªæŸ¥æ‰¾cellå±æ€§
 			if (!propertyDescription->hasCell())
 				continue;
 
@@ -2866,7 +2866,7 @@ void EntityComponentType::addPersistentToStreamTemplates(ScriptDefModule* pScrip
 
 		if (propertyDescription->hasCell())
 		{
-			// Ò»Ğ©ÊµÌåÃ»ÓĞcell²¿·Ö£¬ Òò´ËcellÊôĞÔºöÂÔ
+			// ä¸€äº›å®ä½“æ²¡æœ‰celléƒ¨åˆ†ï¼Œ å› æ­¤cellå±æ€§å¿½ç•¥
 			if (!pScriptModule->hasCell())
 				continue;
 		}
@@ -2995,7 +2995,7 @@ PyObject* EntityComponentType::createFromStream(MemoryStream* mstream)
 
 	PyObject* pyobj = pScriptDefModule_->createObject();
 
-	// Ö´ĞĞEntityµÄ¹¹Ôìº¯Êı
+	// æ‰§è¡ŒEntityçš„æ„é€ å‡½æ•°
 	PyObject* pyEntityComponent = new(pyobj) EntityComponent(EntityDef::context().currEntityID, pScriptDefModule_, EntityDef::context().currComponentType);
 
 	EntityComponent* pEntityComponent = static_cast<EntityComponent*>(pyEntityComponent);
@@ -3009,7 +3009,7 @@ PyObject* EntityComponentType::createFromPersistentStream(ScriptDefModule* pScri
 
 	PyObject* pyobj = pScriptDefModule_->createObject();
 
-	// Ö´ĞĞEntityµÄ¹¹Ôìº¯Êı
+	// æ‰§è¡ŒEntityçš„æ„é€ å‡½æ•°
 	PyObject* pyEntityComponent = new(pyobj) EntityComponent(EntityDef::context().currEntityID, pScriptDefModule_, EntityDef::context().currComponentType);
 
 	EntityComponent* pEntityComponent = static_cast<EntityComponent*>(pyEntityComponent);

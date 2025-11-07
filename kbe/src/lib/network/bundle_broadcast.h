@@ -17,7 +17,7 @@ namespace Network
 class NetworkInterface;
 
 /*
-	���Է���Ĵ�����:��������ڹ㲥ĳЩ��Ϣ�� �������ռ������Ϣ��
+	可以方便的处理如:向局域网内广播某些信息， 并处理收集相关信息。
 */
 class BundleBroadcast : public Bundle
 {

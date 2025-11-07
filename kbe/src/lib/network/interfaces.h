@@ -9,7 +9,7 @@ namespace Network
 class Channel;
 class MessageHandler;
 
-/** ´ËÀà½Ó¿ÚÓÃÓÚ½ÓÊÕÆÕÍ¨µÄNetworkÊäÈëÏûÏ¢
+/** æ­¤ç±»æŽ¥å£ç”¨äºŽæŽ¥æ”¶æ™®é€šçš„Networkè¾“å…¥æ¶ˆæ¯
 */
 class InputNotificationHandler
 {
@@ -18,7 +18,7 @@ public:
 	virtual int handleInputNotification(int fd) = 0;
 };
 
-/** ´ËÀà½Ó¿ÚÓÃÓÚ½ÓÊÕÆÕÍ¨µÄNetworkÊä³öÏûÏ¢
+/** æ­¤ç±»æŽ¥å£ç”¨äºŽæŽ¥æ”¶æ™®é€šçš„Networkè¾“å‡ºæ¶ˆæ¯
 */
 class OutputNotificationHandler
 {
@@ -27,7 +27,7 @@ public:
 	virtual int handleOutputNotification(int fd) = 0;
 };
 
-/** ´ËÀà½Ó¿ÚÓÃÓÚ½ÓÊÕÒ»¸öÍøÂçÍ¨µÀ³¬Ê±ÏûÏ¢
+/** æ­¤ç±»æŽ¥å£ç”¨äºŽæŽ¥æ”¶ä¸€ä¸ªç½‘ç»œé€šé“è¶…æ—¶æ¶ˆæ¯
 */
 class ChannelTimeOutHandler
 {
@@ -35,7 +35,7 @@ public:
 	virtual void onChannelTimeOut(Channel * pChannel) = 0;
 };
 
-/** ´ËÀà½Ó¿ÚÓÃÓÚ½ÓÊÕÒ»¸öÄÚ²¿ÍøÂçÍ¨µÀÈ¡Ïû×¢²á
+/** æ­¤ç±»æŽ¥å£ç”¨äºŽæŽ¥æ”¶ä¸€ä¸ªå†…éƒ¨ç½‘ç»œé€šé“å–æ¶ˆæ³¨å†Œ
 */
 class ChannelDeregisterHandler
 {
@@ -43,7 +43,7 @@ public:
 	virtual void onChannelDeregister(Channel * pChannel) = 0;
 };
 
-/** ´ËÀà½Ó¿ÚÓÃÓÚ¼àÌýNetworkStatsÊÂ¼þ
+/** æ­¤ç±»æŽ¥å£ç”¨äºŽç›‘å¬NetworkStatsäº‹ä»¶
 */
 class NetworkStatsHandler
 {

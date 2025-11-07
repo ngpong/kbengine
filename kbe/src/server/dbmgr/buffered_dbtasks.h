@@ -14,7 +14,7 @@
 namespace KBEngine { 
 
 /*
-	数据库线程任务buffer
+	鏁版嵁搴撶嚎绋嬩换鍔uffer
 */
 
 class Buffered_DBTasks
@@ -89,7 +89,7 @@ public:
 	const std::string& dbInterfaceName() { return dbInterfaceName_; }
 
 	/**
-		提供给watcher使用
+		鎻愪緵缁檞atcher浣跨敤
 	*/
 	uint32 dbid_tasksSize()
 	{ 
@@ -100,7 +100,7 @@ public:
 	}
 
 	/**
-		提供给watcher使用
+		鎻愪緵缁檞atcher浣跨敤
 	*/
 	uint32 entityid_tasksSize()
 	{ 
@@ -111,7 +111,7 @@ public:
 	}
 
 	/**
-		提供给watcher使用
+		鎻愪緵缁檞atcher浣跨敤
 	*/
 	std::string printBuffered_dbid();
 	std::string printBuffered_entityID();

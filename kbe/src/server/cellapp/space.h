@@ -30,7 +30,7 @@ namespace KBEngine{
 
 class Space : public Entity
 {
-	/** 子类化将一些py操作填充进派生类 */
+	/** 瀛愮被鍖栧皢涓�浜沺y鎿嶄綔濉厖杩涙淳鐢熺被 */
 	BASE_SCRIPT_HREADER(Space, Entity)
 
 public:

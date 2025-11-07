@@ -26,11 +26,11 @@ public:
 	InterfacesTask();
 	virtual ~InterfacesTask();
 	
-	std::string commitName;			// Ìá½»Ê±ÓÃµÄÃû³Æ
-	std::string accountName;		// ÔÚÓÎÏ··şÎñÆ÷Êı¾İ¿âÖĞÓëaccount°ó¶¨µÄÃû³Æ
-	std::string password;			// ÃÜÂë
-	std::string postDatas;			// Ìá½»µÄ¸½´øÊı¾İ
-	std::string getDatas;			// ·µ»Ø¸ø¿Í»§¶ËµÄ¸½´øÊı¾İ
+	std::string commitName;			// æäº¤æ—¶ç”¨çš„åç§°
+	std::string accountName;		// åœ¨æ¸¸æˆæœåŠ¡å™¨æ•°æ®åº“ä¸­ä¸accountç»‘å®šçš„åç§°
+	std::string password;			// å¯†ç 
+	std::string postDatas;			// æäº¤çš„é™„å¸¦æ•°æ®
+	std::string getDatas;			// è¿”å›ç»™å®¢æˆ·ç«¯çš„é™„å¸¦æ•°æ®
 	COMPONENT_ID baseappID;
 	COMPONENT_ID dbmgrID;
 	SERVER_ERROR_CODE retcode;

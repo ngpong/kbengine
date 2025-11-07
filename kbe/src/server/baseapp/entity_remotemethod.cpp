@@ -41,7 +41,7 @@ PyObject* EntityRemoteMethod::tp_call(PyObject* self, PyObject* args,
 	MethodDescription* methodDescription = rmethod->getDescription();
 	EntityCallAbstract* entityCall = rmethod->getEntityCall();
 
-	if (!entityCall->isClient() || entityCall->type() == ENTITYCALL_TYPE_CLIENT_VIA_CELL /* ÐèÒªÏÈ¾­¹ýcell */ )
+	if (!entityCall->isClient() || entityCall->type() == ENTITYCALL_TYPE_CLIENT_VIA_CELL /* éœ€è¦å…ˆç»è¿‡cell */ )
 	{
 		return RemoteEntityMethod::tp_call(self, args, kwds);
 	}
@@ -55,7 +55,7 @@ PyObject* EntityRemoteMethod::tp_call(PyObject* self, PyObject* args,
 		return RemoteEntityMethod::tp_call(self, args, kwds);
 	}
 
-	// Èç¹ûÊÇµ÷ÓÃ¿Í»§¶Ë·½·¨£¬ ÎÒÃÇ¼ÇÂ¼ÊÂ¼þ²¢ÇÒ¼ÇÂ¼´ø¿í
+	// å¦‚æžœæ˜¯è°ƒç”¨å®¢æˆ·ç«¯æ–¹æ³•ï¼Œ æˆ‘ä»¬è®°å½•äº‹ä»¶å¹¶ä¸”è®°å½•å¸¦å®½
 	if(methodDescription->checkArgs(args))
 	{
 		Network::Bundle* pBundle = Network::Bundle::createPoolObject(OBJECTPOOL_POINT);
@@ -79,7 +79,7 @@ PyObject* EntityRemoteMethod::tp_call(PyObject* self, PyObject* args,
 		if(mstream->wpos() > 0)
 			(*pBundle).append(mstream->data(), (int)mstream->wpos());
 
-		// ¼ÇÂ¼Õâ¸öÊÂ¼þ²úÉúµÄÊý¾ÝÁ¿´óÐ¡
+		// è®°å½•è¿™ä¸ªäº‹ä»¶äº§ç”Ÿçš„æ•°æ®é‡å¤§å°
 		g_privateClientEventHistoryStats.trackEvent(pEntity->scriptName(), 
 			methodDescription->getName(), 
 			pBundle->currMsgLength(), 

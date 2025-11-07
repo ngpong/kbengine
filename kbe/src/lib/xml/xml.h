@@ -1,8 +1,8 @@
 // Copyright 2008-2018 Yolo Technologies, Inc. All Rights Reserved. https://www.comblockengine.com
 
 /*
-	xml ¶ÁĞ´£º
-		Àı×Ó:	
+	xml è¯»å†™ï¼š
+		ä¾‹å­:	
 				<root>
 					<server>
 						<ip>172.16.0.12</ip>
@@ -20,12 +20,12 @@
 				XML_FOR_END(node);
 				
 				delete xml;
-		Êä³ö:
+		è¾“å‡º:
 				---ip---172.16.0.12
 				---port---6000
 				
 
-		Àı×Ó2:
+		ä¾‹å­2:
 				XML* xml = new XML("KBEngine.xml");
 				TiXmlNode* serverNode = xml->getRootNode("server");
 				
@@ -36,7 +36,7 @@
 				node = xml->enterNode(serverNode, "port");		
 				printf("%s\n", xml->getValStr(node).c_str() );	
 			
-		Êä³ö:
+		è¾“å‡º:
 			172.16.0.12
 			6000
 */
@@ -116,10 +116,10 @@ public:
 		return true;
 	}
 
-	/**»ñÈ¡¸ùÔªËØ*/
+	/**è·å–æ ¹å…ƒç´ */
 	TiXmlElement* getRootElement(void){return rootElement_;}
 
-	/**»ñÈ¡¸ù½Úµã£¬ ´ø²ÎÊıkeyÎª·¶Î§¸ù½ÚµãÏÂµÄÄ³¸ö×Ó½Úµã¸ù*/
+	/**è·å–æ ¹èŠ‚ç‚¹ï¼Œ å¸¦å‚æ•°keyä¸ºèŒƒå›´æ ¹èŠ‚ç‚¹ä¸‹çš„æŸä¸ªå­èŠ‚ç‚¹æ ¹*/
 	TiXmlNode* getRootNode(const char* key = "")
 	{
 		if(rootElement_ == NULL)
@@ -134,7 +134,7 @@ public:
 		return rootElement_->FirstChild();
 	}
 
-	/**Ö±½Ó·µ»ØÒª½øÈëµÄkey½ÚµãÖ¸Õë*/
+	/**ç›´æ¥è¿”å›è¦è¿›å…¥çš„keyèŠ‚ç‚¹æŒ‡é’ˆ*/
 	TiXmlNode* enterNode(TiXmlNode* node, const char* key)
 	{
 		do
@@ -161,7 +161,7 @@ public:
 		return NULL;
 	}
 
-	/**ÊÇ·ñ´æÔÚÕâÑùÒ»¸ökey*/
+	/**æ˜¯å¦å­˜åœ¨è¿™æ ·ä¸€ä¸ªkey*/
 	bool hasNode(TiXmlNode* node, const char* key)
 	{
 		do{

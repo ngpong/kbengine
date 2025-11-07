@@ -72,7 +72,7 @@ public:
 	void handleTimeout(TimerHandle handle, void * arg);
 	void handleTick();
 
-	/* ³õÊ¼»¯Ïà¹Ø½Ó¿Ú */
+	/* åˆå§‹åŒ–ç›¸å…³æ¥å£ */
 	bool initializeBegin();
 	bool inInitialize();
 	bool initializeEnd();
@@ -86,23 +86,23 @@ public:
 		return (uint32)buffered_logs_.size();
 	}
 
-	/** ÍøÂç½Ó¿Ú
-		Ğ´ÈÕÖ¾
+	/** ç½‘ç»œæ¥å£
+		å†™æ—¥å¿—
 	*/
 	void writeLog(Network::Channel* pChannel, KBEngine::MemoryStream& s);
 
-	/** ÍøÂç½Ó¿Ú
-		×¢²álog¼àÌıÕß
+	/** ç½‘ç»œæ¥å£
+		æ³¨å†Œlogç›‘å¬è€…
 	*/
 	void registerLogWatcher(Network::Channel* pChannel, KBEngine::MemoryStream& s);
 
-	/** ÍøÂç½Ó¿Ú
-		×¢Ïúlog¼àÌıÕß
+	/** ç½‘ç»œæ¥å£
+		æ³¨é”€logç›‘å¬è€…
 	*/
 	void deregisterLogWatcher(Network::Channel* pChannel, KBEngine::MemoryStream& s);
 
-	/** ÍøÂç½Ó¿Ú
-		log¼àÌıÕß¸üĞÂ×Ô¼ºµÄÉèÖÃ
+	/** ç½‘ç»œæ¥å£
+		logç›‘å¬è€…æ›´æ–°è‡ªå·±çš„è®¾ç½®
 	*/
 	void updateLogWatcherSetting(Network::Channel* pChannel, KBEngine::MemoryStream& s);
 

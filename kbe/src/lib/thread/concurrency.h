@@ -16,7 +16,7 @@ namespace KBEConcurrency
 {
 
 /**
-	主线程处于空闲时触发
+	涓荤嚎绋嬪浜庣┖闂叉椂瑙﹀彂
 */
 inline void onStartMainThreadIdling()
 {
@@ -25,7 +25,7 @@ inline void onStartMainThreadIdling()
 }
 
 /**
-	主线程结束空闲开始繁忙时触发
+	涓荤嚎绋嬬粨鏉熺┖闂插紑濮嬬箒蹇欐椂瑙﹀彂
 */
 inline void onEndMainThreadIdling()
 {
@@ -34,8 +34,8 @@ inline void onEndMainThreadIdling()
 }
 
 /**
-	设置回调函数
-	当回调触发时通知他们
+	璁剧疆鍥炶皟鍑芥暟
+	褰撳洖璋冭Е鍙戞椂閫氱煡浠栦滑
 */
 inline void setMainThreadIdleCallbacks(void (*pStartCallback)(), void (*pEndCallback)())
 {

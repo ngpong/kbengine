@@ -22,75 +22,75 @@ char _g_state_str[][256] = {
 };
 
 /*
-	¸ñÊ½: echo "\033[×Ö±³¾°ÑÕÉ«;×ÖÌåÑÕÉ«m×Ö·û´®\033[0m" 
+	æ ¼å¼: echo "\033[å­—èƒŒæ™¯é¢œè‰²;å­—ä½“é¢œè‰²må­—ç¬¦ä¸²\033[0m" 
 
-	ÀıÈç: 
+	ä¾‹å¦‚: 
 	echo "\033[41;36m something here \033[0m"  
 
-	ÆäÖĞ41µÄÎ»ÖÃ´ú±íµ×É«, 36µÄÎ»ÖÃÊÇ´ú±í×ÖµÄÑÕÉ« 
+	å…¶ä¸­41çš„ä½ç½®ä»£è¡¨åº•è‰², 36çš„ä½ç½®æ˜¯ä»£è¡¨å­—çš„é¢œè‰² 
 
 
-	ÄÇĞ©ascii code ÊÇ¶ÔÑÕÉ«µ÷ÓÃµÄÊ¼Ä©.  
-	\033[ ; m ¡­¡­ \033[0m  
+	é‚£äº›ascii code æ˜¯å¯¹é¢œè‰²è°ƒç”¨çš„å§‹æœ«.  
+	\033[ ; m â€¦â€¦ \033[0m  
 
 
 
-	×Ö±³¾°ÑÕÉ«·¶Î§:40----49 
-	40:ºÚ 
-	41:Éîºì 
-	42:ÂÌ 
-	43:»ÆÉ« 
-	44:À¶É« 
-	45:×ÏÉ« 
-	46:ÉîÂÌ 
-	47:°×É« 
+	å­—èƒŒæ™¯é¢œè‰²èŒƒå›´:40----49 
+	40:é»‘ 
+	41:æ·±çº¢ 
+	42:ç»¿ 
+	43:é»„è‰² 
+	44:è“è‰² 
+	45:ç´«è‰² 
+	46:æ·±ç»¿ 
+	47:ç™½è‰² 
 
-	×ÖÑÕÉ«:30-----------39 
-	30:ºÚ 
-	31:ºì 
-	32:ÂÌ 
-	33:»Æ 
-	34:À¶É« 
-	35:×ÏÉ« 
-	36:ÉîÂÌ 
-	37:°×É« 
+	å­—é¢œè‰²:30-----------39 
+	30:é»‘ 
+	31:çº¢ 
+	32:ç»¿ 
+	33:é»„ 
+	34:è“è‰² 
+	35:ç´«è‰² 
+	36:æ·±ç»¿ 
+	37:ç™½è‰² 
 
-	\33[0m ¹Ø±ÕËùÓĞÊôĞÔ  
-	\33[1m ÉèÖÃ¸ßÁÁ¶È  
-	\33[4m ÏÂ»®Ïß  
-	\33[5m ÉÁË¸  
-	\33[7m ·´ÏÔ  
-	\33[8m ÏûÒş  
-	\33[30m -- \33[37m ÉèÖÃÇ°¾°É«  
-	\33[40m -- \33[47m ÉèÖÃ±³¾°É«  
-	\33[nA ¹â±êÉÏÒÆnĞĞ  
-	\33[nB ¹â±êÏÂÒÆnĞĞ  
-	\33[nC ¹â±êÓÒÒÆnĞĞ  
-	\33[nD ¹â±ê×óÒÆnĞĞ  
-	\33[y;xHÉèÖÃ¹â±êÎ»ÖÃ  
-	\33[2J ÇåÆÁ  
-	\33[K Çå³ı´Ó¹â±êµ½ĞĞÎ²µÄÄÚÈİ  
-	\33[s ±£´æ¹â±êÎ»ÖÃ  
-	\33[u »Ö¸´¹â±êÎ»ÖÃ  
-	\33[?25l Òş²Ø¹â±ê  
-	\33[?25h ÏÔÊ¾¹â±ê  
+	\33[0m å…³é—­æ‰€æœ‰å±æ€§  
+	\33[1m è®¾ç½®é«˜äº®åº¦  
+	\33[4m ä¸‹åˆ’çº¿  
+	\33[5m é—ªçƒ  
+	\33[7m åæ˜¾  
+	\33[8m æ¶ˆéš  
+	\33[30m -- \33[37m è®¾ç½®å‰æ™¯è‰²  
+	\33[40m -- \33[47m è®¾ç½®èƒŒæ™¯è‰²  
+	\33[nA å…‰æ ‡ä¸Šç§»nè¡Œ  
+	\33[nB å…‰æ ‡ä¸‹ç§»nè¡Œ  
+	\33[nC å…‰æ ‡å³ç§»nè¡Œ  
+	\33[nD å…‰æ ‡å·¦ç§»nè¡Œ  
+	\33[y;xHè®¾ç½®å…‰æ ‡ä½ç½®  
+	\33[2J æ¸…å±  
+	\33[K æ¸…é™¤ä»å…‰æ ‡åˆ°è¡Œå°¾çš„å†…å®¹  
+	\33[s ä¿å­˜å…‰æ ‡ä½ç½®  
+	\33[u æ¢å¤å…‰æ ‡ä½ç½®  
+	\33[?25l éšè—å…‰æ ‡  
+	\33[?25h æ˜¾ç¤ºå…‰æ ‡  
 
-	Ê¹ÓÃ¸ñÊ½ÄÜ¸ü¸´ÔÓ£º 
+	ä½¿ç”¨æ ¼å¼èƒ½æ›´å¤æ‚ï¼š 
 	^[[..m;..m;..m;..m
-	ÀıÈç£º \033[2;7;1m¸ßÁÁ\033[2;7;0m
+	ä¾‹å¦‚ï¼š \033[2;7;1mé«˜äº®\033[2;7;0m
 */
 
-#define TELNET_CMD_LEFT							"\033[D"			// ×ó
-#define TELNET_CMD_RIGHT						"\033[C"			// ÓÒ
-#define TELNET_CMD_UP							"\033[A"			// ÉÏ
-#define TELNET_CMD_DOWN							"\033[B"			// ÏÂ
-#define TELNET_CMD_HOME							"\033[1~"			// ÒÆµ½ĞĞÊ×
-#define TELNET_CMD_END							"\033[4~"			// ÒÆµ½ĞĞÎ²
+#define TELNET_CMD_LEFT							"\033[D"			// å·¦
+#define TELNET_CMD_RIGHT						"\033[C"			// å³
+#define TELNET_CMD_UP							"\033[A"			// ä¸Š
+#define TELNET_CMD_DOWN							"\033[B"			// ä¸‹
+#define TELNET_CMD_HOME							"\033[1~"			// ç§»åˆ°è¡Œé¦–
+#define TELNET_CMD_END							"\033[4~"			// ç§»åˆ°è¡Œå°¾
 
-#define TELNET_CMD_DEL							"\033[K"			// É¾³ı×Ö·û
-#define TELNET_CMD_NEWLINE						"\r\n"				// ĞÂĞĞ
-#define TELNET_CMD_MOVE_FOCUS_LEFT_MAX			"\33[9999999999D"	// ×óÒÆ¹â±êµ½×îÇ°Ãæ
-#define TELNET_CMD_MOVE_FOCUS_RIGHT_MAX			"\33[9999999999C"	// ÓÒÒÆ¹â±êµ½×îºóÃæ
+#define TELNET_CMD_DEL							"\033[K"			// åˆ é™¤å­—ç¬¦
+#define TELNET_CMD_NEWLINE						"\r\n"				// æ–°è¡Œ
+#define TELNET_CMD_MOVE_FOCUS_LEFT_MAX			"\33[9999999999D"	// å·¦ç§»å…‰æ ‡åˆ°æœ€å‰é¢
+#define TELNET_CMD_MOVE_FOCUS_RIGHT_MAX			"\33[9999999999C"	// å³ç§»å…‰æ ‡åˆ°æœ€åé¢
 
 #define IAC_TERMIAL_TYPE_ANSI					"ANSI"
 #define IAC_TERMIAL_TYPE_VT100					"VT100"
@@ -102,17 +102,17 @@ const int TERMINAL_ANSI							= 1;
 const int TERMINAL_VT100						= 2;
 const int TERMINAL_XTERM						= 3;
 
-//telnetĞ­Òé
-const unsigned char IAC							= 255;					//Êı¾İ×Ö½Ú255
-const unsigned char DONT						= 254;					//Ñ¡ÏîĞ­ÉÌ£¬·¢ËÍ·½ÏëÈÃ½ÓÊÕ¶ËÈ¥½ûÖ¹Ñ¡Ïî
-const unsigned char DO							= 253;					//Ñ¡ÏîĞ­ÉÌ,·¢ËÍ·½Ïë½Ğ½ÓÊÕ¶Ë¼¤»îÑ¡Ïî
-const unsigned char WONT						= 252;					//Ñ¡ÏîĞ­ÉÌ,·¢ËÍ·½±¾ÉíÏë½ûÖ¹Ñ¡Ïî
-const unsigned char WILL						= 251;					//Ñ¡ÏîĞ­ÉÌ,·¢ËÍ·½±¾Éí½«¼¤»îÑ¡Ïî
-const unsigned char SB							= 250;					//×ÓÑ¡Ïî¿ªÊ¼
-const unsigned char SE							= 240;					//×ÓÑ¡Ïî½áÊø
-const unsigned char ECHO						= 1;					//»ØÏÔ
-const unsigned char SUPPRESS_GO_AHEAD			= 3;					//ÒÖÖÆ¼ÌĞø½øĞĞ
-const unsigned char TT							= 24;					//ÖÕ¶ËÀàĞÍ
+//telnetåè®®
+const unsigned char IAC							= 255;					//æ•°æ®å­—èŠ‚255
+const unsigned char DONT						= 254;					//é€‰é¡¹åå•†ï¼Œå‘é€æ–¹æƒ³è®©æ¥æ”¶ç«¯å»ç¦æ­¢é€‰é¡¹
+const unsigned char DO							= 253;					//é€‰é¡¹åå•†,å‘é€æ–¹æƒ³å«æ¥æ”¶ç«¯æ¿€æ´»é€‰é¡¹
+const unsigned char WONT						= 252;					//é€‰é¡¹åå•†,å‘é€æ–¹æœ¬èº«æƒ³ç¦æ­¢é€‰é¡¹
+const unsigned char WILL						= 251;					//é€‰é¡¹åå•†,å‘é€æ–¹æœ¬èº«å°†æ¿€æ´»é€‰é¡¹
+const unsigned char SB							= 250;					//å­é€‰é¡¹å¼€å§‹
+const unsigned char SE							= 240;					//å­é€‰é¡¹ç»“æŸ
+const unsigned char ECHO						= 1;					//å›æ˜¾
+const unsigned char SUPPRESS_GO_AHEAD			= 3;					//æŠ‘åˆ¶ç»§ç»­è¿›è¡Œ
+const unsigned char TT							= 24;					//ç»ˆç«¯ç±»å‹
 
 //-------------------------------------------------------------------------------------
 TelnetHandler::TelnetHandler(Network::EndPoint* pEndPoint, TelnetServer* pTelnetServer, Network::NetworkInterface* pNetworkInterface, TELNET_STATE defstate):
@@ -318,13 +318,13 @@ void TelnetHandler::onRecvInput(const char *buffer, int size)
 
 			break;
 		}
-		case 8:		// ÍË¸ñ
+		case 8:		// é€€æ ¼
 		case 0x7f: // delete
 		{
 			processBackSpace();
 			break;
 		}
-		case 27:	// vt100ÃüÁîÂë: 0x1b
+		case 27:	// vt100å‘½ä»¤ç : 0x1b
 		{
 			std::string s = "";
 			std::string vt100cmd(s + c);
@@ -339,22 +339,22 @@ void TelnetHandler::onRecvInput(const char *buffer, int size)
 				vt100cmd.append(s + c);
 				switch (c)
 				{
-				case 'A': // ¹â±êÉÏÒÆnĞĞ
-				case 'B': // ¹â±êÏÂÒÆnĞĞ
-				case 'C': // ¹â±êÓÒÒÆnÁĞ
-				case 'D': // ¹â±ê×óÒÆnÁĞ
-				case '~': // home¡¢endµÈ
+				case 'A': // å…‰æ ‡ä¸Šç§»nè¡Œ
+				case 'B': // å…‰æ ‡ä¸‹ç§»nè¡Œ
+				case 'C': // å…‰æ ‡å³ç§»nåˆ—
+				case 'D': // å…‰æ ‡å·¦ç§»nåˆ—
+				case '~': // homeã€endç­‰
 					shouldBeContinue = false;
 					break;
 
-				case 'm': // ÑÕÉ«µÈÊôĞÔ»òÃüÁî
-				case 'J': // ÇåÆÁ
-				case 'K': // Çå³ı´Ó¹â±êµ½ĞĞÎ²µÄÄÚÈİ
-				case 's': // ±£´æ¹â±êÎ»ÖÃ
-				case 'u': // »Ö¸´¹â±êÎ»ÖÃ
-				case 'l': // Òş²Ø¹â±ê
-				case 'h': // ÏÔÊ¾¹â±ê
-				case 'H': // ÉèÖÃ¹â±êÎ»ÖÃ
+				case 'm': // é¢œè‰²ç­‰å±æ€§æˆ–å‘½ä»¤
+				case 'J': // æ¸…å±
+				case 'K': // æ¸…é™¤ä»å…‰æ ‡åˆ°è¡Œå°¾çš„å†…å®¹
+				case 's': // ä¿å­˜å…‰æ ‡ä½ç½®
+				case 'u': // æ¢å¤å…‰æ ‡ä½ç½®
+				case 'l': // éšè—å…‰æ ‡
+				case 'h': // æ˜¾ç¤ºå…‰æ ‡
+				case 'H': // è®¾ç½®å…‰æ ‡ä½ç½®
 				default:
 					break;
 				}
@@ -362,8 +362,8 @@ void TelnetHandler::onRecvInput(const char *buffer, int size)
 
 			if (!checkUDLR(vt100cmd))
 			{
-				// °Ñ²»ÈÏÊ¶µÄÃüÁîÔ­ÑùÊä³ö,µ«»á°ÑÃüÁî·û¸Ä³É¡°^¡±
-				// ÒÔ±ÜÃâ¿Í»§¶Ë´¥·¢ÃüÁî²Ù×÷
+				// æŠŠä¸è®¤è¯†çš„å‘½ä»¤åŸæ ·è¾“å‡º,ä½†ä¼šæŠŠå‘½ä»¤ç¬¦æ”¹æˆâ€œ^â€
+				// ä»¥é¿å…å®¢æˆ·ç«¯è§¦å‘å‘½ä»¤æ“ä½œ
 				vt100cmd[0] = '^';
 				command_.insert(currPos_, vt100cmd);
 				currPos_ += vt100cmd.length();
@@ -381,7 +381,7 @@ void TelnetHandler::onRecvInput(const char *buffer, int size)
 			}
 			break;
 		}
-		case -1: //iacÃüÁî,telnetĞ­Òé
+		case -1: //iacå‘½ä»¤,telnetåè®®
 		{
 			std::string iaccmd(1, c);
 			while (idx < size)
@@ -398,7 +398,7 @@ void TelnetHandler::onRecvInput(const char *buffer, int size)
 				std::string s = "";
 				s += c;
 
-				//×÷»ØÏÔ
+				//ä½œå›æ˜¾
 				if (state_ != TELNET_STATE_PASSWD)
 				{
 					pEndPoint_->send(s.c_str(), s.size());
@@ -428,7 +428,7 @@ void TelnetHandler::checkAfterStr()
 //-------------------------------------------------------------------------------------
 bool TelnetHandler::checkUDLR(const std::string &cmd)
 {
-	if (cmd.find(TELNET_CMD_UP) != std::string::npos)		// ÉÏ 
+	if (cmd.find(TELNET_CMD_UP) != std::string::npos)		// ä¸Š 
 	{
 		pEndPoint_->send(TELNET_CMD_MOVE_FOCUS_LEFT_MAX, strlen(TELNET_CMD_MOVE_FOCUS_LEFT_MAX));
 		sendDelChar();
@@ -448,7 +448,7 @@ bool TelnetHandler::checkUDLR(const std::string &cmd)
 		currPos_ = s.size();
 		return true;
 	}
-	else if (cmd.find(TELNET_CMD_DOWN) != std::string::npos)	// ÏÂ
+	else if (cmd.find(TELNET_CMD_DOWN) != std::string::npos)	// ä¸‹
 	{
 		pEndPoint_->send(TELNET_CMD_MOVE_FOCUS_LEFT_MAX, strlen(TELNET_CMD_MOVE_FOCUS_LEFT_MAX));
 		sendDelChar();
@@ -468,7 +468,7 @@ bool TelnetHandler::checkUDLR(const std::string &cmd)
 		currPos_ = s.size();
 		return true;
 	}
-	else if (cmd.find(TELNET_CMD_RIGHT) != std::string::npos)	// ÓÒ
+	else if (cmd.find(TELNET_CMD_RIGHT) != std::string::npos)	// å³
 	{
 		int cmdlen = strlen(TELNET_CMD_RIGHT);
 		if(currPos_ < (int)command_.size())
@@ -478,7 +478,7 @@ bool TelnetHandler::checkUDLR(const std::string &cmd)
 		}
 		return true;
 	}
-	else if (cmd.find(TELNET_CMD_LEFT) != std::string::npos)	// ×ó 
+	else if (cmd.find(TELNET_CMD_LEFT) != std::string::npos)	// å·¦ 
 	{
 		int cmdlen = strlen(TELNET_CMD_LEFT);
 		if(currPos_ > 0)
@@ -488,7 +488,7 @@ bool TelnetHandler::checkUDLR(const std::string &cmd)
 		}
 		return true;
 	}
-	else if (cmd.find(TELNET_CMD_HOME) != std::string::npos)	// ÒÆ¶¯µ½ĞĞÊ×
+	else if (cmd.find(TELNET_CMD_HOME) != std::string::npos)	// ç§»åŠ¨åˆ°è¡Œé¦–
 	{
 		if (currPos_ > 0)
 		{
@@ -498,7 +498,7 @@ bool TelnetHandler::checkUDLR(const std::string &cmd)
 		}
 		return true;
 	}
-	else if (cmd.find(TELNET_CMD_END) != std::string::npos)	    // ÒÆ¶¯µ½ĞĞÎ²
+	else if (cmd.find(TELNET_CMD_END) != std::string::npos)	    // ç§»åŠ¨åˆ°è¡Œå°¾
 	{
 		if (currPos_ != (int32)command_.length())
 		{
@@ -813,7 +813,7 @@ void TelnetHandler::processPythonCommand(std::string command)
 
 	pTelnetServer_->pScript()->run_simpleString(PyBytes_AsString(pycmd1), &retbuf);
 
-	// °Ñ·µ»ØÖµÖĞµÄ'\n'Ìæ“Q³É'\r\n'£¬ÒÔ½â¾öÔÚvt100ÖÕ¶ËÖĞÏÔÊ¾²»ÕıÈ·µÄÎÊÌâ
+	// æŠŠè¿”å›å€¼ä¸­çš„'\n'æ›¿æ›æˆ'\r\n'ï¼Œä»¥è§£å†³åœ¨vt100ç»ˆç«¯ä¸­æ˜¾ç¤ºä¸æ­£ç¡®çš„é—®é¢˜
 	std::string::size_type pos = 0;
 	while ((pos = retbuf.find('\n', pos)) != std::string::npos)
 	{
@@ -827,7 +827,7 @@ void TelnetHandler::processPythonCommand(std::string command)
 	
 	if(retbuf.size() > 0)
 	{
-		// ½«½á¹û·µ»Ø¸ø¿Í»§¶Ë
+		// å°†ç»“æœè¿”å›ç»™å®¢æˆ·ç«¯
 		retbuf.insert(0, "\r\n");
 		Network::Bundle* pBundle = Network::Bundle::createPoolObject(OBJECTPOOL_POINT);
 		(*pBundle) << retbuf;
@@ -970,7 +970,7 @@ void TelnetPyProfileHandler::sendStream(MemoryStream* s)
 	std::string datas;
 	(*s) >> datas;
 
-	// °Ñ·µ»ØÖµÖĞµÄ'\n'Ìæ“Q³É'\r\n'£¬ÒÔ½â¾öÔÚvt100ÖÕ¶ËÖĞÏÔÊ¾²»ÕıÈ·µÄÎÊÌâ
+	// æŠŠè¿”å›å€¼ä¸­çš„'\n'æ›¿æ›æˆ'\r\n'ï¼Œä»¥è§£å†³åœ¨vt100ç»ˆç«¯ä¸­æ˜¾ç¤ºä¸æ­£ç¡®çš„é—®é¢˜
 	std::string::size_type pos = 0;
 	while ((pos = datas.find('\n', pos)) != std::string::npos)
 	{
@@ -994,7 +994,7 @@ void TelnetPyTickProfileHandler::sendStream(MemoryStream* s)
 	std::string datas;
 	(*s) >> datas;
 
-	// °Ñ·µ»ØÖµÖĞµÄ'\n'Ìæ“Q³É'\r\n'£¬ÒÔ½â¾öÔÚvt100ÖÕ¶ËÖĞÏÔÊ¾²»ÕıÈ·µÄÎÊÌâ
+	// æŠŠè¿”å›å€¼ä¸­çš„'\n'æ›¿æ›æˆ'\r\n'ï¼Œä»¥è§£å†³åœ¨vt100ç»ˆç«¯ä¸­æ˜¾ç¤ºä¸æ­£ç¡®çš„é—®é¢˜
 	std::string::size_type pos = 0;
 	while ((pos = datas.find('\n', pos)) != std::string::npos)
 	{

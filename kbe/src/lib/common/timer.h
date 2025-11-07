@@ -35,8 +35,8 @@ inline bool operator==( TimerHandle h1, TimerHandle h2 )
 
 
 /**
- *	必须继承这个接口
- *	来接收timer->handleTimeout事件
+ *	蹇呴』缁ф壙杩欎釜鎺ュ彛
+ *	鏉ユ帴鏀秚imer->handleTimeout浜嬩欢
  */
 class TimerHandler
 {

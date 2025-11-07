@@ -101,7 +101,7 @@ bool SignalHandlers::ignoreSignal(int sigNum)
 SignalHandler* SignalHandlers::addSignal(int sigNum, 
 	SignalHandler* pSignalHandler, int flags)
 {
-	// ÔÊĞí±»ÖØÖÃ
+	// å…è®¸è¢«é‡ç½®
 	// SignalHandlerMap::iterator iter = singnalHandlerMap_.find(sigNum);
 	// KBE_ASSERT(iter == singnalHandlerMap_.end());
 
@@ -146,7 +146,7 @@ void SignalHandlers::clear()
 //-------------------------------------------------------------------------------------	
 void SignalHandlers::onSignalled(int sigNum)
 {
-	// ²»Òª·ÖÅäÄÚ´æ
+	// ä¸è¦åˆ†é…å†…å­˜
 	KBE_ASSERT(wpos_ != 0XFF);
 	signalledArray_[wpos_++] = sigNum;
 }
@@ -160,7 +160,7 @@ bool SignalHandlers::process()
 	DEBUG_MSG(fmt::format("SignalHandlers::process: rpos={}, wpos={}.\n", rpos_, wpos_));
 
 #if KBE_PLATFORM != PLATFORM_WIN32
-	/* Èç¹ûĞÅºÅÓĞË²Ê±³¬¹ı255´¥·¢ĞèÇó£¬¿ÉÒÔ´ò¿ª×¢ÊÍ£¬½«»áÆÁ±ÎËùÓĞĞÅºÅµÈÖ´ĞĞÍê±ÏÖ®ºóÔÙÖ´ĞĞÆÚ¼ä´¥·¢µÄĞÅºÅ£¬½«signalledArray_¸ÄÎªĞÅºÅ¼¯ÀàĞÍ
+	/* å¦‚æœä¿¡å·æœ‰ç¬æ—¶è¶…è¿‡255è§¦å‘éœ€æ±‚ï¼Œå¯ä»¥æ‰“å¼€æ³¨é‡Šï¼Œå°†ä¼šå±è”½æ‰€æœ‰ä¿¡å·ç­‰æ‰§è¡Œå®Œæ¯•ä¹‹åå†æ‰§è¡ŒæœŸé—´è§¦å‘çš„ä¿¡å·ï¼Œå°†signalledArray_æ”¹ä¸ºä¿¡å·é›†ç±»å‹
 	if (wpos_ == 1 && signalledArray_[0] == SIGALRM)
 		return true;
 
@@ -170,7 +170,7 @@ bool SignalHandlers::process()
 
 	sigfillset(&mask);
 
-	// ÆÁ±ÎĞÅºÅ
+	// å±è”½ä¿¡å·
 	sigprocmask(SIG_BLOCK, &mask, &old_mask);
 	*/
 #endif
@@ -201,7 +201,7 @@ bool SignalHandlers::process()
 	wpos_ = 0;
 
 #if KBE_PLATFORM != PLATFORM_WIN32
-	// »Ö¸´ÆÁ±Î
+	// æ¢å¤å±è”½
 	/*
 	sigprocmask(SIG_SETMASK, &old_mask, NULL);
 
@@ -216,7 +216,7 @@ bool SignalHandlers::process()
 	// Wait with this mask
 	ualarm(1, 0);
 
-	// ÈÃÆÚ¼ä´í¹ıµÄĞÅºÅÖØĞÂ´¥·¢
+	// è®©æœŸé—´é”™è¿‡çš„ä¿¡å·é‡æ–°è§¦å‘
 	sigsuspend(&mask);
 
 	delSignal(SIGALRM);

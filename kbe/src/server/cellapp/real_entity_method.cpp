@@ -61,7 +61,7 @@ PyObject* RealEntityMethod::callmethod(PyObject* args, PyObject* kwds)
 	{
 		MemoryStream* mstream = MemoryStream::createPoolObject(OBJECTPOOL_POINT);
 
-		// Èç¹ûÊÇ¸ø×é¼şµÄÏûÏ¢
+		// å¦‚æœæ˜¯ç»™ç»„ä»¶çš„æ¶ˆæ¯
 		if (pComponentPropertyDescription_)
 		{
 			(*mstream) << pComponentPropertyDescription_->getUType();
@@ -117,7 +117,7 @@ PyObject* RealEntityMethod::callmethod(PyObject* args, PyObject* kwds)
 				DebugHelper::getSingleton().changeLogger(COMPONENT_NAME_EX(g_componentType));
 		}
 
-		// ¼ÇÂ¼Õâ¸öÊÂ¼ş²úÉúµÄÊı¾İÁ¿´óĞ¡
+		// è®°å½•è¿™ä¸ªäº‹ä»¶äº§ç”Ÿçš„æ•°æ®é‡å¤§å°
 		g_publicCellEventHistoryStats.trackEvent(scriptName_, 
 			methodDescription->getName(), 
 			pForwardBundle->currMsgLength(), 

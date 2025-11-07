@@ -2,14 +2,14 @@
 
 
 /*
-	ÒıÓÃ¼ÆÊıÊµÏÖÀà
+	å¼•ç”¨è®¡æ•°å®ç°ç±»
 
-	Ê¹ÓÃ·½·¨:
+	ä½¿ç”¨æ–¹æ³•:
 		class AA:public RefCountable
 		{
 		public:
 			AA(){}
-			~AA(){ printf("Îö¹¹"); }
+			~AA(){ printf("ææ„"); }
 		};
 		
 		--------------------------------------------
@@ -22,8 +22,8 @@
 		delete s;
 		delete s1;
 		
-		Ö´ĞĞ½á¹û:
-			Îö¹¹
+		æ‰§è¡Œç»“æœ:
+			ææ„
 */
 #ifndef KBE_REFCOUNTABLE_H
 #define KBE_REFCOUNTABLE_H
@@ -46,7 +46,7 @@ public:
 		int currRef = --refCount_;
 		assert(currRef >= 0 && "RefCountable:currRef maybe a error!");
 		if (0 >= currRef)
-			onRefOver();											// ÒıÓÃ½áÊøÁË
+			onRefOver();											// å¼•ç”¨ç»“æŸäº†
 	}
 
 	virtual void onRefOver(void) const
@@ -93,7 +93,7 @@ public:
 		long currRef =::InterlockedDecrement(&refCount_);
 		assert(currRef >= 0 && "RefCountable:currRef maybe a error!");
 		if (0 >= currRef)
-			onRefOver();											// ÒıÓÃ½áÊøÁË
+			onRefOver();											// å¼•ç”¨ç»“æŸäº†
 	}
 
 	virtual void onRefOver(void) const
@@ -144,7 +144,7 @@ public:
 		long currRef = intDecRef();
 		assert(currRef >= 0 && "RefCountable:currRef maybe a error!");
 		if (0 >= currRef)
-			onRefOver();											// ÒıÓÃ½áÊøÁË
+			onRefOver();											// å¼•ç”¨ç»“æŸäº†
 	}
 
 	virtual void onRefOver(void) const

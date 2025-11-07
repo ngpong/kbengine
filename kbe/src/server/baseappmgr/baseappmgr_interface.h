@@ -26,10 +26,10 @@
 namespace KBEngine{
 
 /**
-	BASEAPPMGRËùÓĞÏûÏ¢½Ó¿ÚÔÚ´Ë¶¨Òå
+	BASEAPPMGRæ‰€æœ‰æ¶ˆæ¯æ¥å£åœ¨æ­¤å®šä¹‰
 */
 NETWORK_INTERFACE_DECLARE_BEGIN(BaseappmgrInterface)
-	// Ä³app×¢²á×Ô¼ºµÄ½Ó¿ÚµØÖ·µ½±¾app
+	// æŸappæ³¨å†Œè‡ªå·±çš„æ¥å£åœ°å€åˆ°æœ¬app
 	BASEAPPMGR_MESSAGE_DECLARE_ARGS11(onRegisterNewApp,									NETWORK_VARIABLE_MESSAGE,
 									int32,												uid, 
 									std::string,										username,
@@ -43,39 +43,39 @@ NETWORK_INTERFACE_DECLARE_BEGIN(BaseappmgrInterface)
 									uint16,												extport,
 									std::string,										extaddrEx)
 
-	// Ä³appÖ÷¶¯ÇëÇólook¡£
+	// æŸappä¸»åŠ¨è¯·æ±‚lookã€‚
 	BASEAPPMGR_MESSAGE_DECLARE_ARGS0(lookApp,											NETWORK_FIXED_MESSAGE)
 
-	// Ä³¸öappÇëÇó²é¿´¸Ãapp¸ºÔØ×´Ì¬¡£
+	// æŸä¸ªappè¯·æ±‚æŸ¥çœ‹è¯¥appè´Ÿè½½çŠ¶æ€ã€‚
 	BASEAPPMGR_MESSAGE_DECLARE_ARGS0(queryLoad,											NETWORK_FIXED_MESSAGE)
 
-	// Ä³¸öappÏò±¾app¸æÖª´¦ÓÚ»î¶¯×´Ì¬¡£
+	// æŸä¸ªappå‘æœ¬appå‘ŠçŸ¥å¤„äºæ´»åŠ¨çŠ¶æ€ã€‚
 	BASEAPPMGR_MESSAGE_DECLARE_ARGS2(onAppActiveTick,									NETWORK_FIXED_MESSAGE,
 									COMPONENT_TYPE,										componentType, 
 									COMPONENT_ID,										componentID)
 
-	// baseEntityÇëÇó´´½¨ÔÚÒ»¸öĞÂµÄspaceÖĞ¡£
+	// baseEntityè¯·æ±‚åˆ›å»ºåœ¨ä¸€ä¸ªæ–°çš„spaceä¸­ã€‚
 	BASEAPPMGR_MESSAGE_DECLARE_STREAM(reqCreateEntityAnywhere,							NETWORK_VARIABLE_MESSAGE)
 
-	// baseEntityÇëÇó´´½¨ÔÚÒ»¸öĞÂµÄspaceÖĞ¡£
+	// baseEntityè¯·æ±‚åˆ›å»ºåœ¨ä¸€ä¸ªæ–°çš„spaceä¸­ã€‚
 	BASEAPPMGR_MESSAGE_DECLARE_STREAM(reqCreateEntityRemotely,							NETWORK_VARIABLE_MESSAGE)
 
-	// baseEntityÇëÇó´´½¨ÔÚÒ»¸öĞÂµÄspaceÖĞ£¬²éÑ¯µ±Ç°×îºÃµÄ×é¼şID
+	// baseEntityè¯·æ±‚åˆ›å»ºåœ¨ä¸€ä¸ªæ–°çš„spaceä¸­ï¼ŒæŸ¥è¯¢å½“å‰æœ€å¥½çš„ç»„ä»¶ID
 	BASEAPPMGR_MESSAGE_DECLARE_STREAM(reqCreateEntityAnywhereFromDBIDQueryBestBaseappID,NETWORK_VARIABLE_MESSAGE)
 
-	// baseEntityÇëÇó´´½¨ÔÚÒ»¸öĞÂµÄspaceÖĞ¡£
+	// baseEntityè¯·æ±‚åˆ›å»ºåœ¨ä¸€ä¸ªæ–°çš„spaceä¸­ã€‚
 	BASEAPPMGR_MESSAGE_DECLARE_STREAM(reqCreateEntityAnywhereFromDBID,					NETWORK_VARIABLE_MESSAGE)
 
-	// baseEntityÇëÇó´´½¨ÔÚÒ»¸öĞÂµÄspaceÖĞ¡£
+	// baseEntityè¯·æ±‚åˆ›å»ºåœ¨ä¸€ä¸ªæ–°çš„spaceä¸­ã€‚
 	BASEAPPMGR_MESSAGE_DECLARE_STREAM(reqCreateEntityRemotelyFromDBID,					NETWORK_VARIABLE_MESSAGE)
 	
-	// ÏûÏ¢×ª·¢£¬ ÓÉÄ³¸öappÏëÍ¨¹ı±¾app½«ÏûÏ¢×ª·¢¸øÄ³¸öapp¡£	
+	// æ¶ˆæ¯è½¬å‘ï¼Œ ç”±æŸä¸ªappæƒ³é€šè¿‡æœ¬appå°†æ¶ˆæ¯è½¬å‘ç»™æŸä¸ªappã€‚	
 	BASEAPPMGR_MESSAGE_DECLARE_STREAM(forwardMessage,									NETWORK_VARIABLE_MESSAGE)
 
-	// Ä³¸öappÏò±¾app¸æÖª´¦ÓÚ»î¶¯×´Ì¬¡£
+	// æŸä¸ªappå‘æœ¬appå‘ŠçŸ¥å¤„äºæ´»åŠ¨çŠ¶æ€ã€‚
 	BASEAPPMGR_MESSAGE_DECLARE_STREAM(registerPendingAccountToBaseapp,					NETWORK_VARIABLE_MESSAGE)
 
-	// »ñÈ¡µ½baseappµÄµØÖ·¡£
+	// è·å–åˆ°baseappçš„åœ°å€ã€‚
 	BASEAPPMGR_MESSAGE_DECLARE_ARGS5(onPendingAccountGetBaseappAddr,					NETWORK_VARIABLE_MESSAGE,
 									std::string,										loginName, 
 									std::string,										accountName,
@@ -83,14 +83,14 @@ NETWORK_INTERFACE_DECLARE_BEGIN(BaseappmgrInterface)
 									uint16,												tcp_port,
 									uint16,												udp_port)
 									
-	// Ò»¸öĞÂµÇÂ¼µÄÕËºÅ»ñµÃºÏ·¨µÇÈëbaseappµÄÈ¨Àû£¬ ÏÖÔÚĞèÒª½«ÕËºÅ×¢²á¸øÖ¸¶¨µÄbaseapp
-	// Ê¹ÆäÔÊĞíÔÚ´ËbaseappÉÏµÇÂ¼¡£
+	// ä¸€ä¸ªæ–°ç™»å½•çš„è´¦å·è·å¾—åˆæ³•ç™»å…¥baseappçš„æƒåˆ©ï¼Œ ç°åœ¨éœ€è¦å°†è´¦å·æ³¨å†Œç»™æŒ‡å®šçš„baseapp
+	// ä½¿å…¶å…è®¸åœ¨æ­¤baseappä¸Šç™»å½•ã€‚
 	BASEAPPMGR_MESSAGE_DECLARE_STREAM(registerPendingAccountToBaseappAddr,				NETWORK_VARIABLE_MESSAGE)
 
-	// ÇëÇó¹Ø±Õ·şÎñÆ÷
+	// è¯·æ±‚å…³é—­æœåŠ¡å™¨
 	BASEAPPMGR_MESSAGE_DECLARE_STREAM(reqCloseServer,									NETWORK_VARIABLE_MESSAGE)
 
-	// ¸üĞÂbaseappĞÅÏ¢¡£
+	// æ›´æ–°baseappä¿¡æ¯ã€‚
 	BASEAPPMGR_MESSAGE_DECLARE_ARGS5(updateBaseapp,										NETWORK_FIXED_MESSAGE,
 									COMPONENT_ID,										componentID,
 									ENTITY_ID,											numBases,
@@ -98,24 +98,24 @@ NETWORK_INTERFACE_DECLARE_BEGIN(BaseappmgrInterface)
 									float,												load,
 									uint32,												flags)
 
-	// ÇëÇó²éÑ¯watcherÊı¾İ
+	// è¯·æ±‚æŸ¥è¯¢watcheræ•°æ®
 	BASEAPPMGR_MESSAGE_DECLARE_STREAM(queryWatcher,										NETWORK_VARIABLE_MESSAGE)
 
-	// baseappÍ¬²½×Ô¼ºµÄ³õÊ¼»¯ĞÅÏ¢
+	// baseappåŒæ­¥è‡ªå·±çš„åˆå§‹åŒ–ä¿¡æ¯
 	BASEAPPMGR_MESSAGE_DECLARE_ARGS2(onBaseappInitProgress,								NETWORK_FIXED_MESSAGE,
 									COMPONENT_ID,										cid,
 									float,												progress)
 
-	// ¿ªÊ¼profile
+	// å¼€å§‹profile
 	BASEAPPMGR_MESSAGE_DECLARE_STREAM(startProfile,										NETWORK_VARIABLE_MESSAGE)
 
-	// ÇëÇóÇ¿ÖÆÉ±ËÀµ±Ç°app
+	// è¯·æ±‚å¼ºåˆ¶æ€æ­»å½“å‰app
 	BASEAPPMGR_MESSAGE_DECLARE_STREAM(reqKillServer,									NETWORK_VARIABLE_MESSAGE)
 
-	// ²éÑ¯ËùÓĞÏà¹Ø½ø³Ì¸ºÔØĞÅÏ¢
+	// æŸ¥è¯¢æ‰€æœ‰ç›¸å…³è¿›ç¨‹è´Ÿè½½ä¿¡æ¯
 	BASEAPPMGR_MESSAGE_DECLARE_STREAM(queryAppsLoads,									NETWORK_VARIABLE_MESSAGE)
 
-	// baseappÇëÇó°ó¶¨email£¨·µ»ØÊ±ĞèÒªÕÒµ½loginappµÄµØÖ·£©
+	// baseappè¯·æ±‚ç»‘å®šemailï¼ˆè¿”å›æ—¶éœ€è¦æ‰¾åˆ°loginappçš„åœ°å€ï¼‰
 	BASEAPPMGR_MESSAGE_DECLARE_ARGS6(reqAccountBindEmailAllocCallbackLoginapp,			NETWORK_VARIABLE_MESSAGE,
 									COMPONENT_ID,										reqBaseappID,
 									ENTITY_ID,											entityID,
@@ -124,7 +124,7 @@ NETWORK_INTERFACE_DECLARE_BEGIN(BaseappmgrInterface)
 									SERVER_ERROR_CODE,									failedcode,
 									std::string,										code)
 
-	// baseappÇëÇó°ó¶¨email£¨·µ»ØÊ±ĞèÒªÕÒµ½loginappµÄµØÖ·£©
+	// baseappè¯·æ±‚ç»‘å®šemailï¼ˆè¿”å›æ—¶éœ€è¦æ‰¾åˆ°loginappçš„åœ°å€ï¼‰
 	BASEAPPMGR_MESSAGE_DECLARE_ARGS8(onReqAccountBindEmailCBFromLoginapp,				NETWORK_VARIABLE_MESSAGE,
 									COMPONENT_ID,										reqBaseappID,
 									ENTITY_ID,											entityID,

@@ -62,7 +62,7 @@ public:
 
 	EventDispatcher & dispatcher()		{ return *pDispatcher_; }
 
-	/* Íâ²¿ÍøµãºÍÄÚ²¿Íøµã */
+	/* å¤–éƒ¨ç½‘ç‚¹å’Œå†…éƒ¨ç½‘ç‚¹ */
 	EndPoint & extEndpoint()				{ return extTcpEndpoint_; }
 	EndPoint & intEndpoint()				{ return intTcpEndpoint_; }
 
@@ -70,7 +70,7 @@ public:
 	
 	const ChannelMap& channels(void) { return channelMap_; }
 		
-	/** ·¢ËÍÏà¹Ø */
+	/** å‘é€ç›¸å…³ */
 	void sendIfDelayed(Channel & channel);
 	void delayedSend(Channel & channel);
 	
@@ -79,7 +79,7 @@ public:
 	void onChannelTimeOut(Channel * pChannel);
 	
 	/* 
-		´¦ÀíËùÓĞchannels  
+		å¤„ç†æ‰€æœ‰channels  
 	*/
 	void processChannels(KBEngine::Network::MessageHandlers* pMsgHandlers);
 
@@ -103,7 +103,7 @@ private:
 	
 	DelayedChannels * 						pDelayedChannels_;
 	
-	ChannelTimeOutHandler *					pChannelTimeOutHandler_;	// ³¬Ê±µÄÍ¨µÀ¿É±»Õâ¸ö¾ä±ú²¶×½£¬ ÀıÈç¸æÖªÉÏ²ãclient¶Ï¿ª
+	ChannelTimeOutHandler *					pChannelTimeOutHandler_;	// è¶…æ—¶çš„é€šé“å¯è¢«è¿™ä¸ªå¥æŸ„æ•æ‰ï¼Œ ä¾‹å¦‚å‘ŠçŸ¥ä¸Šå±‚clientæ–­å¼€
 	ChannelDeregisterHandler *				pChannelDeregisterHandler_;
 
 	int32									numExtChannels_;

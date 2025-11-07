@@ -20,7 +20,7 @@ namespace KBEngine {
 class ClientObject : public ClientObjectBase
 {
 	/** 
-		×ÓÀà»¯ ½«Ò»Ğ©py²Ù×÷Ìî³ä½øÅÉÉúÀà 
+		å­ç±»åŒ– å°†ä¸€äº›pyæ“ä½œå¡«å……è¿›æ´¾ç”Ÿç±» 
 	*/
 	INSTANCE_SCRIPT_HREADER(ClientObject, ClientObjectBase)	
 
@@ -67,29 +67,29 @@ public:
 		const std::string& scriptVerInfo, const std::string& protocolMD5, 
 		const std::string& entityDefMD5, COMPONENT_TYPE componentType);
 
-	/** ÍøÂç½Ó¿Ú
-		´´½¨ÕËºÅ³É¹¦ºÍÊ§°Ü»Øµ÷
-	   @failedcode: Ê§°Ü·µ»ØÂë NETWORK_ERR_SRV_NO_READY:·şÎñÆ÷Ã»ÓĞ×¼±¸ºÃ, 
-									NETWORK_ERR_ACCOUNT_CREATE:´´½¨Ê§°Ü£¨ÒÑ¾­´æÔÚ£©, 
-									NETWORK_SUCCESS:ÕËºÅ´´½¨³É¹¦
+	/** ç½‘ç»œæ¥å£
+		åˆ›å»ºè´¦å·æˆåŠŸå’Œå¤±è´¥å›è°ƒ
+	   @failedcode: å¤±è´¥è¿”å›ç  NETWORK_ERR_SRV_NO_READY:æœåŠ¡å™¨æ²¡æœ‰å‡†å¤‡å¥½, 
+									NETWORK_ERR_ACCOUNT_CREATE:åˆ›å»ºå¤±è´¥ï¼ˆå·²ç»å­˜åœ¨ï¼‰, 
+									NETWORK_SUCCESS:è´¦å·åˆ›å»ºæˆåŠŸ
 
 									SERVER_ERROR_CODE failedcode;
-		@¶ş½øÖÆ¸½´øÊı¾İ:¶ş½øÖÆ¶îÍâÊı¾İ: uint32³¤¶È + bytearray
+		@äºŒè¿›åˆ¶é™„å¸¦æ•°æ®:äºŒè¿›åˆ¶é¢å¤–æ•°æ®: uint32é•¿åº¦ + bytearray
 	*/
 	virtual void onCreateAccountResult(Network::Channel * pChannel, MemoryStream& s);
 
-	/** ÍøÂç½Ó¿Ú
-	   µÇÂ¼Ê§°Ü»Øµ÷
-	   @failedcode: Ê§°Ü·µ»ØÂë NETWORK_ERR_SRV_NO_READY:·şÎñÆ÷Ã»ÓĞ×¼±¸ºÃ, 
-									NETWORK_ERR_SRV_OVERLOAD:·şÎñÆ÷¸ºÔØ¹ıÖØ, 
-									NETWORK_ERR_NAME_PASSWORD:ÓÃ»§Ãû»òÕßÃÜÂë²»ÕıÈ·
+	/** ç½‘ç»œæ¥å£
+	   ç™»å½•å¤±è´¥å›è°ƒ
+	   @failedcode: å¤±è´¥è¿”å›ç  NETWORK_ERR_SRV_NO_READY:æœåŠ¡å™¨æ²¡æœ‰å‡†å¤‡å¥½, 
+									NETWORK_ERR_SRV_OVERLOAD:æœåŠ¡å™¨è´Ÿè½½è¿‡é‡, 
+									NETWORK_ERR_NAME_PASSWORD:ç”¨æˆ·åæˆ–è€…å¯†ç ä¸æ­£ç¡®
 	*/
 	virtual void onLoginFailed(Network::Channel * pChannel, MemoryStream& s);
 
-	/** ÍøÂç½Ó¿Ú
-	   µÇÂ¼³É¹¦
-	   @ip: ·şÎñÆ÷ipµØÖ·
-	   @port: ·şÎñÆ÷¶Ë¿Ú
+	/** ç½‘ç»œæ¥å£
+	   ç™»å½•æˆåŠŸ
+	   @ip: æœåŠ¡å™¨ipåœ°å€
+	   @port: æœåŠ¡å™¨ç«¯å£
 	*/
 	virtual void onLoginSuccessfully(Network::Channel * pChannel, MemoryStream& s);
 
