@@ -65,6 +65,24 @@ static uint64 calcStampsPerSecond_rdtsc()
 
 	uint64 stampDelta = stampAfter - stampBefore;
 
+  // 次数的逻辑要求得每秒时钟周期递增数
+  //
+  //  1. 计算在睡眠前的TSC为TSC_AFTER。
+  //  2. 计算在睡眠前的时间为TIME_AFTER。
+  //  3. 计算在睡眠后的TSC为TSC_BEFORE。
+  //  4. 计算在睡眠前的时间为TIME_BEFORE。
+  //  5. 根据上述四步骤我们得到了，在睡眠500ms后，CPU经过
+  //     了 (TSC_BEFORE - TSC_AFTER) 的时钟周期；真实时间
+  //     经过了 (TIME_BEFORE - TIME_AFTER) 的时间。
+  //  6. 因此，根据上面的差值delta我们可以测算出在一微秒内
+  //     CPU经过了多少时钟周期，再对结果 * 1000000ULL即可得
+  //     到一秒内CPU经过的时钟周期。
+  //  7. 具体算法是这样的，设
+  //      A = (TSC_BEFORE - TSC_AFTER)
+  //      B = (TIME_BEFORE - TIME_AFTER)
+  //      C_us(一微妙经过的时钟周期) = A / B
+  //      C_s(一秒经过的时钟周期) = (A / B) * 1000000ULL
+  //      (A / B) * 1000000ULL ==> (A * 1000000ULL) / B
 	return (stampDelta * 1000000ULL) / microDelta;
 }
 #else
@@ -89,7 +107,7 @@ static uint64 calcStampsPerSecond()
 
 #ifdef KBE_USE_RDTSC
 	return calcStampsPerSecond_rdtsc();
-#else 
+#else
 
 	if (g_timingMethod == RDTSC_TIMING_METHOD)
 		return calcStampsPerSecond_rdtsc();
@@ -163,7 +181,7 @@ double stampsPerSecondD_gettimeofday()
 
 #ifdef KBE_USE_RDTSC
 static uint64 calcStampsPerSecond()
-{	
+{
 	LARGE_INTEGER	tvBefore,	tvAfter;
 	DWORD			tvSleep = 500;
 	uint64 stampBefore,	stampAfter;

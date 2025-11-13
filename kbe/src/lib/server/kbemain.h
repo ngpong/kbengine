@@ -28,7 +28,7 @@ namespace KBEngine{
 inline void START_MSG(const char * name, uint64 appuid)
 {
 	MachineInfos machineInfo;
-	
+
 	std::string s = (fmt::format("---- {} "
 			"Version: {}. "
 			"ScriptVersion: {}. "
@@ -45,7 +45,7 @@ inline void START_MSG(const char * name, uint64 appuid)
 		appuid, getUserUID(), getProcessPID()));
 
 	INFO_MSG(s);
-	
+
 #if KBE_PLATFORM == PLATFORM_WIN32
 	printf("%s", s.c_str());
 #endif
@@ -85,7 +85,7 @@ inline void setEvns()
 		int32 icomponentGroupOrder = g_componentGroupOrder;
 		scomponentGroupOrder = KBEngine::StringConv::val2str(icomponentGroupOrder);
 	}
-	
+
 	if(g_componentGlobalOrder > 0)
 	{
 		int32 icomponentGlobalOrder = g_componentGlobalOrder;
@@ -111,7 +111,7 @@ inline bool checkComponentID(COMPONENT_TYPE componentType)
 	if ((componentType == MACHINE_TYPE || componentType == LOGGER_TYPE) && g_componentID == (COMPONENT_ID)-1)
 	{
 		int macMD5 = getMacMD5();
-		
+
 		COMPONENT_ID cid1 = (COMPONENT_ID)uid * COMPONENT_ID_MULTIPLE;
 		COMPONENT_ID cid2 = (COMPONENT_ID)macMD5 * 10000;
 		COMPONENT_ID cid3 = (COMPONENT_ID)componentType * 100;
@@ -139,8 +139,8 @@ inline bool checkComponentID(COMPONENT_TYPE componentType)
 }
 
 template <class SERVER_APP>
-int kbeMainT(int argc, char * argv[], COMPONENT_TYPE componentType, 
-	int32 extlisteningTcpPort_min = -1, int32 extlisteningTcpPort_max = -1, 
+int kbeMainT(int argc, char * argv[], COMPONENT_TYPE componentType,
+	int32 extlisteningTcpPort_min = -1, int32 extlisteningTcpPort_max = -1,
 	int32 extlisteningUdpPort_min = -1, int32 extlisteningUdpPort_max = -1, const char * extlisteningInterface = "",
 	int32 intlisteningPort_min = 0, int32 intlisteningPort_max = 0, const char * intlisteningInterface = "")
 {
@@ -167,40 +167,63 @@ int kbeMainT(int argc, char * argv[], COMPONENT_TYPE componentType,
 		publicKeyPath = Resmgr::getSingleton().matchPath("key/") + "kbengine_public.key";
 		privateKeyPath = Resmgr::getSingleton().matchPath("key/") + "kbengine_private.key";
 	}
-	
+
 	KBEKey kbekey(publicKeyPath, privateKeyPath);
 
 	Resmgr::getSingleton().print();
 
+  // 此处创建了epoll_create
 	Network::EventDispatcher dispatcher;
-	DebugHelper::getSingleton().pDispatcher(&dispatcher);
+  // call <ComponentActiveReportHandler::handleTimeout> per 100ms
+  DebugHelper::getSingleton().pDispatcher(&dispatcher);
 
 	const ChannelCommon& channelCommon = g_kbeSrvConfig.channelCommon();
 
 	Network::g_SOMAXCONN = g_kbeSrvConfig.tcp_SOMAXCONN(g_componentType);
 
-	Network::NetworkInterface networkInterface(&dispatcher, 
+  // 1: 此处根据输入的端口范围寻找一个可用的端口，创建socket接口并绑定该端口
+  //  1.1: 根据配置的端口号是否合法来决定创建TCP和UDP
+  // 2: 将socket加入到epoll当中并执行listen
+  // 3: dispatcher->addTask(networkInterface.pDelayedChannels_);
+	Network::NetworkInterface networkInterface(&dispatcher,
 		extlisteningTcpPort_min, extlisteningTcpPort_max, extlisteningUdpPort_min, extlisteningUdpPort_max, extlisteningInterface,
 		channelCommon.extReadBufferSize, channelCommon.extWriteBufferSize,
 		intlisteningPort_min, intlisteningPort_max, intlisteningInterface,
 		channelCommon.intReadBufferSize, channelCommon.intWriteBufferSize);
-	
+
 	DebugHelper::getSingleton().pNetworkInterface(&networkInterface);
 
-	g_kbeSrvConfig.updateInfos(true, componentType, g_componentID, 
+	g_kbeSrvConfig.updateInfos(true, componentType, g_componentID,
 			networkInterface.intTcpAddr(), networkInterface.extTcpAddr(), networkInterface.extUdpAddr());
-	
+
 	if (getuid <= 0)
 	{
 		WARNING_MSG(fmt::format("invalid UID({}) <= 0, please check UID for environment! automatically set to {}.\n", getuid, getUserUID()));
 	}
 
+  // 根据 componentType 初始化了 Components.findComponentTypes_；不清楚具体作用
 	Components::getSingleton().initialize(&networkInterface, componentType, g_componentID);
-	
+
+  // baseapp:
+  //  1: dispatcher->addTask(Components::getSingleton());
+  //  2: call <ComponentActiveReportHandler::handleTimeout> per 100ms
+  //  3: EntityDef::setGetEntityFunc                   ==> EntityApp<Entity>::tryGetEntity
+  //  4. EntityCallAbstract::setFindChannelFunc        ==> EntityApp<Entity>::findChannelByEntityCall
+  //  5. EntityCallAbstract::setEntityCallCallHookFunc ==> Baseapp::createEntityCallCallEntityRemoteMethod
 	SERVER_APP app(dispatcher, networkInterface, componentType, g_componentID);
+  // 1. 通过 UDP 组播的方式发送 onFindInterfaceAddr 消息以寻找 Logger 服务；
+  // 2. 等待其他服务回复消息，Logger 服务会回复当前的端口号还有地址，根据这些信息链接到 Logger 服务；
+  // 3. 连接到 Logger 服务的工作还包含创建 Logger 的 Components::ComponentInfos，并且创建内部 channel 的计时器调用 Channel::handleTimeout
+  // 3. 当连接成功后向 Logger 服务发送 onRegisterNewApp 消息；
 	Components::getSingleton().findLogger();
 	START_MSG(COMPONENT_NAME_EX(componentType), g_componentID);
 
+  // baseapp:
+  //  1. call EntityApp<Entity>::handleTimeout per gameUpdateHertz
+  //  2. dispatcher->addTask(g_kbeSignalHandlers);
+  //  3. dispatcher->addTask(this);
+  //  3. 添加了一堆 watch：Network::initialize() && initializeWatcher() ==> ServerApp::initialize()
+  //  4. 初始化了 pyscript 模块 ==> Account.py
 	if(!app.initialize())
 	{
 		ERROR_MSG("app::initialize(): initialization failed!\n");
@@ -218,14 +241,14 @@ int kbeMainT(int argc, char * argv[], COMPONENT_TYPE componentType,
 #endif
 		return -1;
 	}
-	
+
 	INFO_MSG(fmt::format("---- {} is running ----\n", COMPONENT_NAME_EX(componentType)));
 
 #if KBE_PLATFORM == PLATFORM_WIN32
 	printf("[INFO]: %s", (fmt::format("---- {} is running ----\n", COMPONENT_NAME_EX(componentType))).c_str());
 #endif
 	int ret = app.run();
-	
+
 	Components::getSingleton().finalise();
 	app.finalise();
 	INFO_MSG(fmt::format("{}({}) has shut down.\n", COMPONENT_NAME_EX(componentType), g_componentID));
@@ -246,7 +269,7 @@ inline void parseMainCommandArgs(int argc, char* argv[])
 	for(int argIdx=1; argIdx<argc; ++argIdx)
 	{
 		std::string cmd = argv[argIdx];
-		
+
 		std::string findcmd = "--cid=";
 		std::string::size_type fi1 = cmd.find(findcmd);
 		if(fi1 != std::string::npos)
