@@ -303,7 +303,7 @@ ifeq ($(KBE_CONFIG), Release)
 endif
 
 ifneq (,$(findstring Hybrid,$(KBE_CONFIG)))
-	CXXFLAGS += -O3 -g
+	CXXFLAGS += -g
 	CPPFLAGS += -DCODE_INLINE -DKBE_USE_ASSERTS -D_HYBRID
 endif
 
