@@ -213,7 +213,7 @@ int kbeMainT(int argc, char * argv[], COMPONENT_TYPE componentType,
 	SERVER_APP app(dispatcher, networkInterface, componentType, g_componentID);
   // 1. 通过 UDP 组播的方式发送 onFindInterfaceAddr 消息以寻找 Logger 服务；
   // 2. 等待其他服务回复消息，Logger 服务会回复当前的端口号还有地址，根据这些信息链接到 Logger 服务；
-  // 3. 连接到 Logger 服务的工作还包含创建 Logger 的 Components::ComponentInfos，并且创建内部 channel 的计时器调用 Channel::handleTimeout
+  // 3. 连接(TCP)到 Logger 服务的工作还包含创建 Logger 的 Components::ComponentInfos，并且创建内部 channel 的计时器调用 Channel::handleTimeout
   // 3. 当连接成功后向 Logger 服务发送 onRegisterNewApp 消息；
 	Components::getSingleton().findLogger();
 	START_MSG(COMPONENT_NAME_EX(componentType), g_componentID);
@@ -221,9 +221,18 @@ int kbeMainT(int argc, char * argv[], COMPONENT_TYPE componentType,
   // baseapp:
   //  1. call EntityApp<Entity>::handleTimeout per gameUpdateHertz
   //  2. dispatcher->addTask(g_kbeSignalHandlers);
-  //  3. dispatcher->addTask(this);
   //  3. 添加了一堆 watch：Network::initialize() && initializeWatcher() ==> ServerApp::initialize()
-  //  4. 初始化了 pyscript 模块 ==> Account.py
+  //  4. call <Baseapp::handleTimeout> per second
+  //  5. 初始化了 pyscript 模块 ==> Account.py
+  //  6. pTelnetServer_->start()
+  //  7. 设置 Python 环境
+  //    7.1. 初始化 python 解释器；
+  //    7.2. 创建 KBEngine 和 KBExtra 模块并注册至 Python 全局模块；
+  //    7.3. 注册一些函数，例如 genUUID64 等等，一般都与 KBEngine 相关联;
+  //    7.4. 创建并加载一些额外且零碎的模块；
+  //    7.5. 注册入口模块，g_kbeSrvConfig.getBaseApp().entryScriptFile;
+  //  8. 开启 pTelnetServer_
+  //  9. dispatcher->addTask(SyncEntityStreamTemplateHandler);
 	if(!app.initialize())
 	{
 		ERROR_MSG("app::initialize(): initialization failed!\n");
@@ -247,6 +256,8 @@ int kbeMainT(int argc, char * argv[], COMPONENT_TYPE componentType,
 #if KBE_PLATFORM == PLATFORM_WIN32
 	printf("[INFO]: %s", (fmt::format("---- {} is running ----\n", COMPONENT_NAME_EX(componentType))).c_str());
 #endif
+  // 1. 每次写入日志后会在每一次 loop 中发送给 Logger 进程来写入；
+  // 2. 
 	int ret = app.run();
 
 	Components::getSingleton().finalise();

@@ -165,7 +165,7 @@ bool Script::install(const wchar_t* pythonHomeDir, std::wstring pyPaths,
         return false;
     } 
 
-	sysInitModules_ = PyDict_Copy(PySys_GetObject("modules"));
+	sysInitModules_ = PyDict_Copy(PySys_GetObject("modules")); // sys.modules
 
 	PySys_SetArgvEx(0, NULL, 0);
 	PyObject *m = PyImport_AddModule("__main__");

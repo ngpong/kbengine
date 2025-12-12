@@ -1,4 +1,7 @@
 # fix shit
+__pycache__/
+logs/
+server_assets/
 *.o
 *.lo
 *.so

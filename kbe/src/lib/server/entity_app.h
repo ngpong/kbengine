@@ -385,6 +385,18 @@ bool EntityApp<E>::installPyScript()
 		return false;
 	}
 
+  // pyPaths.first
+  //  * /home/ngpong/kbengine/kbe/res/scripts/common
+  // pyPaths.second
+  //  * /home/ngpong/kbengine/server_assets/scripts/;
+  //  * /home/ngpong/kbengine/server_assets/scripts/common;
+  //  * /home/ngpong/kbengine/server_assets/scripts/data;
+  //  * /home/ngpong/kbengine/server_assets/scripts/user_type;
+  //  * /home/ngpong/kbengine/server_assets/scripts/server_common;
+  //  * /home/ngpong/kbengine/server_assets/scripts/base;
+  //  * /home/ngpong/kbengine/server_assets/scripts/base/interfaces;
+  //  * /home/ngpong/kbengine/server_assets/scripts/base/components;
+
 	return getScript().install(pyPaths.first.c_str(), pyPaths.second, "KBEngine", componentType_);
 }
 
